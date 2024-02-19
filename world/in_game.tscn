@@ -1,8 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://caxkf73phrkix"]
+[gd_scene load_steps=14 format=3 uid="uid://caxkf73phrkix"]
 
 [ext_resource type="Texture2D" uid="uid://0bxqoueqcx37" path="res://world/tilesets/Room_Builder_Walls_48x48.png" id="3_3fwr7"]
+[ext_resource type="PackedScene" uid="uid://ck41u4gtemga2" path="res://objects/bed.tscn" id="4_fx6rf"]
 [ext_resource type="Texture2D" uid="uid://bh1p8j4j7fduu" path="res://world/tilesets/Room_Builder_Borders_48x48.png" id="4_ljvjl"]
 [ext_resource type="Texture2D" uid="uid://bcwlp1veyvp6" path="res://world/tilesets/Room_Builder_Floors_48x48.png" id="5_7ys5p"]
+[ext_resource type="PackedScene" uid="uid://cyq704h73vecn" path="res://objects/fridge.tscn" id="5_l0y3p"]
+[ext_resource type="PackedScene" uid="uid://civ88shixv6nl" path="res://objects/home_desk.tscn" id="6_u5w43"]
+[ext_resource type="PackedScene" uid="uid://neqqtwqgbhs0" path="res://objects/home_kitchen_counter.tscn" id="7_l14je"]
+[ext_resource type="PackedScene" uid="uid://dup8h7y7svtya" path="res://objects/closet_backside.tscn" id="8_3pfi2"]
+[ext_resource type="PackedScene" uid="uid://bmkjmqwfjkcua" path="res://objects/door_wc.tscn" id="9_26ud8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8d3ec"]
 texture = ExtResource("5_7ys5p")
@@ -683,9 +689,9 @@ texture_region_size = Vector2i(48, 48)
 0:6/0/terrains_peering_bit/bottom_left_corner = 2
 0:6/0/terrains_peering_bit/left_side = 2
 0:6/0/metadata/_better_terrain = {
-0: [1],
-3: [1],
+0: [4],
 4: [1],
+8: [0],
 "type": 1
 }
 1:6/0 = 0
@@ -697,11 +703,9 @@ texture_region_size = Vector2i(48, 48)
 1:6/0/terrains_peering_bit/bottom_left_corner = 1
 1:6/0/terrains_peering_bit/left_side = 1
 1:6/0/metadata/_better_terrain = {
-0: [1],
-3: [1],
+0: [4],
 4: [1],
-7: [1],
-8: [1],
+8: [4],
 "type": 1
 }
 2:6/0 = 0
@@ -713,9 +717,9 @@ texture_region_size = Vector2i(48, 48)
 2:6/0/terrains_peering_bit/bottom_left_corner = 1
 2:6/0/terrains_peering_bit/left_side = 1
 2:6/0/metadata/_better_terrain = {
+0: [0],
 4: [1],
-7: [1],
-8: [1],
+8: [4],
 "type": 1
 }
 2:7/0 = 0
@@ -728,8 +732,8 @@ texture_region_size = Vector2i(48, 48)
 2:7/0/terrains_peering_bit/top_side = 1
 2:7/0/terrains_peering_bit/top_right_corner = 2
 2:7/0/metadata/_better_terrain = {
-8: [1],
-11: [1],
+0: [0],
+8: [4],
 12: [1],
 "type": 1
 }
@@ -742,11 +746,9 @@ texture_region_size = Vector2i(48, 48)
 1:7/0/terrains_peering_bit/top_side = 1
 1:7/0/terrains_peering_bit/top_right_corner = 1
 1:7/0/metadata/_better_terrain = {
-0: [1],
-8: [1],
-11: [1],
+0: [4],
+8: [4],
 12: [1],
-15: [1],
 "type": 1
 }
 0:7/0 = 0
@@ -759,9 +761,9 @@ texture_region_size = Vector2i(48, 48)
 0:7/0/terrains_peering_bit/top_side = 1
 0:7/0/terrains_peering_bit/top_right_corner = 1
 0:7/0/metadata/_better_terrain = {
-0: [1],
+0: [4],
+8: [0],
 12: [1],
-15: [1],
 "type": 1
 }
 
@@ -776,7 +778,7 @@ texture_region_size = Vector2i(48, 48)
 6:1/0/terrains_peering_bit/bottom_side = 2
 6:1/0/metadata/_better_terrain = {
 0: [3],
-4: [2],
+4: [4],
 "type": 2
 }
 6:2/next_alternative_id = 4
@@ -790,7 +792,7 @@ texture_region_size = Vector2i(48, 48)
 6:2/0/terrains_peering_bit/top_right_corner = 1
 6:2/0/metadata/_better_terrain = {
 0: [3],
-4: [2],
+4: [4],
 12: [2],
 "type": 2
 }
@@ -872,7 +874,7 @@ texture_region_size = Vector2i(48, 48)
 8:2/0/terrains_peering_bit/top_left_corner = 1
 8:2/0/terrains_peering_bit/top_side = 2
 8:2/0/metadata/_better_terrain = {
-4: [2],
+4: [4],
 8: [3],
 12: [2],
 "type": 2
@@ -917,7 +919,7 @@ texture_region_size = Vector2i(48, 48)
 8:1/0/terrains_peering_bit/bottom_left_corner = 1
 8:1/0/terrains_peering_bit/left_side = 1
 8:1/0/metadata/_better_terrain = {
-4: [2],
+4: [4],
 8: [3],
 "type": 2
 }
@@ -940,11 +942,13 @@ metadata/_better_terrain = {
 }],
 "terrains": [["Floor", Color(0.996078, 0.317647, 0.317647, 1), 0, [3], {
 "path": ""
-}], ["Back Wall", Color(0.701961, 0.407843, 1, 1), 0, [3], {
+}], ["Back Wall", Color(0.701961, 0.407843, 1, 1), 0, [3, 4], {
 "path": ""
-}], ["Thin Walls", Color(0.364706, 0.843137, 0.905882, 1), 0, [], {
+}], ["Thin Walls", Color(0.364706, 0.843137, 0.905882, 1), 0, [4], {
 "path": ""
 }], ["Floor or Back Wall", Color(0.976471, 0.32549, 0.8, 1), 2, [], {
+"path": ""
+}], ["Wall", Color(0.466667, 0.662745, 0.913725, 1), 2, [], {
 "path": ""
 }]],
 "version": "0.2"
@@ -958,4 +962,24 @@ metadata/_better_terrain = {
 tile_set = SubResource("TileSet_m0hwx")
 format = 2
 layer_0/name = "Room"
-layer_0/tile_data = PackedInt32Array(-65540, 786435, 8, -65539, 851971, 8, -65538, 851971, 8, -65537, 851971, 8, -131072, 851971, 8, -131071, 851971, 8, -131070, 851971, 8, -131069, 851971, 65544, -4, 786435, 9, -3, 851971, 9, -2, 851971, 9, -1, 851971, 9, -65536, 851971, 9, -65535, 851971, 9, -65534, 851971, 9, -65533, 851971, 196617, 65532, 786435, 9, 65533, 851971, 9, 65534, 851971, 9, 65535, 851971, 9, 0, 851971, 9, 1, 851971, 9, 2, 851971, 9, 3, 851971, 196617, 131068, 786435, 65545, 131069, 851971, 262153, 131070, 851971, 262153, 131071, 851971, 262153, 65536, 851971, 262153, 65537, 851971, 262153, 65538, 851971, 262153, 65539, 851971, 327689, -196612, 4, 6, -196611, 65540, 6, -196610, 65540, 6, -196609, 65540, 6, -262144, 65540, 6, -262143, 65540, 6, -262142, 65540, 6, -262141, 131076, 6, -131076, 4, 7, -131075, 65540, 7, -131074, 65540, 7, -131073, 65540, 7, -196608, 65540, 7, -196607, 65540, 7, -196606, 65540, 7, -196605, 131076, 7, -262140, 524293, 1, -196604, 524293, 2, -131068, 524293, 2, -65532, 524293, 2, 4, 524293, 2, 65540, 524293, 2, 131076, 524293, 3, 196603, 393221, 3, 196604, 458757, 3, 196605, 458757, 3, 196606, 458757, 3, 196607, 458757, 3, 131072, 458757, 3, 131073, 458757, 3, 131074, 458757, 3, 131075, 458757, 3, -196613, 393221, 1, -131077, 393221, 2, -65541, 393221, 2, -5, 393221, 2, 65531, 393221, 2, 131067, 393221, 2)
+layer_0/tile_data = PackedInt32Array(-196611, 65540, 6, -196610, 65540, 6, -196609, 65540, 6, -262144, 65540, 6, -262143, 65540, 6, -262142, 65540, 6, -262141, 65540, 6, -131075, 65540, 7, -131074, 65540, 7, -131073, 65540, 7, -196608, 65540, 7, -196607, 65540, 7, -196606, 65540, 7, -196605, 65540, 7, -262140, 524293, 1, -196604, 524293, 2, -131068, 524293, 2, -65532, 524293, 131074, 4, 524293, 131074, 65540, 524293, 131074, 131076, 524293, 3, 196605, 458757, 3, 196606, 458757, 3, 196607, 458757, 3, 131072, 458757, 3, 131073, 458757, 3, 131074, 458757, 3, 131075, 458757, 3, 65539, 851971, 327689, 3, 851971, 196617, -65533, 851971, 196617, -131069, 851971, 65544, 65538, 851971, 262153, 2, 851971, 9, -65534, 851971, 9, -131070, 851971, 8, 65537, 851971, 262153, 1, 851971, 9, -65535, 851971, 9, -131071, 851971, 8, 65536, 851971, 262153, 0, 851971, 9, -65536, 851971, 9, -131072, 851971, 8, 131071, 851971, 262153, 65535, 851971, 9, -1, 851971, 9, -65537, 851971, 8, 131070, 851971, 262153, 65534, 851971, 9, -2, 851971, 9, -65538, 851971, 8, 131069, 917507, 589832, 65533, 786435, 9, -3, 786435, 9, -65539, 786435, 8, 131066, 786435, 196616, 131067, 851971, 196616, 131068, 851971, 196616, -6, 65540, 6, -5, 65540, 6, -4, 131076, 6, 65530, 65540, 7, 65531, 65540, 7, 65532, 131076, 7, -196612, 393221, 1, -131076, 393221, 2, -65540, 393221, 2, -7, 393221, 1, 65529, 393221, 2, 131065, 393221, 2, 196601, 393221, 3, 196602, 458757, 3, 196603, 458757, 3, 196604, 458757, 3)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Bed" parent="Objects" instance=ExtResource("4_fx6rf")]
+position = Vector2(96, -96)
+
+[node name="Fridge" parent="Objects" instance=ExtResource("5_l0y3p")]
+position = Vector2(0, -96)
+
+[node name="HomeDesk" parent="Objects" instance=ExtResource("6_u5w43")]
+position = Vector2(144, 96)
+
+[node name="HomeKitchenCounter" parent="Objects" instance=ExtResource("7_l14je")]
+position = Vector2(-144, -96)
+
+[node name="ClosetBackside" parent="Objects" instance=ExtResource("8_3pfi2")]
+position = Vector2(-96, 48)
+
+[node name="DoorWC" parent="Objects" instance=ExtResource("9_26ud8")]
+position = Vector2(-240, 0)

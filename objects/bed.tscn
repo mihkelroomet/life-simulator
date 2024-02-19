@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck41u4gtemga2"]
+
+[ext_resource type="Texture2D" uid="uid://dj8jagbi3kibh" path="res://world/tilesets/4_Bedroom_Black_Shadow_48x48.png" id="1_f8q3j"]
+
+[node name="Bed" type="Node2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(42, 12)
+
+[node name="BedBase" type="Sprite2D" parent="Sprites"]
+position = Vector2(-54, -39)
+texture = ExtResource("1_f8q3j")
+centered = false
+region_enabled = true
+region_rect = Rect2(321, 1863, 108, 75)
+
+[node name="Pillow" type="Sprite2D" parent="Sprites"]
+position = Vector2(9, -30)
+texture = ExtResource("1_f8q3j")
+centered = false
+region_enabled = true
+region_rect = Rect2(528, 1920, 33, 48)
+
+[node name="BedCover" type="Sprite2D" parent="Sprites"]
+position = Vector2(-51, -27)
+texture = ExtResource("1_f8q3j")
+centered = false
+region_enabled = true
+region_rect = Rect2(609, 2067, 69, 60)

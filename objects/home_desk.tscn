@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://civ88shixv6nl"]
+
+[ext_resource type="Texture2D" uid="uid://cgglhiao2u5wk" path="res://world/tilesets/19_Hospital_Black_Shadow_48x48.png" id="1_lo532"]
+[ext_resource type="Texture2D" uid="uid://pbn0xgdbopob" path="res://world/tilesets/18_Jail_Black_Shadow_48x48.png" id="1_vhl4a"]
+
+[node name="HomeDesk" type="Node2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0, -9)
+
+[node name="Chair" type="Sprite2D" parent="Sprites"]
+position = Vector2(-18, -54)
+texture = ExtResource("1_vhl4a")
+centered = false
+region_enabled = true
+region_rect = Rect2(486, 969, 36, 63)
+
+[node name="Desk" type="Sprite2D" parent="Sprites"]
+position = Vector2(-42, -12)
+texture = ExtResource("1_lo532")
+centered = false
+region_enabled = true
+region_rect = Rect2(630, 1536, 90, 21)
+
+[node name="ThingsOnDesk" type="Sprite2D" parent="Sprites"]
+position = Vector2(-24, -24)
+texture = ExtResource("1_lo532")
+centered = false
+region_enabled = true
+region_rect = Rect2(552, 1479, 72, 33)
