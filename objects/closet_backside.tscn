@@ -1,12 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://dup8h7y7svtya"]
+[gd_scene load_steps=3 format=3 uid="uid://dup8h7y7svtya"]
 
 [ext_resource type="Texture2D" uid="uid://dj8jagbi3kibh" path="res://world/tilesets/4_Bedroom_Black_Shadow_48x48.png" id="1_6i83o"]
 
-[node name="ClosetBackside" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8sym"]
+size = Vector2(135, 42)
+
+[node name="ClosetBackside" type="StaticBody2D"]
+collision_mask = 2
 
 [node name="ClosetBackside" type="Sprite2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(-72, -69)
 texture = ExtResource("1_6i83o")
 centered = false
 region_enabled = true
 region_rect = Rect2(480, 4872, 141, 69)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -21)
+shape = SubResource("RectangleShape2D_r8sym")

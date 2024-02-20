@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://neqqtwqgbhs0"]
+[gd_scene load_steps=3 format=3 uid="uid://neqqtwqgbhs0"]
 
 [ext_resource type="Texture2D" uid="uid://bei0n4pwfyl5p" path="res://world/tilesets/12_Kitchen_Black_Shadow_48x48.png" id="1_qdl88"]
 
-[node name="HomeKitchenCounter" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ofj"]
+size = Vector2(144, 48)
+
+[node name="HomeKitchenCounter" type="StaticBody2D"]
+collision_mask = 2
 
 [node name="Sprites" type="Node2D" parent="."]
+position = Vector2(0, 3)
 
 [node name="CounterBase" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, 15)
@@ -34,3 +39,7 @@ texture = ExtResource("1_qdl88")
 centered = false
 region_enabled = true
 region_rect = Rect2(480, 1584, 48, 42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 24)
+shape = SubResource("RectangleShape2D_t2ofj")

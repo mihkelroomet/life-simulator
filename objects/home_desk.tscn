@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://cgglhiao2u5wk" path="res://world/tilesets/19_Hospital_Black_Shadow_48x48.png" id="1_lo532"]
 [ext_resource type="Texture2D" uid="uid://pbn0xgdbopob" path="res://world/tilesets/18_Jail_Black_Shadow_48x48.png" id="1_vhl4a"]
 
-[node name="HomeDesk" type="Node2D"]
+[node name="HomeDesk" type="StaticBody2D"]
+collision_mask = 2
 
 [node name="Sprites" type="Node2D" parent="."]
 position = Vector2(0, -9)
@@ -28,3 +29,6 @@ texture = ExtResource("1_lo532")
 centered = false
 region_enabled = true
 region_rect = Rect2(552, 1479, 72, 33)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-39, 0, -33, -15, -24, -15, -15, -30, 15, -30, 23, -15, 48, -15, 48, 0)

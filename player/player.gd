@@ -1,3 +1,5 @@
+## Player set up with the help of this tutorial: https://www.youtube.com/watch?v=uNReb-MHsbg
+
 extends CharacterBody2D
 
 const ACCELERATION = 2000
