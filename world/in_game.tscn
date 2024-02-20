@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://caxkf73phrkix"]
+[gd_scene load_steps=10 format=3 uid="uid://caxkf73phrkix"]
 
 [ext_resource type="PackedScene" uid="uid://y2g0x0od8l8l" path="res://rooms/dorm_room.tscn" id="1_ucge4"]
 [ext_resource type="PackedScene" uid="uid://ck41u4gtemga2" path="res://objects/bed.tscn" id="4_fx6rf"]
@@ -7,12 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://neqqtwqgbhs0" path="res://objects/home_kitchen_counter.tscn" id="7_l14je"]
 [ext_resource type="PackedScene" uid="uid://dup8h7y7svtya" path="res://objects/closet_backside.tscn" id="8_3pfi2"]
 [ext_resource type="PackedScene" uid="uid://bmkjmqwfjkcua" path="res://objects/door_wc.tscn" id="9_26ud8"]
+[ext_resource type="PackedScene" uid="uid://dufk2evfcmjyb" path="res://ui/ui.tscn" id="9_bxmrk"]
 [ext_resource type="PackedScene" uid="uid://c8ieuj63kkhvo" path="res://player/player.tscn" id="10_j7p4t"]
 
 [node name="InGame" type="Node2D"]
 y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-24, -24)
 
 [node name="DormRoom" parent="." instance=ExtResource("1_ucge4")]
 z_index = -10
@@ -39,3 +41,6 @@ position = Vector2(0, 96)
 position = Vector2(-240, 0)
 
 [node name="Player" parent="." instance=ExtResource("10_j7p4t")]
+position = Vector2(-24, -24)
+
+[node name="UI" parent="." instance=ExtResource("9_bxmrk")]

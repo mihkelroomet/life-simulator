@@ -18,11 +18,12 @@ config/icon="res://icon.svg"
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
+Globals="*res://globals/globals.gd"
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=800
+window/size/viewport_height=450
 
 [editor_plugins]
 
