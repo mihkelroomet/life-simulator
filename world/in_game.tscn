@@ -15,6 +15,7 @@ y_sort_enabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-24, -24)
+zoom = Vector2(2, 2)
 
 [node name="DormRoom" parent="." instance=ExtResource("1_ucge4")]
 z_index = -10

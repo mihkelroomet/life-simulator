@@ -3,7 +3,7 @@ extends VBoxContainer
 @onready var time_label : Label = $Time
 @onready var day_of_week_label : Label = $DayOfWeek
 @onready var day_of_year_label : Label = $DayOfYear
-@onready var timer : Timer = $Timer
+@onready var timer : Timer = $TimeChangeTimer
 
 var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 var MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]

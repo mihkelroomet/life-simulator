@@ -22,8 +22,12 @@ Globals="*res://globals/globals.gd"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=450
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/window_width_override=800
+window/size/window_height_override=450
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [editor_plugins]
 
