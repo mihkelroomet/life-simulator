@@ -1,84 +1,87 @@
-[gd_scene load_steps=8 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=4 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_and_date.gd" id="1_f5clq"]
 [ext_resource type="Texture2D" uid="uid://6btg3w7a2gao" path="res://ui/custom_progress_bar_under.png" id="2_dmp3h"]
 [ext_resource type="Texture2D" uid="uid://p6o4m7uanqmi" path="res://ui/custom_progress_bar_progress.png" id="3_lhcn6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_o3c8e"]
-font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_7fmpn"]
-font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_mxt6q"]
-font_size = 36
-
-[sub_resource type="LabelSettings" id="LabelSettings_82t4n"]
-font_size = 36
-
 [node name="UI" type="CanvasLayer"]
 
-[node name="TimeAndDate" type="MarginContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -93.0
-offset_bottom = 88.0
+offset_left = -200.0
+offset_bottom = 150.0
 grow_horizontal = 0
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TimeAndDate"]
+[node name="PanelBG" type="TextureRect" parent="CenterContainer"]
+custom_minimum_size = Vector2(250, 220)
+layout_mode = 2
+texture = ExtResource("2_dmp3h")
+expand_mode = 1
+
+[node name="TimeAndDate" type="MarginContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/TimeAndDate"]
 layout_mode = 2
 theme_override_constants/separation = 1
 script = ExtResource("1_f5clq")
 
-[node name="Time" type="Label" parent="TimeAndDate/VBoxContainer"]
+[node name="Time" type="Label" parent="CenterContainer/TimeAndDate/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 48
 text = "8:00 AM"
-label_settings = SubResource("LabelSettings_o3c8e")
 horizontal_alignment = 2
 
-[node name="DayOfWeek" type="Label" parent="TimeAndDate/VBoxContainer"]
+[node name="DayOfWeek" type="Label" parent="CenterContainer/TimeAndDate/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Monday"
-label_settings = SubResource("LabelSettings_7fmpn")
 horizontal_alignment = 2
 
-[node name="DayOfYear" type="Label" parent="TimeAndDate/VBoxContainer"]
+[node name="DayOfYear" type="Label" parent="CenterContainer/TimeAndDate/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Sep 2 2024"
-label_settings = SubResource("LabelSettings_mxt6q")
 horizontal_alignment = 2
 
-[node name="TimeChangeTimer" type="Timer" parent="TimeAndDate/VBoxContainer"]
+[node name="TimeChangeTimer" type="Timer" parent="CenterContainer/TimeAndDate/VBoxContainer"]
 wait_time = 0.334
 autostart = true
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MotivationBar" type="CenterContainer" parent="."]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
+offset_top = -120.0
+offset_right = 600.0
 grow_vertical = 0
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_bottom = 30
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="PanelBG" type="TextureRect" parent="MotivationBar"]
+custom_minimum_size = Vector2(600, 150)
+layout_mode = 2
+texture = ExtResource("2_dmp3h")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MotivationBar"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MotivationBar/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MotivationBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "Motivation"
-label_settings = SubResource("LabelSettings_82t4n")
 horizontal_alignment = 1
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MotivationBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
 value = 80.0
 texture_under = ExtResource("2_dmp3h")
 texture_progress = ExtResource("3_lhcn6")
 
-[connection signal="timeout" from="TimeAndDate/VBoxContainer/TimeChangeTimer" to="TimeAndDate/VBoxContainer" method="_on_timer_timeout"]
+[connection signal="timeout" from="CenterContainer/TimeAndDate/VBoxContainer/TimeChangeTimer" to="CenterContainer/TimeAndDate/VBoxContainer" method="_on_timer_timeout"]
