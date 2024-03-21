@@ -1,8 +1,8 @@
-extends VBoxContainer
+extends CenterContainer
 
-@onready var time_label : Label = $Time
-@onready var day_of_week_label : Label = $DayOfWeek
-@onready var day_of_year_label : Label = $DayOfYear
+@onready var time_label : Label = $MarginContainer/VBoxContainer/Time
+@onready var day_of_week_label : Label = $MarginContainer/VBoxContainer/DayOfWeek
+@onready var day_of_year_label : Label = $MarginContainer/VBoxContainer/DayOfYear
 @onready var timer : Timer = $TimeChangeTimer
 
 var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
@@ -15,7 +15,7 @@ func set_time(unix_time):
 	day_of_year_label.text = get_day_of_year_from_datetime_dict(datetime_dict)
 
 func _on_timer_timeout():
-	Globals.game_time += timer.wait_time * Globals.GAME_TIME_SPEED
+	Globals.game_time += timer.wait_time * Globals.GAME_SPEED
 	set_time(Globals.game_time)
 	
 func get_time_from_datetime_dict(datetime_dict):

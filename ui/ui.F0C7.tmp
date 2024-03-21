@@ -48,7 +48,7 @@ text = "Sep 2 2024"
 horizontal_alignment = 2
 
 [node name="TimeChangeTimer" type="Timer" parent="TimeAndDate"]
-wait_time = 0.2
+wait_time = 0.334
 autostart = true
 
 [node name="MotivationBar" type="CenterContainer" parent="."]
@@ -82,9 +82,13 @@ horizontal_alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MotivationBar/MarginContainer/VBoxContainer"]
 layout_mode = 2
-step = 0.0
 value = 80.0
 texture_under = ExtResource("2_dmp3h")
 texture_progress = ExtResource("3_lhcn6")
 
+[node name="MotivationChangeTimer" type="Timer" parent="MotivationBar"]
+wait_time = 0.334
+autostart = true
+
 [connection signal="timeout" from="TimeAndDate/TimeChangeTimer" to="TimeAndDate" method="_on_timer_timeout"]
+[connection signal="timeout" from="MotivationBar/MotivationChangeTimer" to="MotivationBar" method="_on_timer_timeout"]
