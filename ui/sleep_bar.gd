@@ -1,12 +1,17 @@
 extends Button
 
 @onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
-
-func set_sleep(sleep):
-	progress_bar.value = clamp(sleep, 0, 100)
 	
 func _process(delta):
+	calculate_sleep(delta)
+
+func calculate_sleep(delta):
 	var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
-	Globals.sleep -= game_hours_elapsed * Globals.SLEEP_LOSS
-	Globals.sleep = clamp(Globals.sleep, 0, 100)
-	set_sleep(Globals.sleep)
+	var sleep_change = -(game_hours_elapsed * Globals.sleep * Globals.SLEEP_LOSS_FACTOR)
+	var sleep = Globals.sleep + sleep_change
+	set_sleep(sleep)
+
+func set_sleep(sleep):
+	sleep = clamp(sleep, 0, 100)
+	Globals.sleep = sleep
+	progress_bar.value = sleep

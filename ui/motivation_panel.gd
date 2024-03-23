@@ -7,8 +7,10 @@ func set_motivation(motivation):
 	motivation_progress_bar.value = clamp(motivation, 0, 100)
 	
 func _process(delta):
-	var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
-	Globals.motivation -= game_hours_elapsed * Globals.MOTIVATION_LOSS
+	Globals.motivation = min(
+		Globals.autonomy, Globals.competence, Globals.relatedness,
+		Globals.nutrition, Globals.pa, Globals.sleep
+		)
 	Globals.motivation = clamp(Globals.motivation, 0, 100)
 	set_motivation(Globals.motivation)
 

@@ -1,12 +1,17 @@
 extends Button
 
 @onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
-
-func set_nutrition(nutrition):
-	progress_bar.value = clamp(nutrition, 0, 100)
 	
 func _process(delta):
+	calculate_nutrition(delta)
+
+func calculate_nutrition(delta):
 	var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
-	Globals.nutrition -= game_hours_elapsed * Globals.NUTRITION_LOSS
-	Globals.nutrition = clamp(Globals.nutrition, 0, 100)
-	set_nutrition(Globals.nutrition)
+	var nutrition_change = -(game_hours_elapsed * Globals.nutrition * Globals.NUTRITION_LOSS_FACTOR)
+	var nutrition = Globals.nutrition + nutrition_change
+	set_nutrition(nutrition)
+
+func set_nutrition(nutrition):
+	nutrition = clamp(nutrition, 0, 100)
+	Globals.nutrition = nutrition
+	progress_bar.value = nutrition
