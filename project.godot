@@ -33,6 +33,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg")
 
+[gui]
+
+theme/custom="res://ui/custom_theme.tres"
+
 [input]
 
 ui_left={

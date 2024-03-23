@@ -1,0 +1,124 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://crmwif6h86moh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02r6j"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oe6lp"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hs1sa"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5sed1"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8quhm"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b23lv"]
+bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_apcfy"]
+bg_color = Color(1, 1, 1, 0.25098)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mlt2u"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_12okd"]
+bg_color = Color(1, 1, 1, 0.25098)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upvnw"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[resource]
+Button/font_sizes/font_size = 36
+Button/styles/disabled = SubResource("StyleBoxFlat_02r6j")
+Button/styles/focus = SubResource("StyleBoxFlat_oe6lp")
+Button/styles/hover = SubResource("StyleBoxFlat_hs1sa")
+Button/styles/normal = SubResource("StyleBoxFlat_5sed1")
+Button/styles/pressed = SubResource("StyleBoxFlat_8quhm")
+HeaderLarge/font_sizes/font_size = 60
+HeaderMedium/font_sizes/font_size = 48
+HeaderSmall/font_sizes/font_size = 42
+Label/colors/font_color = Color(0.12549, 0.12549, 0.12549, 1)
+Label/font_sizes/font_size = 36
+LabelSmall/base_type = &"Label"
+LabelSmall/font_sizes/font_size = 24
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_b23lv")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_apcfy")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_mlt2u")
+ProgressBarSmall/base_type = &"ProgressBar"
+ProgressBarSmall/styles/background = SubResource("StyleBoxFlat_12okd")
+ProgressBarSmall/styles/fill = SubResource("StyleBoxFlat_upvnw")

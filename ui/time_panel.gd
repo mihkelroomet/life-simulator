@@ -1,4 +1,4 @@
-extends CenterContainer
+extends PanelContainer
 
 @onready var time_label : Label = $MarginContainer/VBoxContainer/Time
 @onready var day_of_week_label : Label = $MarginContainer/VBoxContainer/DayOfWeek
@@ -6,7 +6,7 @@ extends CenterContainer
 @onready var timer : Timer = $TimeChangeTimer
 
 var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
-var MONTHS = ["", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 func set_time(unix_time):
 	var datetime_dict = Time.get_datetime_dict_from_unix_time(unix_time)
@@ -37,7 +37,7 @@ func get_time_from_datetime_dict(datetime_dict):
 	return hour + ":" + minute + " " + suffix
 
 func get_day_of_year_from_datetime_dict(datetime_dict):
-	var month = MONTHS[datetime_dict["month"]]
+	var month = MONTHS[datetime_dict["month"] - 1]
 	var day = str(datetime_dict["day"])
 	var year = str(datetime_dict["year"])
 	
