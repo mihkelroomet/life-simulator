@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=10 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
 [ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
+[ext_resource type="Script" path="res://ui/autonomy_bar.gd" id="3_u6lcn"]
+[ext_resource type="Script" path="res://ui/relatedness_bar.gd" id="4_nw4w1"]
+[ext_resource type="Script" path="res://ui/nutrition_bar.gd" id="5_pt6se"]
+[ext_resource type="Script" path="res://ui/competence_bar.gd" id="5_tshkj"]
+[ext_resource type="Script" path="res://ui/pa_bar.gd" id="6_l4uw1"]
+[ext_resource type="Script" path="res://ui/sleep_bar.gd" id="7_572fa"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -73,6 +79,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("3_u6lcn")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/AutonomyBar"]
 layout_mode = 1
@@ -112,6 +119,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("5_tshkj")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/CompetenceBar"]
 layout_mode = 1
@@ -151,6 +159,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("4_nw4w1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/RelatednessBar"]
 layout_mode = 1
@@ -190,6 +199,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("5_pt6se")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/NutritionBar"]
 layout_mode = 1
@@ -229,6 +239,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("6_l4uw1")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/PABar"]
 layout_mode = 1
@@ -268,6 +279,7 @@ layout_mode = 2
 size_flags_vertical = 3
 disabled = true
 toggle_mode = true
+script = ExtResource("7_572fa")
 
 [node name="MarginContainer" type="MarginContainer" parent="MotivationPanel/ExpandingBars/SleepBar"]
 layout_mode = 1
