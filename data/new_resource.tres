@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TestResource" load_steps=3 format=3 uid="uid://lwmlbu3n5oc5"]
+
+[ext_resource type="Script" path="res://data/test.gd" id="1_hby3k"]
+
+[sub_resource type="Curve" id="Curve_30r0a"]
+min_value = 0.99
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[resource]
+script = ExtResource("1_hby3k")
+curve = SubResource("Curve_30r0a")
