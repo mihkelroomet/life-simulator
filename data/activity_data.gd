@@ -1,17 +1,23 @@
 extends Resource
 
+const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 
+## Determines how current need satisfaction intervals influence being able to start the activity.
 @export var modifiers : Dictionary
+## Determines what effects this activity has on satisfaction of needs.
 @export var effects : Dictionary
 
+# Each CurveData.curve is X = 0 by default
+# Y values range from -1.0 to 1.0
+# When overriding points can be added as an array of Vector2-s
 var default_modifiers : Dictionary = {
-	Globals.Need.AUTONOMY : Curve.new(),
-	Globals.Need.COMPETENCE : Curve.new(),
-	Globals.Need.RELATEDNESS : Curve.new(),
-	Globals.Need.NUTRITION : Curve.new(),
-	Globals.Need.PA : Curve.new(),
-	Globals.Need.SLEEP : Curve.new()
+	Globals.Need.AUTONOMY : CurveData.new(),
+	Globals.Need.COMPETENCE : CurveData.new(),
+	Globals.Need.RELATEDNESS : CurveData.new(),
+	Globals.Need.NUTRITION : CurveData.new(),
+	Globals.Need.PA : CurveData.new(),
+	Globals.Need.SLEEP : CurveData.new()
 }
 
 var default_effects : Dictionary = {

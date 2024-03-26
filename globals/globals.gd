@@ -4,6 +4,8 @@ enum Activity {IDLE, MEET_FRIEND, PARTY, EAT_HEALTHY, EAT_JUNK, WALK, MODERATE_J
 
 enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 
+const CurveData = preload("res://data/curve_data.gd")
+const EffectData = preload("res://data/effect_data.gd")
 const ActivityData = preload("res://data/activity_data.gd")
 
 const GAME_SPEED : int = 150 # How many times faster game time advances compared to real time
@@ -27,7 +29,7 @@ var motivation : float = 0.8
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
 
 var activity_data : Dictionary = {
-	Activity.IDLE : ActivityData.new(),
+	Activity.IDLE : ActivityData.new({Need.COMPETENCE : CurveData.new([Vector2(0.2, 0.2)])}),
 	Activity.MEET_FRIEND : ActivityData.new(),
 	Activity.PARTY : ActivityData.new(),
 	Activity.EAT_HEALTHY : ActivityData.new(),

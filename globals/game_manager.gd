@@ -37,6 +37,13 @@ func update_need(need, game_hours_elapsed):
 	var new_need_satisfaction = current_need_satisfaction + need_change
 	new_need_satisfaction = clamp(new_need_satisfaction, 0.0, 1.0)
 	need_satisfaction_changed.emit(need, new_need_satisfaction)
+	
+	# Temp for testing
+	var modifier : Curve = Globals.get_current_activity_data().modifiers[need].curve
+	print("Need: ", need)
+	print("Curve at 0: ", modifier.sample(0))
+	print("Curve at 0.5: ", modifier.sample(0.5))
+	print("Curve at 1: ", modifier.sample(1))
 
 func update_motivation():
 	var new_value = Globals.need_stats.values().min()
