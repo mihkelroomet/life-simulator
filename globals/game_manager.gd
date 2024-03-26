@@ -5,6 +5,10 @@ signal motivation_changed(new_value : float)
 
 const EffectData = preload("res://data/effect_data.gd")
 
+func _ready():
+	# Temp for testing
+	Globals.current_activity = Globals.Activity.MEET_FRIEND
+
 func _process(delta):
 	if Globals.game_is_running:
 		var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
@@ -28,8 +32,10 @@ func update_need(need, game_hours_elapsed):
 	match effect_data.effect_type:
 		EffectData.EffectType.DECREASE_PERCENTAGE:
 			base_amount_to_calc_change = -current_need_satisfaction
-		EffectData.EffectType.INCREASE_PERCENTAGE:
-			base_amount_to_calc_change = current_need_satisfaction
+		EffectData.EffectType.DECREASE_LINEAR:
+			base_amount_to_calc_change = -1.0
+		EffectData.EffectType.INCREASE_LINEAR:
+			base_amount_to_calc_change = 1.0
 		EffectData.EffectType.CENTER_PERCENTAGE:
 			base_amount_to_calc_change = 0.5 - current_need_satisfaction
 	
@@ -39,11 +45,11 @@ func update_need(need, game_hours_elapsed):
 	need_satisfaction_changed.emit(need, new_need_satisfaction)
 	
 	# Temp for testing
-	var modifier : Curve = Globals.get_current_activity_data().modifiers[need].curve
-	print("Need: ", need)
-	print("Curve at 0: ", modifier.sample(0))
-	print("Curve at 0.5: ", modifier.sample(0.5))
-	print("Curve at 1: ", modifier.sample(1))
+	#var modifier : Curve = Globals.get_current_activity_data().modifiers[need].curve
+	#print("Need: ", need)
+	#print("Curve at 0: ", modifier.sample(0))
+	#print("Curve at 0.5: ", modifier.sample(0.5))
+	#print("Curve at 1: ", modifier.sample(1))
 
 func update_motivation():
 	var new_value = Globals.need_stats.values().min()

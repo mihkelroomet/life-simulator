@@ -2,7 +2,7 @@ extends Resource
 
 # PERCENTAGE means per hour change by a percentage
 # CENTER_PERCENTAGE means moving towards the middle value by percentage of gap to middle
-enum EffectType {DECREASE_PERCENTAGE, INCREASE_PERCENTAGE, CENTER_PERCENTAGE}
+enum EffectType {DECREASE_PERCENTAGE, DECREASE_LINEAR, INCREASE_LINEAR, CENTER_PERCENTAGE}
 
 @export var effect_type : EffectType
 @export var value : float
