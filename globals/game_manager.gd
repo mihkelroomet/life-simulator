@@ -5,10 +5,6 @@ signal motivation_changed(new_value : float)
 
 const EffectData = preload("res://data/effect_data.gd")
 
-func _ready():
-	# Temp for testing
-	Globals.current_activity = Globals.Activity.MEET_FRIEND
-
 func _process(delta):
 	if Globals.game_is_running:
 		var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600

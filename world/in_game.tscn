@@ -1,22 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://caxkf73phrkix"]
+[gd_scene load_steps=11 format=3 uid="uid://caxkf73phrkix"]
 
 [ext_resource type="PackedScene" uid="uid://y2g0x0od8l8l" path="res://rooms/dorm_room.tscn" id="1_ucge4"]
 [ext_resource type="PackedScene" uid="uid://ck41u4gtemga2" path="res://objects/bed.tscn" id="4_fx6rf"]
 [ext_resource type="PackedScene" uid="uid://cyq704h73vecn" path="res://objects/fridge.tscn" id="5_l0y3p"]
 [ext_resource type="PackedScene" uid="uid://civ88shixv6nl" path="res://objects/home_desk.tscn" id="6_u5w43"]
 [ext_resource type="PackedScene" uid="uid://neqqtwqgbhs0" path="res://objects/home_kitchen_counter.tscn" id="7_l14je"]
+[ext_resource type="PackedScene" uid="uid://dcbh0msfwickm" path="res://objects/exit_door_fade_gradient.tscn" id="8_3bkm0"]
 [ext_resource type="PackedScene" uid="uid://dup8h7y7svtya" path="res://objects/closet_backside.tscn" id="8_3pfi2"]
 [ext_resource type="PackedScene" uid="uid://bmkjmqwfjkcua" path="res://objects/door_wc.tscn" id="9_26ud8"]
 [ext_resource type="PackedScene" uid="uid://dufk2evfcmjyb" path="res://ui/ui.tscn" id="9_bxmrk"]
 [ext_resource type="PackedScene" uid="uid://c8ieuj63kkhvo" path="res://player/player.tscn" id="10_j7p4t"]
-
-[sub_resource type="Gradient" id="Gradient_pwdp8"]
-offsets = PackedFloat32Array(0, 0.214286, 1)
-colors = PackedColorArray(0.376471, 0.333333, 0.388235, 1, 0.376471, 0.333333, 0.388235, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4081q"]
-gradient = SubResource("Gradient_pwdp8")
-width = 110
 
 [node name="InGame" type="Node2D"]
 y_sort_enabled = true
@@ -45,15 +38,11 @@ position = Vector2(0, 96)
 [node name="DoorWC" parent="Objects" instance=ExtResource("9_26ud8")]
 position = Vector2(-240, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="Objects"]
-z_index = 100
+[node name="ExitDoorFadeGradient" parent="Objects" instance=ExtResource("8_3bkm0")]
 position = Vector2(-302, 33)
-texture = SubResource("GradientTexture1D_4081q")
-region_enabled = true
-region_rect = Rect2(0, -97, 110, 162)
 
 [node name="Player" parent="." instance=ExtResource("10_j7p4t")]
-position = Vector2(-24, -24)
+position = Vector2(-24, -10)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)

@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck41u4gtemga2"]
+[gd_scene load_steps=5 format=3 uid="uid://ck41u4gtemga2"]
 
 [ext_resource type="Texture2D" uid="uid://dj8jagbi3kibh" path="res://world/tilesets/4_Bedroom_Black_Shadow_48x48.png" id="1_f8q3j"]
+[ext_resource type="Script" path="res://objects/activity_start_area.gd" id="2_v0f5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7a7ly"]
 size = Vector2(120, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baihr"]
+size = Vector2(126, 24)
 
 [node name="Bed" type="StaticBody2D"]
 collision_mask = 2
@@ -35,3 +39,31 @@ region_rect = Rect2(609, 2067, 69, 60)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(36, 24)
 shape = SubResource("RectangleShape2D_7a7ly")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_v0f5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(33, 60)
+shape = SubResource("RectangleShape2D_baihr")
+
+[node name="HotkeyPopupPanel" type="PanelContainer" parent="Area2D"]
+visible = false
+offset_left = 23.0
+offset_top = -65.0
+offset_right = 60.0
+offset_bottom = -27.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Area2D/HotkeyPopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="Area2D/HotkeyPopupPanel/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "E"
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

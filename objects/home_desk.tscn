@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://civ88shixv6nl"]
+[gd_scene load_steps=5 format=3 uid="uid://civ88shixv6nl"]
 
 [ext_resource type="Texture2D" uid="uid://cgglhiao2u5wk" path="res://world/tilesets/19_Hospital_Black_Shadow_48x48.png" id="1_lo532"]
 [ext_resource type="Texture2D" uid="uid://pbn0xgdbopob" path="res://world/tilesets/18_Jail_Black_Shadow_48x48.png" id="1_vhl4a"]
+[ext_resource type="Script" path="res://objects/activity_start_area.gd" id="3_g6p6u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eto10"]
+size = Vector2(96, 77)
 
 [node name="HomeDesk" type="StaticBody2D"]
 collision_mask = 2
@@ -32,3 +36,31 @@ region_rect = Rect2(552, 1479, 72, 33)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-39, 0, -33, -15, -24, -15, -15, -30, 15, -30, 23, -15, 48, -15, 48, 0)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("3_g6p6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -38.5)
+shape = SubResource("RectangleShape2D_eto10")
+
+[node name="HotkeyPopupPanel" type="PanelContainer" parent="Area2D"]
+visible = false
+offset_left = -7.0
+offset_top = -53.0
+offset_right = 30.0
+offset_bottom = -15.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Area2D/HotkeyPopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="Area2D/HotkeyPopupPanel/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "E"
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

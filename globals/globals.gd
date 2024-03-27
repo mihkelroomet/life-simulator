@@ -8,7 +8,7 @@ const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 const ActivityData = preload("res://data/activity_data.gd")
 
-const GAME_SPEED : int = 1500 # How many times faster game time advances compared to real time
+const GAME_SPEED : int = 150 # How many times faster game time advances compared to real time
 
 var game_is_running : bool = true
 
@@ -16,12 +16,12 @@ var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:0
 
 # Current satisfaction of needs
 var need_stats : Dictionary = {
-	Need.AUTONOMY : 0.6,
-	Need.COMPETENCE : 0.6,
-	Need.RELATEDNESS : 0.6,
-	Need.NUTRITION : 0.6,
-	Need.PA : 1.0,
-	Need.SLEEP : 1.0
+	Need.AUTONOMY : 0.8,
+	Need.COMPETENCE : 0.8,
+	Need.RELATEDNESS : 0.8,
+	Need.NUTRITION : 0.8,
+	Need.PA : 0.8,
+	Need.SLEEP : 0.8
 }
 
 var motivation : float

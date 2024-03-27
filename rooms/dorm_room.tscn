@@ -1105,7 +1105,7 @@ metadata/_better_terrain = {
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-309, -48, -165, -48, -165, -192, 213, -192, 213, 114, -309, 114)
+polygon = PackedVector2Array(-357, -48, -165, -48, -165, -192, 213, -192, 213, 114, -357, 114)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_m0hwx")

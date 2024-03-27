@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://neqqtwqgbhs0"]
+[gd_scene load_steps=5 format=3 uid="uid://neqqtwqgbhs0"]
 
 [ext_resource type="Texture2D" uid="uid://bei0n4pwfyl5p" path="res://world/tilesets/12_Kitchen_Black_Shadow_48x48.png" id="1_qdl88"]
+[ext_resource type="Script" path="res://objects/activity_start_area.gd" id="2_i4pnb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ofj"]
 size = Vector2(144, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hyeqd"]
+size = Vector2(169, 24)
 
 [node name="HomeKitchenCounter" type="StaticBody2D"]
 collision_mask = 2
@@ -43,3 +47,31 @@ region_rect = Rect2(480, 1584, 48, 42)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(72, 24)
 shape = SubResource("RectangleShape2D_t2ofj")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("2_i4pnb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(84.5, 60)
+shape = SubResource("RectangleShape2D_hyeqd")
+
+[node name="HotkeyPopupPanel" type="PanelContainer" parent="Area2D"]
+visible = false
+offset_left = 47.0
+offset_top = -65.0
+offset_right = 84.0
+offset_bottom = -27.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Area2D/HotkeyPopupPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="Area2D/HotkeyPopupPanel/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "E"
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]
