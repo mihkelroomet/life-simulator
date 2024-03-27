@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #f8e1fd;
+        stroke: #202020;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <circle id="custom_grabber_highlight" class="cls-1" cx="12" cy="12" r="10"/>
+</svg>
