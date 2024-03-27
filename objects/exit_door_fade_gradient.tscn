@@ -22,6 +22,7 @@ region_rect = Rect2(0, -97, 110, 162)
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 script = ExtResource("1_jd2ht")
+activities = Array[int]([1, 2, 5, 6, 7])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(8.5, 0)

@@ -19,8 +19,8 @@ func _process(_delta):
 	var hue = min_hue + (max_hue - min_hue) * value_percent
 	self_modulate = Color.from_hsv(hue, saturation, lightness_value, alpha)
 
-func _on_need_satisfaction_changed(need, new_value):
-	if self.need == need:
+func _on_need_satisfaction_changed(changed_need, new_value):
+	if need == changed_need:
 		set_new_value(new_value)
 
 func _on_motivation_changed(new_value):

@@ -1,6 +1,11 @@
 extends Node
 
-enum Activity {IDLE, MEET_FRIEND, PARTY, EAT_HEALTHY, EAT_JUNK, WALK, MODERATE_JOG, INTENSE_JOG, NAP, SLEEP}
+enum Activity {
+	IDLE,
+	MEET_FRIEND, PARTY, WALK, MODERATE_JOG, INTENSE_JOG,
+	EAT_HEALTHY, EAT_JUNK,
+	NAP, SLEEP
+	}
 
 enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 
@@ -58,42 +63,6 @@ var activity_data : Dictionary = {
 		},
 		0.5, 5.0, 15.0
 	),
-	Activity.EAT_HEALTHY : ActivityData.new(
-		"Eat Healthy",
-		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(0.8, -1.0)]),
-			Need.PA : CurveData.new([Vector2(0, 0.1), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
-		},
-		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
-		},
-		0.25, 0.25, 0.25
-	),
-	Activity.EAT_JUNK : ActivityData.new(
-		"Eat Junk",
-		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -1.0)]),
-			Need.PA : CurveData.new([Vector2(0, 0.2), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
-		},
-		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 1.8),
-			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1),
-			Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3)
-		},
-		0.25, 0.25, 0.25
-	),
 	Activity.WALK : ActivityData.new(
 		"Walk",
 		{
@@ -132,6 +101,42 @@ var activity_data : Dictionary = {
 		},
 		0.25, 0.5, 4.0
 	),
+	Activity.EAT_HEALTHY : ActivityData.new(
+		"Eat Healthy",
+		{
+			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(0.8, -1.0)]),
+			Need.PA : CurveData.new([Vector2(0, 0.1), Vector2(0.5, 0.0)]),
+			Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
+		},
+		{
+			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
+		},
+		0.25, 0.25, 0.25
+	),
+	Activity.EAT_JUNK : ActivityData.new(
+		"Eat Junk",
+		{
+			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -1.0)]),
+			Need.PA : CurveData.new([Vector2(0, 0.2), Vector2(0.5, 0.0)]),
+			Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
+		},
+		{
+			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 1.8),
+			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1),
+			Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3)
+		},
+		0.25, 0.25, 0.25
+	),
 	Activity.NAP : ActivityData.new(
 		"Nap",
 		{
@@ -167,11 +172,15 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
+	GameManager.game_is_running_set.connect(_on_game_is_running_set)
 	GameManager.motivation_changed.connect(_on_motivation_changed)
 	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 
 func get_current_activity_data() -> ActivityData:
 	return activity_data[current_activity]
+
+func _on_game_is_running_set(if_running : bool):
+	game_is_running = if_running
 
 func _on_need_satisfaction_changed(need, new_value):
 	need_stats[need] = new_value

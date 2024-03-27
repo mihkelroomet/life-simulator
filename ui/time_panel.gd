@@ -8,11 +8,17 @@ extends PanelContainer
 var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+func _ready():
+	GameManager.game_is_running_set.connect(_on_game_is_running_set)
+
 func set_time(unix_time):
 	var datetime_dict = Time.get_datetime_dict_from_unix_time(unix_time)
 	time_label.text = get_time_from_datetime_dict(datetime_dict)
 	day_of_week_label.text = WEEKDAYS[datetime_dict["weekday"]]
 	day_of_year_label.text = get_day_of_year_from_datetime_dict(datetime_dict)
+
+func _on_game_is_running_set(if_running : bool):
+	timer.paused = !if_running
 
 func _on_timer_timeout():
 	Globals.game_time += timer.wait_time * Globals.GAME_SPEED
