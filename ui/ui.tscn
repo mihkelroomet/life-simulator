@@ -345,14 +345,28 @@ script = ExtResource("3_6y5eu")
 is_motivation_bar = true
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 4.0
-offset_bottom = 4.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -195.5
+offset_right = 225.0
+offset_bottom = 195.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 40
 
 [node name="HeaderVBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -375,7 +389,29 @@ vertical_alignment = 1
 [node name="RadioButtonVBox" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/RadioButtonVBox"]
+layout_mode = 2
+text = "Activity1"
+
+[node name="Button2" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/RadioButtonVBox"]
+layout_mode = 2
+text = "Activity2"
+
+[node name="Button3" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/RadioButtonVBox"]
+layout_mode = 2
+text = "Activity3"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "1h 15min"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 value = 20.0
 
