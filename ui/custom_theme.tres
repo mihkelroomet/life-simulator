@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://crmwif6h86moh"]
+[gd_resource type="Theme" load_steps=23 format=3 uid="uid://crmwif6h86moh"]
 
 [ext_resource type="Texture2D" uid="uid://btwikeo4w2cnc" path="res://ui/custom_grabber/custom_grabber.svg" id="1_68ycs"]
 [ext_resource type="Texture2D" uid="uid://volx8dbqwg7g" path="res://ui/custom_grabber/custom_grabber_disabled.svg" id="2_j2dap"]
@@ -47,6 +47,41 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frqlm"]
 bg_color = Color(0.964706, 0.839216, 0.992157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_jvw8p"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xhki5"]
+size = Vector2(0, 0)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_u0pun"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_11ryt"]
+size = Vector2(0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hitfa"]
+bg_color = Color(0.941176, 0.694118, 0.988235, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.12549, 0.12549, 0.12549, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmjnv"]
+bg_color = Color(0.941176, 0.694118, 0.988235, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -161,6 +196,12 @@ Button/styles/focus = SubResource("StyleBoxFlat_ekdqv")
 Button/styles/hover = SubResource("StyleBoxFlat_hs1sa")
 Button/styles/normal = SubResource("StyleBoxFlat_5sed1")
 Button/styles/pressed = SubResource("StyleBoxFlat_frqlm")
+CheckBox/icons/radio_checked = SubResource("PlaceholderTexture2D_jvw8p")
+CheckBox/icons/radio_checked_disabled = SubResource("PlaceholderTexture2D_xhki5")
+CheckBox/icons/radio_unchecked = SubResource("PlaceholderTexture2D_u0pun")
+CheckBox/icons/radio_unchecked_disabled = SubResource("PlaceholderTexture2D_11ryt")
+CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_hitfa")
+CheckBox/styles/pressed = SubResource("StyleBoxFlat_dmjnv")
 HSlider/icons/grabber = ExtResource("1_68ycs")
 HSlider/icons/grabber_disabled = ExtResource("2_j2dap")
 HSlider/icons/grabber_highlight = ExtResource("3_isfp1")
