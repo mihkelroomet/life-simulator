@@ -2,6 +2,8 @@ extends PanelContainer
 
 signal set_game_is_running(if_running : bool)
 
+const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
+
 @onready var radio_button_vbox = $MarginContainer/VBoxContainer/RadioButtonVBox
 
 func _ready():
@@ -19,8 +21,10 @@ func set_panel_visible(if_visible : bool):
 func set_activities(activities : Array[Globals.Activity]):
 	clear_radio_buttons()
 	for activity in activities:
-		var button = Button.new()
-		button.text = Globals.get_activity_data(activity).display_name
+		var button = ActivitySelectButton.instantiate()
+		# The space at the end is to fix the alignment of the text, which gets offset by an
+		# invisible icon on the left. I couldn't find a better solution quickly enough.
+		button.text = Globals.get_activity_data(activity).display_name + " "
 		radio_button_vbox.add_child(button)
 
 func clear_radio_buttons():

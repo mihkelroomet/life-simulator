@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxndtgcsjuwxh"]
+
+[ext_resource type="Script" path="res://ui/activity_select_button.gd" id="1_la2tx"]
+[ext_resource type="ButtonGroup" uid="uid://c461ypmn0cfpv" path="res://ui/activity_select_button_group.tres" id="1_osvrt"]
+
+[node name="CheckBox" type="CheckBox"]
+mouse_default_cursor_shape = 2
+button_group = ExtResource("1_osvrt")
+text = "Activity 1 "
+alignment = 1
+script = ExtResource("1_la2tx")
+activity = 1

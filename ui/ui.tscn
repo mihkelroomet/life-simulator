@@ -1,11 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=8 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
 [ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="4_j5iqg"]
+[ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="5_w2lmq"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_5n6l1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_0x2am"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_t8cdc"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -348,6 +351,7 @@ script = ExtResource("3_6y5eu")
 is_motivation_bar = true
 
 [node name="ActivityStartPanel" type="PanelContainer" parent="."]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -394,26 +398,19 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="CheckBox" type="CheckBox" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox"]
+[node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-button_group = SubResource("ButtonGroup_5n6l1")
-text = "Activity 1 "
-alignment = 1
+button_group = SubResource("ButtonGroup_0x2am")
 
-[node name="CheckBox2" type="CheckBox" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox"]
+[node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-button_group = SubResource("ButtonGroup_5n6l1")
+button_group = SubResource("ButtonGroup_t8cdc")
 text = "Activity 2 "
-alignment = 1
 
-[node name="CheckBox3" type="CheckBox" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox"]
+[node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-mouse_default_cursor_shape = 2
-button_group = SubResource("ButtonGroup_5n6l1")
+button_group = SubResource("ButtonGroup_t8cdc")
 text = "Activity 3 "
-alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
