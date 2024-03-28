@@ -1,4 +1,4 @@
-## Player set up with the help of this tutorial: https://www.youtube.com/watch?v=uNReb-MHsbg
+# Player movement set up with the help of this tutorial: https://www.youtube.com/watch?v=uNReb-MHsbg
 
 extends CharacterBody2D
 
@@ -12,7 +12,7 @@ var state = IDLE
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
 
-var blend_position : Vector2 = Vector2(0, 1) ## look down at start
+var blend_position : Vector2 = Vector2(0, 1) # look down at start
 var blend_pos_paths = [
 	"parameters/idle/idle_bs2d/blend_position",
 	"parameters/move/move_bs2d/blend_position",

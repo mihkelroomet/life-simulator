@@ -172,14 +172,17 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
-	GameManager.game_is_running_set.connect(_on_game_is_running_set)
+	GameManager.set_game_is_running.connect(_on_set_game_is_running)
 	GameManager.motivation_changed.connect(_on_motivation_changed)
 	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 
 func get_current_activity_data() -> ActivityData:
 	return activity_data[current_activity]
 
-func _on_game_is_running_set(if_running : bool):
+func get_activity_data(activity : Activity) -> ActivityData:
+	return activity_data[activity]
+
+func _on_set_game_is_running(if_running : bool):
 	game_is_running = if_running
 
 func _on_need_satisfaction_changed(need, new_value):

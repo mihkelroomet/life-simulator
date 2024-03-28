@@ -9,7 +9,7 @@ var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
 var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 func _ready():
-	GameManager.game_is_running_set.connect(_on_game_is_running_set)
+	GameManager.set_game_is_running.connect(_on_set_game_is_running)
 
 func set_time(unix_time):
 	var datetime_dict = Time.get_datetime_dict_from_unix_time(unix_time)
@@ -17,7 +17,7 @@ func set_time(unix_time):
 	day_of_week_label.text = WEEKDAYS[datetime_dict["weekday"]]
 	day_of_year_label.text = get_day_of_year_from_datetime_dict(datetime_dict)
 
-func _on_game_is_running_set(if_running : bool):
+func _on_set_game_is_running(if_running : bool):
 	timer.paused = !if_running
 
 func _on_timer_timeout():
