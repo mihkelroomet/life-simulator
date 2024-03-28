@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=10 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
 [ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="4_j5iqg"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="5_w2lmq"]
+[ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="6_pnvai"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_0x2am"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_nyk6b"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_t8cdc"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ae5jm"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_vnq3n"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -400,29 +403,30 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_0x2am")
+button_group = SubResource("ButtonGroup_nyk6b")
 
 [node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_t8cdc")
+button_group = SubResource("ButtonGroup_ae5jm")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_t8cdc")
+button_group = SubResource("ButtonGroup_vnq3n")
 text = "Activity 3 "
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
+[node name="ActivityDurationVBox" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+script = ExtResource("6_pnvai")
 
-[node name="Label" type="Label" parent="ActivityStartPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ActivityDurationLabel" type="Label" parent="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox"]
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 text = "1h 15min"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="ActivityStartPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ActivityDurationSlider" type="HSlider" parent="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 value = 20.0
@@ -434,3 +438,4 @@ text = "Start"
 
 [connection signal="timeout" from="TimePanel/TimeChangeTimer" to="TimePanel" method="_on_timer_timeout"]
 [connection signal="toggled" from="MotivationPanel/MotivationBar" to="MotivationPanel" method="_on_motivation_bar_toggled"]
+[connection signal="value_changed" from="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]

@@ -1,9 +1,10 @@
 extends Node
 
+signal set_game_is_running(if_running : bool)
 signal need_satisfaction_changed(need : Globals.Need, new_value : float)
 signal motivation_changed(new_value : float)
-signal activity_start_panel_visible_set(if_visible : bool, activities : Array[Globals.Activity])
-signal set_game_is_running(if_running : bool)
+signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
+signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
 
 const EffectData = preload("res://data/effect_data.gd")
 
@@ -57,5 +58,8 @@ func update_motivation():
 func _on_set_game_is_running(if_running : bool):
 	set_game_is_running.emit(if_running)
 
-func _on_activity_start_panel_visible_set(if_visible : bool, activities : Array[Globals.Activity]):
-	activity_start_panel_visible_set.emit(if_visible, activities)
+func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):
+	set_activity_start_panel_visible.emit(if_visible, activities)
+
+func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
+	set_activity_start_panel_selected_activity.emit(activity)

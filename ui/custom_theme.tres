@@ -1,7 +1,6 @@
 [gd_resource type="Theme" load_steps=23 format=3 uid="uid://crmwif6h86moh"]
 
 [ext_resource type="Texture2D" uid="uid://btwikeo4w2cnc" path="res://ui/custom_grabber/custom_grabber.svg" id="1_68ycs"]
-[ext_resource type="Texture2D" uid="uid://volx8dbqwg7g" path="res://ui/custom_grabber/custom_grabber_disabled.svg" id="2_j2dap"]
 [ext_resource type="Texture2D" uid="uid://dg6seo1kd3t0i" path="res://ui/custom_grabber/custom_grabber_highlight.svg" id="3_isfp1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02r6j"]
@@ -91,6 +90,8 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qkjt4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uc878"]
 content_margin_left = 8.0
@@ -203,7 +204,7 @@ CheckBox/icons/radio_unchecked_disabled = SubResource("PlaceholderTexture2D_11ry
 CheckBox/styles/hover_pressed = SubResource("StyleBoxFlat_hitfa")
 CheckBox/styles/pressed = SubResource("StyleBoxFlat_dmjnv")
 HSlider/icons/grabber = ExtResource("1_68ycs")
-HSlider/icons/grabber_disabled = ExtResource("2_j2dap")
+HSlider/icons/grabber_disabled = SubResource("PlaceholderTexture2D_qkjt4")
 HSlider/icons/grabber_highlight = ExtResource("3_isfp1")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_uc878")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_rtkw0")
