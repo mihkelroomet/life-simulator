@@ -4,6 +4,8 @@ const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 
 @export var display_name : String
+## Used for displaying current action being undertaken, eg "Doing"
+@export var present_participle : String
 ## Determines how current need satisfaction intervals influence being able to start the activity.
 @export var modifiers : Dictionary
 ## Determines what effects this activity has on satisfaction of needs.
@@ -35,6 +37,7 @@ var default_effects : Dictionary = {
 
 func _init(
 	p_display_name = "Idle",
+	p_present_participle = "Idling",
 	p_modifiers = {},
 	p_effects = {},
 	p_min_duration = 0.0,
@@ -42,6 +45,7 @@ func _init(
 	p_max_duration = 0.0
 	):
 	display_name = p_display_name
+	present_participle = p_present_participle
 	
 	# No need for deep copies as inner objects never change their states
 	modifiers = default_modifiers.duplicate()

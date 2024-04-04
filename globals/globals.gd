@@ -38,6 +38,7 @@ var activity_data : Dictionary = {
 	Activity.IDLE : ActivityData.new(),
 	Activity.MEET_FRIEND : ActivityData.new(
 		"Meet a Friend",
+		"Meeting a Friend",
 		{
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
 		},
@@ -51,6 +52,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.PARTY : ActivityData.new(
 		"Party",
+		"Partying",
 		{
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
@@ -66,6 +68,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.WALK : ActivityData.new(
 		"Walk",
+		"Walking",
 		{
 			Need.PA : CurveData.new([Vector2(0.0, -0.5), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
 		},
@@ -79,6 +82,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.MODERATE_JOG : ActivityData.new(
 		"Moderate Jog",
+		"Jogging at a Reasonable Pace",
 		{
 			Need.PA : CurveData.new([Vector2(0.0, -0.7), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.7)])
 		},
@@ -91,6 +95,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.INTENSE_JOG : ActivityData.new(
 		"Intense Jog",
+		"Jogging at an Intense Pace",
 		{
 			Need.PA : CurveData.new([Vector2(0.0, -0.9), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.9)])
 		},
@@ -104,6 +109,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.EAT_HEALTHY : ActivityData.new(
 		"Eat Healthy",
+		"Eating Healthy Food",
 		{
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
@@ -121,6 +127,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.EAT_JUNK : ActivityData.new(
 		"Eat Junk",
+		"Eating Junk Food",
 		{
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
@@ -140,6 +147,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.NAP : ActivityData.new(
 		"Nap",
+		"Napping",
 		{
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
@@ -156,6 +164,7 @@ var activity_data : Dictionary = {
 	),
 	Activity.SLEEP : ActivityData.new(
 		"Sleep",
+		"Sleeping",
 		{
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
