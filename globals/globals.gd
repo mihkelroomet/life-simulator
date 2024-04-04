@@ -33,6 +33,7 @@ var need_stats : Dictionary = {
 var motivation : float
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
+var current_activity_duration : float
 
 var activity_data : Dictionary = {
 	Activity.IDLE : ActivityData.new(),
@@ -182,10 +183,15 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
+	GameManager.set_current_activity.connect(_on_set_current_activity)
 	GameManager.set_time_is_advancing.connect(_on_set_time_is_advancing)
 	GameManager.set_player_can_move.connect(_on_set_player_can_move)
 	GameManager.motivation_changed.connect(_on_motivation_changed)
 	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
+
+func _on_set_current_activity(activity : Activity, duration : float):
+	current_activity = activity
+	current_activity_duration = duration
 
 func get_current_activity_data() -> ActivityData:
 	return activity_data[current_activity]

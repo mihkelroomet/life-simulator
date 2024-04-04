@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=12 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
 [ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_yyn0c"]
+[ext_resource type="Script" path="res://ui/ongoing_activity_panel.gd" id="2_07g4l"]
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
 [ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="4_j5iqg"]
@@ -32,6 +33,7 @@ offset_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 400
+script = ExtResource("2_07g4l")
 
 [node name="PanelContainer" type="PanelContainer" parent="OngoingActivityPanel"]
 custom_minimum_size = Vector2(1000, 300)
