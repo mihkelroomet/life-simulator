@@ -8,57 +8,68 @@
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="5_w2lmq"]
 [ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="6_pnvai"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ixyet"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4eq50"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_gxkda"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_otfyo"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_b1kpe"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_qvmjn"]
 
 [node name="UI" type="CanvasLayer"]
 
 [node name="FadeColorRect" parent="." instance=ExtResource("1_yyn0c")]
 
-[node name="TimePanel" type="PanelContainer" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -260.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 243.0
-grow_horizontal = 0
-script = ExtResource("1_f5clq")
+[node name="OngoingActivityPanel" type="MarginContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -342.0
+offset_right = 157.5
+offset_bottom = 342.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 400
 
-[node name="MarginContainer" type="MarginContainer" parent="TimePanel"]
+[node name="PanelContainer" type="PanelContainer" parent="OngoingActivityPanel"]
+custom_minimum_size = Vector2(1000, 300)
 layout_mode = 2
-theme_override_constants/margin_left = 25
-theme_override_constants/margin_top = 25
-theme_override_constants/margin_right = 25
-theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TimePanel/MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OngoingActivityPanel/PanelContainer"]
 layout_mode = 2
-theme_override_constants/separation = 1
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 30
 
-[node name="Time" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="OngoingActivityPanel/PanelContainer/MarginContainer"]
 layout_mode = 2
-theme_type_variation = &"HeaderMedium"
-text = "8:00 AM"
-horizontal_alignment = 2
 
-[node name="DayOfWeek" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OngoingActivityPanel/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Monday"
-horizontal_alignment = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
 
-[node name="DayOfYear" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+[node name="OngoingActivityLabel" type="Label" parent="OngoingActivityPanel/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-text = "Sep 2 2024"
-horizontal_alignment = 2
+theme_type_variation = &"HeaderLarge"
+text = "Idling..."
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TimeChangeTimer" type="Timer" parent="TimePanel"]
-wait_time = 0.2
-autostart = true
+[node name="OngoingActivityProgressBar" type="ProgressBar" parent="OngoingActivityPanel/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+value = 80.0
+show_percentage = false
+
+[node name="DoneLabel" type="Label" parent="OngoingActivityPanel/PanelContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Done!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MotivationPanel" type="VBoxContainer" parent="."]
 anchors_preset = 2
@@ -363,6 +374,48 @@ show_percentage = false
 script = ExtResource("3_6y5eu")
 is_motivation_bar = true
 
+[node name="TimePanel" type="PanelContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 243.0
+grow_horizontal = 0
+script = ExtResource("1_f5clq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TimePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TimePanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Time" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "8:00 AM"
+horizontal_alignment = 2
+
+[node name="DayOfWeek" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Monday"
+horizontal_alignment = 2
+
+[node name="DayOfYear" type="Label" parent="TimePanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sep 2 2024"
+horizontal_alignment = 2
+
+[node name="TimeChangeTimer" type="Timer" parent="TimePanel"]
+wait_time = 0.2
+autostart = true
+
 [node name="ActivityStartPanel" type="PanelContainer" parent="."]
 visible = false
 anchors_preset = 8
@@ -413,16 +466,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_ixyet")
+button_group = SubResource("ButtonGroup_4eq50")
 
 [node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_gxkda")
+button_group = SubResource("ButtonGroup_otfyo")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_b1kpe")
+button_group = SubResource("ButtonGroup_qvmjn")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
@@ -447,7 +500,7 @@ focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Start"
 
-[connection signal="timeout" from="TimePanel/TimeChangeTimer" to="TimePanel" method="_on_timer_timeout"]
 [connection signal="toggled" from="MotivationPanel/MotivationBar" to="MotivationPanel" method="_on_motivation_bar_toggled"]
+[connection signal="timeout" from="TimePanel/TimeChangeTimer" to="TimePanel" method="_on_timer_timeout"]
 [connection signal="value_changed" from="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
 [connection signal="pressed" from="ActivityStartPanel/MarginContainer/VBoxContainer/StartButton" to="ActivityStartPanel" method="_on_start_button_pressed"]
