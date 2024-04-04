@@ -1,6 +1,7 @@
 extends PanelContainer
 
-signal set_game_is_running(if_running : bool)
+signal set_time_is_advancing(if_is_advancing : bool)
+signal set_player_can_move(if_can_move : bool)
 signal fade_in_color_rect
 
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
@@ -9,16 +10,18 @@ const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
 
 func _ready():
 	GameManager.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
-	set_game_is_running.connect(GameManager._on_set_game_is_running)
+	set_time_is_advancing.connect(GameManager._on_set_time_is_advancing)
+	set_player_can_move.connect(GameManager._on_set_player_can_move)
 	fade_in_color_rect.connect(GameManager._on_fade_in_color_rect)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") and visible:
-		set_panel_visible(false)
+		toggle_panel(false)
 
-func set_panel_visible(if_visible : bool):
-	visible = if_visible
-	set_game_is_running.emit(!if_visible)
+func toggle_panel(if_toggled_open : bool):
+	visible = if_toggled_open
+	set_time_is_advancing.emit(!if_toggled_open)
+	set_player_can_move.emit(!if_toggled_open)
 
 func set_activities(activities : Array[Globals.Activity]):
 	clear_radio_buttons()
@@ -36,10 +39,10 @@ func clear_radio_buttons():
 		button.queue_free()
 
 func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):
-	set_panel_visible(if_visible)
+	toggle_panel(if_visible)
 	if if_visible:
 		set_activities(activities)
 
 func _on_start_button_pressed():
-	set_panel_visible(false)
+	visible = false
 	fade_in_color_rect.emit()

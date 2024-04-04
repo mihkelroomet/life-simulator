@@ -23,7 +23,7 @@ var animation_tree_state_keys = [
 ]
 
 func _physics_process(delta):
-	if Globals.game_is_running:
+	if Globals.player_can_move:
 		move(delta)
 		animate()
 

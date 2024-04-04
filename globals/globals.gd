@@ -15,7 +15,8 @@ const ActivityData = preload("res://data/activity_data.gd")
 
 const GAME_SPEED : int = 150 # How many times faster game time advances compared to real time
 
-var game_is_running : bool = true
+var time_is_advancing : bool = true
+var player_can_move : bool = true
 
 var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:00:00")
 
@@ -172,7 +173,8 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
-	GameManager.set_game_is_running.connect(_on_set_game_is_running)
+	GameManager.set_time_is_advancing.connect(_on_set_time_is_advancing)
+	GameManager.set_player_can_move.connect(_on_set_player_can_move)
 	GameManager.motivation_changed.connect(_on_motivation_changed)
 	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 
@@ -182,8 +184,11 @@ func get_current_activity_data() -> ActivityData:
 func get_activity_data(activity : Activity) -> ActivityData:
 	return activity_data[activity]
 
-func _on_set_game_is_running(if_running : bool):
-	game_is_running = if_running
+func _on_set_time_is_advancing(if_is_advancing : bool):
+	time_is_advancing = if_is_advancing
+
+func _on_set_player_can_move(if_can_move : bool):
+	player_can_move = if_can_move
 
 func _on_need_satisfaction_changed(need, new_value):
 	need_stats[need] = new_value

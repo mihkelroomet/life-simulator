@@ -1,6 +1,7 @@
 extends Node
 
-signal set_game_is_running(if_running : bool)
+signal set_time_is_advancing(if_is_advancing : bool)
+signal set_player_can_move(if_can_move : bool)
 signal need_satisfaction_changed(need : Globals.Need, new_value : float)
 signal motivation_changed(new_value : float)
 signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
@@ -11,7 +12,7 @@ signal fade_out_color_rect
 const EffectData = preload("res://data/effect_data.gd")
 
 func _process(delta):
-	if Globals.game_is_running:
+	if Globals.time_is_advancing:
 		var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
 		update_stats(game_hours_elapsed)
 
@@ -44,21 +45,17 @@ func update_need(need, game_hours_elapsed):
 	var new_need_satisfaction = current_need_satisfaction + need_change
 	new_need_satisfaction = clamp(new_need_satisfaction, 0.0, 1.0)
 	need_satisfaction_changed.emit(need, new_need_satisfaction)
-	
-	# Temp for testing
-	#var modifier : Curve = Globals.get_current_activity_data().modifiers[need].curve
-	#print("Need: ", need)
-	#print("Curve at 0: ", modifier.sample(0))
-	#print("Curve at 0.5: ", modifier.sample(0.5))
-	#print("Curve at 1: ", modifier.sample(1))
 
 func update_motivation():
 	var new_value = Globals.need_stats.values().min()
 	new_value = clamp(new_value, 0.0, 1.0)
 	motivation_changed.emit(new_value)
 
-func _on_set_game_is_running(if_running : bool):
-	set_game_is_running.emit(if_running)
+func _on_set_time_is_advancing(if_is_advancing : bool):
+	set_time_is_advancing.emit(if_is_advancing)
+
+func _on_set_player_can_move(if_can_move : bool):
+	set_player_can_move.emit(if_can_move)
 
 func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):
 	set_activity_start_panel_visible.emit(if_visible, activities)
