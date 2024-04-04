@@ -5,6 +5,8 @@ signal need_satisfaction_changed(need : Globals.Need, new_value : float)
 signal motivation_changed(new_value : float)
 signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
 signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
+signal fade_in_color_rect
+signal fade_out_color_rect
 
 const EffectData = preload("res://data/effect_data.gd")
 
@@ -63,3 +65,9 @@ func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[
 
 func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
 	set_activity_start_panel_selected_activity.emit(activity)
+
+func _on_fade_in_color_rect():
+	fade_in_color_rect.emit()
+	
+func _on_fade_out_color_rect():
+	fade_out_color_rect.emit()

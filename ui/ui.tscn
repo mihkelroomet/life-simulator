@@ -1,19 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=11 format=3 uid="uid://dufk2evfcmjyb"]
 
 [ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
+[ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_yyn0c"]
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
 [ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="4_j5iqg"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="5_w2lmq"]
 [ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="6_pnvai"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_nyk6b"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_74gmb"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ae5jm"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_l7kks"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_vnq3n"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4lg0s"]
 
 [node name="UI" type="CanvasLayer"]
+
+[node name="FadeColorRect" parent="." instance=ExtResource("1_yyn0c")]
 
 [node name="TimePanel" type="PanelContainer" parent="."]
 anchors_preset = 1
@@ -80,6 +83,7 @@ columns = 3
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -119,6 +123,7 @@ script = ExtResource("3_6y5eu")
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -159,6 +164,7 @@ need = 1
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -199,6 +205,7 @@ need = 2
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -239,6 +246,7 @@ need = 3
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -279,6 +287,7 @@ need = 4
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 0
 disabled = true
 toggle_mode = true
 
@@ -319,6 +328,7 @@ need = 5
 custom_minimum_size = Vector2(600, 150)
 layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 0
 mouse_default_cursor_shape = 2
 toggle_mode = true
 
@@ -403,16 +413,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_nyk6b")
+button_group = SubResource("ButtonGroup_74gmb")
 
 [node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_ae5jm")
+button_group = SubResource("ButtonGroup_l7kks")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_vnq3n")
+button_group = SubResource("ButtonGroup_4lg0s")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
@@ -433,9 +443,11 @@ value = 20.0
 
 [node name="StartButton" type="Button" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Start"
 
 [connection signal="timeout" from="TimePanel/TimeChangeTimer" to="TimePanel" method="_on_timer_timeout"]
 [connection signal="toggled" from="MotivationPanel/MotivationBar" to="MotivationPanel" method="_on_motivation_bar_toggled"]
 [connection signal="value_changed" from="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
+[connection signal="pressed" from="ActivityStartPanel/MarginContainer/VBoxContainer/StartButton" to="ActivityStartPanel" method="_on_start_button_pressed"]

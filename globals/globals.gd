@@ -36,7 +36,7 @@ var current_activity : Activity # This gets assigned the default value 0 aka IDL
 var activity_data : Dictionary = {
 	Activity.IDLE : ActivityData.new(),
 	Activity.MEET_FRIEND : ActivityData.new(
-		"Meet Friend",
+		"Meet a Friend",
 		{
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
 		},

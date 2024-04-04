@@ -8,7 +8,7 @@ func _ready():
 	GameManager.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
 
 func set_label_text(quarters_of_hour : int):
-	var hours : int = quarters_of_hour / 4
+	var hours : int = floor(quarters_of_hour / 4.0)
 	var minutes : int = quarters_of_hour % 4 * 15
 	
 	var text : String = ""
