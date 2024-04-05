@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxndtgcsjuwxh"]
 
-[ext_resource type="Script" path="res://ui/activity_select_button.gd" id="1_la2tx"]
 [ext_resource type="ButtonGroup" uid="uid://c461ypmn0cfpv" path="res://ui/activity_select_button_group.tres" id="1_osvrt"]
+[ext_resource type="Script" path="res://ui/activity_select_button.gd" id="2_oukbc"]
 
 [node name="ActivitySelectButton" type="CheckBox"]
 focus_mode = 0
@@ -9,7 +9,7 @@ mouse_default_cursor_shape = 2
 button_group = ExtResource("1_osvrt")
 text = "Activity 1 "
 alignment = 1
-script = ExtResource("1_la2tx")
+script = ExtResource("2_oukbc")
 activity = 1
 
 [connection signal="pressed" from="." to="." method="_on_button_pressed"]

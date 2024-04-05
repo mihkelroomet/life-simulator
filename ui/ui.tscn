@@ -1,23 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://dufk2evfcmjyb"]
+[gd_scene load_steps=12 format=3 uid="uid://bmjsklsge0fg0"]
 
-[ext_resource type="Script" path="res://ui/time_panel.gd" id="1_f5clq"]
-[ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_yyn0c"]
-[ext_resource type="Script" path="res://ui/ongoing_activity_panel.gd" id="2_07g4l"]
-[ext_resource type="Script" path="res://ui/progress_bar.gd" id="3_6y5eu"]
-[ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_k4r8w"]
-[ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="4_j5iqg"]
-[ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="5_w2lmq"]
-[ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="6_pnvai"]
+[ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_n3w6b"]
+[ext_resource type="Script" path="res://ui/ongoing_activity_panel.gd" id="2_1j4v1"]
+[ext_resource type="Script" path="res://ui/motivation_panel.gd" id="3_4h2aw"]
+[ext_resource type="Script" path="res://ui/progress_bar.gd" id="4_htkjy"]
+[ext_resource type="Script" path="res://ui/time_panel.gd" id="5_t6on7"]
+[ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="6_rpny2"]
+[ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="7_gfjut"]
+[ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="8_o3hn6"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_4eq50"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_x5dv0"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_otfyo"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_odpjl"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_qvmjn"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_gkimw"]
 
 [node name="UI" type="CanvasLayer"]
 
-[node name="FadeColorRect" parent="." instance=ExtResource("1_yyn0c")]
+[node name="FadeColorRect" parent="." instance=ExtResource("1_n3w6b")]
 
 [node name="OngoingActivityPanel" type="MarginContainer" parent="."]
 visible = false
@@ -33,7 +33,7 @@ offset_bottom = 342.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 400
-script = ExtResource("2_07g4l")
+script = ExtResource("2_1j4v1")
 
 [node name="PanelContainer" type="PanelContainer" parent="OngoingActivityPanel"]
 custom_minimum_size = Vector2(1000, 300)
@@ -83,7 +83,7 @@ offset_right = 620.0
 offset_bottom = -20.0
 grow_vertical = 0
 theme_override_constants/separation = 10
-script = ExtResource("3_k4r8w")
+script = ExtResource("3_4h2aw")
 
 [node name="ExpandingBars" type="GridContainer" parent="MotivationPanel"]
 visible = false
@@ -130,7 +130,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 
 [node name="CompetenceBar" type="Button" parent="MotivationPanel/ExpandingBars"]
 custom_minimum_size = Vector2(400, 100)
@@ -170,7 +170,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 need = 1
 
 [node name="RelatednessBar" type="Button" parent="MotivationPanel/ExpandingBars"]
@@ -211,7 +211,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 need = 2
 
 [node name="NutritionBar" type="Button" parent="MotivationPanel/ExpandingBars"]
@@ -252,7 +252,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 need = 3
 
 [node name="PABar" type="Button" parent="MotivationPanel/ExpandingBars"]
@@ -293,7 +293,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 need = 4
 
 [node name="SleepBar" type="Button" parent="MotivationPanel/ExpandingBars"]
@@ -334,7 +334,7 @@ mouse_filter = 1
 theme_type_variation = &"ProgressBarSmall"
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 need = 5
 
 [node name="MotivationBar" type="Button" parent="MotivationPanel"]
@@ -373,7 +373,7 @@ size_flags_vertical = 3
 mouse_filter = 1
 value = 80.0
 show_percentage = false
-script = ExtResource("3_6y5eu")
+script = ExtResource("4_htkjy")
 is_motivation_bar = true
 
 [node name="TimePanel" type="PanelContainer" parent="."]
@@ -385,7 +385,7 @@ offset_top = 20.0
 offset_right = -20.0
 offset_bottom = 243.0
 grow_horizontal = 0
-script = ExtResource("1_f5clq")
+script = ExtResource("5_t6on7")
 
 [node name="MarginContainer" type="MarginContainer" parent="TimePanel"]
 layout_mode = 2
@@ -431,7 +431,7 @@ offset_right = 225.0
 offset_bottom = 195.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_j5iqg")
+script = ExtResource("6_rpny2")
 
 [node name="MarginContainer" type="MarginContainer" parent="ActivityStartPanel"]
 layout_mode = 2
@@ -466,23 +466,23 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
+[node name="ActivitySelectButton" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("7_gfjut")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_4eq50")
+button_group = SubResource("ButtonGroup_x5dv0")
 
-[node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
+[node name="ActivitySelectButton2" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("7_gfjut")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_otfyo")
+button_group = SubResource("ButtonGroup_odpjl")
 text = "Activity 2 "
 
-[node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("5_w2lmq")]
+[node name="ActivitySelectButton3" parent="ActivityStartPanel/MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("7_gfjut")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_qvmjn")
+button_group = SubResource("ButtonGroup_gkimw")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="ActivityStartPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
-script = ExtResource("6_pnvai")
+script = ExtResource("8_o3hn6")
 
 [node name="ActivityDurationLabel" type="Label" parent="ActivityStartPanel/MarginContainer/VBoxContainer/ActivityDurationVBox"]
 layout_mode = 2
