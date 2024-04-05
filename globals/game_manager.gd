@@ -1,8 +1,10 @@
 extends Node
 
-signal set_current_activity(activity : Globals.Activity, activity_duration : float)
+signal start_activity(activity : Globals.Activity, activity_duration : float)
+signal stop_activity
 
 signal set_time_is_advancing(if_is_advancing : bool)
+signal set_game_speed(speed : float)
 signal set_player_can_move(if_can_move : bool)
 
 signal need_satisfaction_changed(need : Globals.Need, new_value : float)
@@ -10,17 +12,16 @@ signal motivation_changed(new_value : float)
 
 signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
 signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
-signal set_activity_start_panel_selected_duration(duration : int)
+signal set_activity_start_panel_selected_duration(duration : float)
 signal set_ongoing_activity_panel_visible(if_visible : bool)
 
-signal fade_in_color_rect
 signal fade_out_color_rect
 
 const EffectData = preload("res://data/effect_data.gd")
 
 func _process(delta):
 	if Globals.time_is_advancing:
-		var game_hours_elapsed = delta * Globals.GAME_SPEED / 3600
+		var game_hours_elapsed = delta * Globals.game_speed / 3600
 		update_stats(game_hours_elapsed)
 
 func update_stats(game_hours_elapsed):
@@ -58,8 +59,14 @@ func update_motivation():
 	new_value = clamp(new_value, 0.0, 1.0)
 	motivation_changed.emit(new_value)
 
-func _on_set_current_activity(activity : Globals.Activity, activity_duration : float):
-	set_current_activity.emit(activity, activity_duration)
+func _on_start_activity(activity : Globals.Activity, activity_duration : float):
+	start_activity.emit(activity, activity_duration)
+
+func _on_stop_activity():
+	stop_activity.emit()
+
+func _on_set_game_speed(speed : float):
+	set_game_speed.emit(speed)
 
 func _on_set_time_is_advancing(if_is_advancing : bool):
 	set_time_is_advancing.emit(if_is_advancing)
@@ -73,14 +80,11 @@ func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[
 func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
 	set_activity_start_panel_selected_activity.emit(activity)
 
-func _on_set_activity_start_panel_selected_duration(duration : int):
+func _on_set_activity_start_panel_selected_duration(duration : float):
 	set_activity_start_panel_selected_duration.emit(duration)
 
 func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 	set_ongoing_activity_panel_visible.emit(if_visible)
-
-func _on_fade_in_color_rect():
-	fade_in_color_rect.emit()
 	
 func _on_fade_out_color_rect():
 	fade_out_color_rect.emit()

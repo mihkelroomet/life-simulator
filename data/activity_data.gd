@@ -10,8 +10,11 @@ const EffectData = preload("res://data/effect_data.gd")
 @export var modifiers : Dictionary
 ## Determines what effects this activity has on satisfaction of needs.
 @export var effects : Dictionary
+## Minimum duration of activity in hours.
 @export var min_duration : float
+## Default duration of activity in hours.
 @export var default_duration : float
+## Maximum duration of activity in hours.
 @export var max_duration : float
 
 # Each CurveData.curve is X = 0 by default
@@ -26,6 +29,7 @@ var default_modifiers : Dictionary = {
 	Globals.Need.SLEEP : CurveData.new()
 }
 
+# Defaults correspond to the effects of idling
 var default_effects : Dictionary = {
 	Globals.Need.AUTONOMY : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.01),
 	Globals.Need.COMPETENCE : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.01),

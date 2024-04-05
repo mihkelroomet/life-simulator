@@ -13,7 +13,9 @@ const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 const ActivityData = preload("res://data/activity_data.gd")
 
-const GAME_SPEED : int = 150 # How many times faster game time advances compared to real time
+# How many times faster game time advances compared to real time
+const DEFAULT_GAME_SPEED : float = 150.0
+var game_speed : float
 
 var time_is_advancing : bool = true
 var player_can_move : bool = true
@@ -33,6 +35,7 @@ var need_stats : Dictionary = {
 var motivation : float
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
+## Duration of current activity in hours.
 var current_activity_duration : float
 
 var activity_data : Dictionary = {
@@ -183,15 +186,26 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
-	GameManager.set_current_activity.connect(_on_set_current_activity)
+	GameManager.start_activity.connect(_on_start_activity)
+	GameManager.stop_activity.connect(_on_stop_activity)
+	GameManager.set_game_speed.connect(_on_set_game_speed)
 	GameManager.set_time_is_advancing.connect(_on_set_time_is_advancing)
 	GameManager.set_player_can_move.connect(_on_set_player_can_move)
 	GameManager.motivation_changed.connect(_on_motivation_changed)
 	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
+	
+	game_speed = DEFAULT_GAME_SPEED
 
-func _on_set_current_activity(activity : Activity, duration : float):
+func _on_start_activity(activity : Activity, duration : float):
 	current_activity = activity
 	current_activity_duration = duration
+
+func _on_stop_activity():
+	current_activity = Activity.IDLE
+	current_activity_duration = 0.0
+
+func _on_set_game_speed(speed : float):
+	game_speed = speed
 
 func get_current_activity_data() -> ActivityData:
 	return activity_data[current_activity]
