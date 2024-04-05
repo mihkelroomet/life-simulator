@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dcbh0msfwickm" path="res://objects/exit_door_fade_gradient.tscn" id="8_3bkm0"]
 [ext_resource type="PackedScene" uid="uid://dup8h7y7svtya" path="res://objects/closet_backside.tscn" id="8_3pfi2"]
 [ext_resource type="PackedScene" uid="uid://bmkjmqwfjkcua" path="res://objects/door_wc.tscn" id="9_26ud8"]
-[ext_resource type="PackedScene" uid="uid://bmjsklsge0fg0" path="res://ui/ui.tscn" id="9_bxmrk"]
+[ext_resource type="PackedScene" uid="uid://bmjsklsge0fg0" path="res://ui/in-game_ui.tscn" id="9_bxmrk"]
 [ext_resource type="PackedScene" uid="uid://c8ieuj63kkhvo" path="res://player/player.tscn" id="10_j7p4t"]
 
 [node name="InGame" type="Node2D"]

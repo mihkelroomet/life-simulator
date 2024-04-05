@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://camg68k1p4vfd"]
+
+[ext_resource type="Script" path="res://ui/time_panel.gd" id="1_hm7i2"]
+
+[node name="TimePanel" type="PanelContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -260.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 243.0
+grow_horizontal = 0
+script = ExtResource("1_hm7i2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="Time" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "8:00 AM"
+horizontal_alignment = 2
+
+[node name="DayOfWeek" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Monday"
+horizontal_alignment = 2
+
+[node name="DayOfYear" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sep 2 2024"
+horizontal_alignment = 2
+
+[node name="TimeChangeTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[connection signal="timeout" from="TimeChangeTimer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://fyt4htnh62uq"]
+
+[ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="1_45lpm"]
+[ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_fmce5"]
+[ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="3_g6u53"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_4tuse"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_8hrfy"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tgers"]
+
+[node name="ActivityStartPanel" type="PanelContainer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -195.5
+offset_right = 225.0
+offset_bottom = 195.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_45lpm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="HeaderVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HeaderVBox"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Choose Activity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HeaderVBox"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "Press Q / Esc to Cancel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RadioButtonVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ActivitySelectButton" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_4tuse")
+
+[node name="ActivitySelectButton2" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_8hrfy")
+text = "Activity 2 "
+
+[node name="ActivitySelectButton3" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_tgers")
+text = "Activity 3 "
+
+[node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_g6u53")
+
+[node name="ActivityDurationLabel" type="Label" parent="MarginContainer/VBoxContainer/ActivityDurationVBox"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "1h 15min"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActivityDurationSlider" type="HSlider" parent="MarginContainer/VBoxContainer/ActivityDurationVBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+value = 20.0
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_default_cursor_shape = 2
+text = "Start"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
