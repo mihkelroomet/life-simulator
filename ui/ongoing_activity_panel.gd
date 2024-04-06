@@ -9,11 +9,11 @@ signal set_ongoing_activity_panel_visible(if_visible : bool)
 @onready var animation_player = $AnimationPlayer
 
 func _ready():
-	set_game_speed.connect(GameManager._on_set_game_speed)
-	set_time_is_advancing.connect(GameManager._on_set_time_is_advancing)
-	fade_out_color_rect.connect(GameManager._on_fade_out_color_rect)
-	set_ongoing_activity_panel_visible.connect(GameManager._on_set_ongoing_activity_panel_visible)
-	GameManager.set_ongoing_activity_panel_visible.connect(_on_set_ongoing_activity_panel_visible)
+	set_game_speed.connect(Events._on_set_game_speed)
+	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
+	fade_out_color_rect.connect(Events._on_fade_out_color_rect)
+	set_ongoing_activity_panel_visible.connect(Events._on_set_ongoing_activity_panel_visible)
+	Events.set_ongoing_activity_panel_visible.connect(_on_set_ongoing_activity_panel_visible)
 
 func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 	visible = if_visible

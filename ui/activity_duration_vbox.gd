@@ -8,9 +8,9 @@ const ActivityStartPanel = preload("res://ui/activity_start_panel.gd")
 @onready var activity_duration_slider = $ActivityDurationSlider
 
 func _ready():
-	set_activity_start_panel_selected_duration.connect(GameManager._on_set_activity_start_panel_selected_duration)
-	GameManager.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
-	GameManager.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
+	set_activity_start_panel_selected_duration.connect(Events._on_set_activity_start_panel_selected_duration)
+	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
+	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
 
 func set_duration(quarters_of_hour : int):
 	var full_hours : int = floor(quarters_of_hour / 4.0)

@@ -187,13 +187,13 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
-	GameManager.start_activity.connect(_on_start_activity)
-	GameManager.stop_activity.connect(_on_stop_activity)
-	GameManager.set_game_speed.connect(_on_set_game_speed)
-	GameManager.set_time_is_advancing.connect(_on_set_time_is_advancing)
-	GameManager.set_player_can_move.connect(_on_set_player_can_move)
-	GameManager.motivation_changed.connect(_on_motivation_changed)
-	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
+	Events.start_activity.connect(_on_start_activity)
+	Events.stop_activity.connect(_on_stop_activity)
+	Events.set_game_speed.connect(_on_set_game_speed)
+	Events.set_time_is_advancing.connect(_on_set_time_is_advancing)
+	Events.set_player_can_move.connect(_on_set_player_can_move)
+	Events.motivation_changed.connect(_on_motivation_changed)
+	Events.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 	
 	game_speed = DEFAULT_GAME_SPEED
 

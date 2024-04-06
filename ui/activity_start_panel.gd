@@ -15,13 +15,13 @@ static var selected_activity : Globals.Activity
 static var selected_duration : float
 
 func _ready():
-	set_activity_start_panel_selected_activity.connect(GameManager._on_set_activity_start_panel_selected_activity)
-	start_activity.connect(GameManager._on_start_activity)
-	set_time_is_advancing.connect(GameManager._on_set_time_is_advancing)
-	set_player_can_move.connect(GameManager._on_set_player_can_move)
-	GameManager.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
-	GameManager.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
-	GameManager.set_activity_start_panel_selected_duration.connect(_on_set_activity_start_panel_selected_duration)
+	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
+	start_activity.connect(Events._on_start_activity)
+	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
+	set_player_can_move.connect(Events._on_set_player_can_move)
+	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
+	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
+	Events.set_activity_start_panel_selected_duration.connect(_on_set_activity_start_panel_selected_duration)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") and visible:

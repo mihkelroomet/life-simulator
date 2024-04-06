@@ -9,7 +9,7 @@ signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Gl
 var player_is_in_area : bool = false
 
 func _ready():
-	set_activity_start_panel_visible.connect(GameManager._on_set_activity_start_panel_visible)
+	set_activity_start_panel_visible.connect(Events._on_set_activity_start_panel_visible)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and player_is_in_area:

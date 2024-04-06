@@ -9,7 +9,7 @@ var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
 var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 func _ready():
-	GameManager.set_time_is_advancing.connect(_on_set_time_is_advancing)
+	Events.set_time_is_advancing.connect(_on_set_time_is_advancing)
 
 func set_time(unix_time):
 	var datetime_dict = Time.get_datetime_dict_from_unix_time(unix_time)

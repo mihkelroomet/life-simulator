@@ -12,7 +12,7 @@ var lightness_value : float = 0.8
 var alpha: float = 1
 
 func _ready():
-	GameManager.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
+	Events.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 	label.text = Globals.NEED_NAMES[need]
 
 func _process(_delta):

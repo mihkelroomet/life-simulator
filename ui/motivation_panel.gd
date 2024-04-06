@@ -7,8 +7,8 @@ var panel_opened_by_user : bool = false
 var user_can_toggle_panel : bool = true
 
 func _ready():
-	GameManager.start_activity.connect(_on_start_activity)
-	GameManager.stop_activity.connect(_on_stop_activity)
+	Events.start_activity.connect(_on_start_activity)
+	Events.stop_activity.connect(_on_stop_activity)
 	toggle_motivation_bar(panel_opened_by_user)
 
 func _process(delta):
