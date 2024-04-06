@@ -23,7 +23,7 @@ var player_can_move : bool = true
 
 var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:00:00")
 
-# Current satisfaction of needs
+## Current satisfaction of needs
 var need_stats : Dictionary = {
 	Need.AUTONOMY : 0.8,
 	Need.COMPETENCE : 0.8,
@@ -53,7 +53,7 @@ var activity_data : Dictionary = {
 			Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1),
 			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.01)
 		},
-		0.5, 3.0, 10.0
+		0.5, 3.0, 6.0
 	),
 	Activity.PARTY : ActivityData.new(
 		"Party",
@@ -69,7 +69,7 @@ var activity_data : Dictionary = {
 			Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
 			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01)
 		},
-		0.5, 5.0, 15.0
+		0.5, 5.0, 10.0
 	),
 	Activity.WALK : ActivityData.new(
 		"Walk",
@@ -83,7 +83,7 @@ var activity_data : Dictionary = {
 			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.18),
 			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.05)
 		},
-		0.25, 0.75, 10.0
+		0.25, 0.75, 6.0
 	),
 	Activity.MODERATE_JOG : ActivityData.new(
 		"Moderate Jog",
