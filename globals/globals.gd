@@ -8,6 +8,7 @@ enum Activity {
 	}
 
 enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
+const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
 
 const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")

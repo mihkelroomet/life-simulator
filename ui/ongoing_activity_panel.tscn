@@ -93,9 +93,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OngoingActivityProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
-self_modulate = Color(0.631373, 0.631373, 0.968627, 1)
 layout_mode = 2
 size_flags_vertical = 3
+theme_type_variation = &"ProgressBarBlue"
 show_percentage = false
 
 [node name="DoneLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer2"]

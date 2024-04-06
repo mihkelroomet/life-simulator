@@ -1,8 +1,8 @@
-extends PanelContainer
+extends MarginContainer
 
-@onready var time_label : Label = $MarginContainer/VBoxContainer/Time
-@onready var day_of_week_label : Label = $MarginContainer/VBoxContainer/DayOfWeek
-@onready var day_of_year_label : Label = $MarginContainer/VBoxContainer/DayOfYear
+@onready var time_label : Label = $PanelContainer/MarginContainer/VBoxContainer/Time
+@onready var day_of_week_label : Label = $PanelContainer/MarginContainer/VBoxContainer/DayOfWeek
+@onready var day_of_year_label : Label = $PanelContainer/MarginContainer/VBoxContainer/DayOfYear
 @onready var timer : Timer = $TimeChangeTimer
 
 var WEEKDAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]

@@ -54,10 +54,12 @@ func update_need(need, game_hours_elapsed):
 	new_need_satisfaction = clamp(new_need_satisfaction, 0.0, 1.0)
 	need_satisfaction_changed.emit(need, new_need_satisfaction)
 
+# Motivation is linearly tied to lowest need satisfaction at 75% satisfied = 100% motivation
 func update_motivation():
-	var new_value = Globals.need_stats.values().min()
-	new_value = clamp(new_value, 0.0, 1.0)
-	motivation_changed.emit(new_value)
+	var min_need_satisfaction = Globals.need_stats.values().min()
+	var motivation = min_need_satisfaction / 0.75
+	motivation = clamp(motivation, 0.0, 1.0)
+	motivation_changed.emit(motivation)
 
 func _on_start_activity(activity : Globals.Activity, activity_duration : float):
 	start_activity.emit(activity, activity_duration)
