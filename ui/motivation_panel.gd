@@ -11,7 +11,7 @@ func _ready():
 	Events.stop_activity.connect(_on_stop_activity)
 	toggle_motivation_bar(panel_opened_by_user)
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("open_motivation_bar"):
 		var if_toggled_open = !expanding_bars.visible
 		toggle_motivation_bar(if_toggled_open)
