@@ -25,12 +25,12 @@ var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:0
 
 ## Current satisfaction of needs
 var need_stats : Dictionary = {
-	Need.AUTONOMY : 0.8,
-	Need.COMPETENCE : 0.8,
-	Need.RELATEDNESS : 0.8,
-	Need.NUTRITION : 0.8,
+	Need.AUTONOMY : 0.1,
+	Need.COMPETENCE : 0.1,
+	Need.RELATEDNESS : 0.2,
+	Need.NUTRITION : 0.5,
 	Need.PA : 0.8,
-	Need.SLEEP : 0.8
+	Need.SLEEP : 0.5
 }
 
 var motivation : float
@@ -208,11 +208,28 @@ func _on_stop_activity():
 func _on_set_game_speed(speed : float):
 	game_speed = speed
 
-func get_current_activity_data() -> ActivityData:
-	return activity_data[current_activity]
-
 func get_activity_data(activity : Activity) -> ActivityData:
 	return activity_data[activity]
+
+func get_current_activity_data() -> ActivityData:
+	return get_activity_data(current_activity)
+
+func get_motivation_for_activity(activity : Activity) -> float:
+	var current_activity_modifiers = get_activity_data(activity).modifiers
+	var motivation_for_activity = motivation
+	
+	for need in current_activity_modifiers:
+		var curve_data : CurveData = current_activity_modifiers[need]
+		var motivation_modifier = curve_data.sample(need_stats[need])
+		motivation_for_activity += motivation_modifier
+		#print("Contribution of need '", NEED_NAMES[need], "': ", motivation_modifier)
+	
+	#print("Total motivation for activity '", get_activity_data(activity).display_name, "': ", motivation_for_activity, "\n")
+	
+	return motivation_for_activity
+
+func get_motivation_for_current_activity() -> float:
+	return get_motivation_for_activity(current_activity)
 
 func _on_set_time_is_advancing(if_is_advancing : bool):
 	time_is_advancing = if_is_advancing
