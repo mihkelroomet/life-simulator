@@ -14,7 +14,7 @@ const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 const ActivityData = preload("res://data/activity_data.gd")
 
-# How many times faster game time advances compared to real time
+## How many times faster game time advances compared to real time.
 const DEFAULT_GAME_SPEED : float = 150.0
 var game_speed : float
 
@@ -25,12 +25,12 @@ var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:0
 
 ## Current satisfaction of needs
 var need_stats : Dictionary = {
-	Need.AUTONOMY : 0.1,
-	Need.COMPETENCE : 0.1,
-	Need.RELATEDNESS : 0.2,
-	Need.NUTRITION : 0.5,
+	Need.AUTONOMY : 0.8,
+	Need.COMPETENCE : 0.8,
+	Need.RELATEDNESS : 0.8,
+	Need.NUTRITION : 0.8,
 	Need.PA : 0.8,
-	Need.SLEEP : 0.5
+	Need.SLEEP : 0.8
 }
 
 var motivation : float
@@ -48,7 +48,7 @@ var activity_data : Dictionary = {
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.045),
 			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
 			Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1),
 			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.01)
@@ -105,7 +105,7 @@ var activity_data : Dictionary = {
 			Need.PA : CurveData.new([Vector2(0.0, -0.9), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.9)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.1),
+			Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.08),
 			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
 			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3),
 			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.3)
