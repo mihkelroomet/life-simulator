@@ -8,6 +8,8 @@ const EffectData = preload("res://data/effect_data.gd")
 ## Represents min satisfaction needed in most neglected need for 100% motivation.
 ## Motivation is linearly mapped to satisfaction of most neglected need.
 var min_satisfaction_for_full_motivation : float = 0.75
+## Represents the highest min satisfaction in most neglected need that will convert to 0% motivation.
+var min_satisfaction_for_no_motivation : float = 0.15
 
 func _ready():
 	need_satisfaction_changed.connect(Events._on_need_satisfaction_changed)
@@ -50,6 +52,6 @@ func update_need(need, game_hours_elapsed):
 
 func update_motivation():
 	var min_need_satisfaction = Globals.need_stats.values().min()
-	var motivation = min_need_satisfaction / min_satisfaction_for_full_motivation
+	var motivation = (min_need_satisfaction - min_satisfaction_for_no_motivation) / (min_satisfaction_for_full_motivation - min_satisfaction_for_no_motivation)
 	motivation = clamp(motivation, 0.0, 1.0)
 	motivation_changed.emit(motivation)

@@ -137,7 +137,7 @@ var activity_data : Dictionary = {
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -1.0)]),
+			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -0.6)]),
 			Need.PA : CurveData.new([Vector2(0, 0.2), Vector2(0.5, 0.0)]),
 			Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
 		},
