@@ -157,7 +157,7 @@ var activity_data : Dictionary = {
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.0, -1.0), Vector2(0.4, 0.0)]),
+			Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
 			Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
 			Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
 		},
@@ -174,7 +174,7 @@ var activity_data : Dictionary = {
 			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
 			Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.0, -1.0), Vector2(0.4, 0.0)]),
+			Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
 			Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
 			Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
 		},
@@ -222,9 +222,9 @@ func get_motivation_for_activity(activity : Activity) -> float:
 		var curve_data : CurveData = current_activity_modifiers[need]
 		var motivation_modifier = curve_data.sample(need_stats[need])
 		motivation_for_activity += motivation_modifier
-		#print("Contribution of need '", NEED_NAMES[need], "': ", motivation_modifier)
+		print("Contribution of need '", NEED_NAMES[need], "': ", motivation_modifier)
 	
-	#print("Total motivation for activity '", get_activity_data(activity).display_name, "': ", motivation_for_activity, "\n")
+	print("Total motivation for activity '", get_activity_data(activity).display_name, "': ", motivation_for_activity, "\n")
 	
 	return motivation_for_activity
 

@@ -24,9 +24,9 @@ var default_modifiers : Dictionary = {
 	Globals.Need.AUTONOMY : CurveData.new(),
 	Globals.Need.COMPETENCE : CurveData.new(),
 	Globals.Need.RELATEDNESS : CurveData.new(),
-	Globals.Need.NUTRITION : CurveData.new(),
+	Globals.Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.2, 0.0)]),
 	Globals.Need.PA : CurveData.new(),
-	Globals.Need.SLEEP : CurveData.new()
+	Globals.Need.SLEEP : CurveData.new([Vector2(0.0, -1.0), Vector2(0.1, 0.0)])
 }
 
 # Defaults correspond to the effects of idling
