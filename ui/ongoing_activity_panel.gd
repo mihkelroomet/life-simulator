@@ -27,7 +27,7 @@ func play_do_activity_animation():
 	
 	ongoing_activity_label.text = present_participle + "..."
 	
-	# This assumes the "do_activity" animation takes 1 second
+	# This assumes the full "do_activity" animation takes 1 second
 	set_game_speed.emit(Globals.current_activity_desired_duration * 3600.0)
 	set_time_is_advancing.emit(true)
 	
@@ -60,7 +60,7 @@ func _on_animation_finished(anim_name):
 		"do_activity":
 			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED)
 			set_time_is_advancing.emit(false)
-			if duration_percentage == 1.0:
+			if duration_percentage > 0.98:
 				activity_end_label.text = "Done!"
 			else:
 				activity_end_label.text = "You have had enough of " + present_participle

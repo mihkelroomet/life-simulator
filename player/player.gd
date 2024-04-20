@@ -22,10 +22,13 @@ var animation_tree_state_keys = [
 	"move"
 ]
 
+func _ready():
+	Events.set_player_can_move.connect(_on_set_player_can_move)
+
 func _physics_process(delta):
 	if Globals.player_can_move:
 		move(delta)
-		animate()
+	animate()
 
 func move(delta):
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -53,3 +56,8 @@ func apply_movement(amount) -> void:
 func animate() -> void:
 	state_machine.travel(animation_tree_state_keys[state])
 	animation_tree.set(blend_pos_paths[state], blend_position)
+
+func _on_set_player_can_move(can_move : bool):
+	if !can_move:
+		state = IDLE
+		velocity = Vector2.ZERO

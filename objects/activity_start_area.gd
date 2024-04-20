@@ -12,7 +12,7 @@ func _ready():
 	set_activity_start_panel_visible.connect(Events._on_set_activity_start_panel_visible)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("interact") and player_is_in_area:
+	if Input.is_action_just_pressed("interact") and player_is_in_area and Globals.player_can_move:
 		set_activity_start_panel_visible.emit(true, activities)
 
 func _on_body_entered(_body):
