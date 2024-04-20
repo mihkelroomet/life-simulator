@@ -1,15 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=9 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="1_45lpm"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_fmce5"]
 [ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="3_g6u53"]
+[ext_resource type="Script" path="res://ui/activity_start_button.gd" id="4_f3dch"]
 [ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="4_o2ndf"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_i5yhv"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_sn0ua"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_r7xs6"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_c1kec"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ilyji"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_a8f85"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
 visible = false
@@ -61,16 +62,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_i5yhv")
+button_group = SubResource("ButtonGroup_sn0ua")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_r7xs6")
+button_group = SubResource("ButtonGroup_c1kec")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_ilyji")
+button_group = SubResource("ButtonGroup_a8f85")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -99,6 +100,7 @@ layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Start"
+script = ExtResource("4_f3dch")
 
 [node name="FailedToStartLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 visible = false
@@ -112,5 +114,5 @@ wait_time = 3.0
 one_shot = true
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="timeout" from="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel" method="_on_failed_to_start_label_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="MarginContainer/VBoxContainer/VBoxContainer/StartButton" method="_on_button_pressed"]
+[connection signal="timeout" from="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel" method="_on_timer_timeout"]

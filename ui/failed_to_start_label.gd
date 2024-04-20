@@ -9,5 +9,5 @@ func _on_failed_to_start_activity():
 	visible = true
 	failed_to_start_label_timer.start()
 
-func _on_failed_to_start_label_timer_timeout():
+func _on_timer_timeout():
 	visible = false
