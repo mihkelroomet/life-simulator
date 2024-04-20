@@ -1,14 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=8 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="1_45lpm"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_fmce5"]
 [ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="3_g6u53"]
+[ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="4_o2ndf"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_226w1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_i5yhv"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_qynj4"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_r7xs6"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1kxs3"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ilyji"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
 visible = false
@@ -30,7 +31,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 30
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -60,16 +61,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_226w1")
+button_group = SubResource("ButtonGroup_i5yhv")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_qynj4")
+button_group = SubResource("ButtonGroup_r7xs6")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/VBoxContainer/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_1kxs3")
+button_group = SubResource("ButtonGroup_ilyji")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -88,11 +89,28 @@ layout_mode = 2
 mouse_default_cursor_shape = 2
 value = 20.0
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(461, 92)
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Start"
 
+[node name="FailedToStartLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"LabelSmallRed"
+text = "You do not feel like doing this right now"
+script = ExtResource("4_o2ndf")
+
+[node name="FailedToStartLabelTimer" type="Timer" parent="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/VBoxContainer/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="timeout" from="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/VBoxContainer/VBoxContainer/FailedToStartLabel" method="_on_failed_to_start_label_timer_timeout"]

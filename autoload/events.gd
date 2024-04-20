@@ -1,6 +1,7 @@
 extends Node
 
 signal start_activity(activity : Globals.Activity, activity_duration : float)
+signal fail_to_start_activity
 signal stop_activity
 
 signal set_time_is_advancing(if_is_advancing : bool)
@@ -19,6 +20,9 @@ signal fade_out_color_rect
 
 func _on_start_activity(activity : Globals.Activity, activity_duration : float):
 	start_activity.emit(activity, activity_duration)
+
+func _on_fail_to_start_activity():
+	fail_to_start_activity.emit()
 
 func _on_stop_activity():
 	stop_activity.emit()

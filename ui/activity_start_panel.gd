@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
 signal start_activity(activity : Globals.Activity, activity_duration : float)
+signal fail_to_start_activity
 signal set_time_is_advancing(if_is_advancing : bool)
 signal set_player_can_move(if_can_move : bool)
 signal fade_in_color_rect
@@ -17,6 +18,7 @@ static var selected_duration : float
 func _ready():
 	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
 	start_activity.connect(Events._on_start_activity)
+	fail_to_start_activity.connect(Events._on_fail_to_start_activity)
 	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
 	set_player_can_move.connect(Events._on_set_player_can_move)
 	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
@@ -67,5 +69,8 @@ func _on_set_activity_start_panel_selected_duration(duration : float):
 
 func _on_start_button_pressed():
 	if selected_activity != Globals.Activity.IDLE and selected_duration > 0.0:
-		visible = false
-		start_activity.emit(selected_activity, selected_duration)
+		if (Globals.get_motivation_for_activity(selected_activity) > 0.0):
+			visible = false
+			start_activity.emit(selected_activity, selected_duration)
+		else:
+			fail_to_start_activity.emit()
