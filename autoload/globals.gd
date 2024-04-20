@@ -37,7 +37,11 @@ var motivation : float
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
 ## Duration of current activity in hours.
-var current_activity_duration : float
+var current_activity_desired_duration : float
+## If the current activity is only being attempted and isn't neccessarily going to be
+## carried out fully.
+var current_activity_is_yellow_level_attempt : bool
+var current_activity_actual_duration : float
 
 var activity_data : Dictionary = {
 	Activity.IDLE : ActivityData.new(),
@@ -75,7 +79,7 @@ var activity_data : Dictionary = {
 		"Walk",
 		"Walking",
 		{
-			Need.PA : CurveData.new([Vector2(0.0, -0.5), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
+			Need.PA : CurveData.new([Vector2(0.0, 0.25), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
 		},
 		{
 			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
@@ -197,13 +201,17 @@ func _ready():
 	
 	game_speed = DEFAULT_GAME_SPEED
 
-func _on_start_activity(activity : Activity, duration : float):
+func _on_start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float):
 	current_activity = activity
-	current_activity_duration = duration
+	current_activity_desired_duration = activity_desired_duration
+	current_activity_is_yellow_level_attempt = is_yellow_level_attempt
+	current_activity_actual_duration = activity_actual_duration
 
 func _on_stop_activity():
 	current_activity = Activity.IDLE
-	current_activity_duration = 0.0
+	current_activity_desired_duration = 0.0
+	current_activity_is_yellow_level_attempt = false
+	current_activity_actual_duration = 0.0
 
 func _on_set_game_speed(speed : float):
 	game_speed = speed
@@ -217,6 +225,7 @@ func get_current_activity_data() -> ActivityData:
 func get_motivation_for_activity(activity : Activity) -> float:
 	var current_activity_modifiers = get_activity_data(activity).modifiers
 	var motivation_for_activity = motivation
+	print("\n-----\nStarting activity: '", get_activity_data(activity).display_name, "'")
 	
 	for need in current_activity_modifiers:
 		var curve_data : CurveData = current_activity_modifiers[need]

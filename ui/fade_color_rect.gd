@@ -16,7 +16,7 @@ func _ready():
 	Events.start_activity.connect(_on_start_activity)
 	Events.fade_out_color_rect.connect(_on_fade_out_color_rect)
 
-func _on_start_activity(_activity : Globals.Activity, _duration : float):
+func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	animation_player.play("fade_in")
 
 func _on_fade_out_color_rect():

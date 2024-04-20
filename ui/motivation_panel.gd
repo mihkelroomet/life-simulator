@@ -25,7 +25,7 @@ func toggle_motivation_bar(if_toggled_open):
 func _on_motivation_bar_toggled(if_toggled_open):
 	toggle_motivation_bar(if_toggled_open)
 
-func _on_start_activity(_activity : Globals.Activity, _duration : float):
+func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	user_can_toggle_panel = false
 
 func _on_stop_activity():

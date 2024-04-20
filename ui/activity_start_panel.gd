@@ -55,7 +55,7 @@ func clear_radio_buttons():
 		radio_button_vbox.remove_child(button)
 		button.queue_free()
 
-func _on_start_activity(_activity : Globals.Activity, _activity_duration : float):
+func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	visible = false
 
 func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):

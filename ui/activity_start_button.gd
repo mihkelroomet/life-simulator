@@ -1,6 +1,6 @@
 extends Button
 
-signal start_activity(activity : Globals.Activity, activity_duration : float)
+signal start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float)
 signal fail_to_start_activity
 
 const CurveData = preload("res://data/curve_data.gd")
@@ -21,10 +21,13 @@ func _on_button_pressed():
 		
 		# Green level: can always do activity
 		if motivation_for_selected_activity >= 1.0:
+			print("Green level")
+			print("Duration: ", selected_duration)
 			start_activity.emit(selected_activity, selected_duration)
 		
 		# Red level: can never do activity
 		elif motivation_for_selected_activity <= 0.0:
+			print("Red level")
 			fail_to_start_activity.emit()
 		
 		# Yellow level: might be able to do activity
@@ -45,4 +48,7 @@ func _on_button_pressed():
 			if actual_duration > 0.0 and actual_duration < selected_activity_min_duration:
 				actual_duration = selected_activity_min_duration
 			
-			print("yellow: ", actual_duration)
+			print("Yellow level")
+			print("Desired duration: ", selected_duration)
+			print("Actual duration: ", actual_duration)
+			start_activity.emit(selected_activity, selected_duration, true, actual_duration)
