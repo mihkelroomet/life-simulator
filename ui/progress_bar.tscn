@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c5m55wjllf1fc" path="res://ui/little_arrows/left_arrow.svg" id="2_ttxrd"]
 [ext_resource type="Texture2D" uid="uid://dqhpkg5sdvexr" path="res://ui/little_arrows/right_arrow.svg" id="3_l428i"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_3t1yk"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_j11sy"]
 diffuse_texture = ExtResource("2_ttxrd")
 texture_filter = 6
 
@@ -12,7 +12,7 @@ texture_filter = 6
 diffuse_texture = ExtResource("2_ttxrd")
 texture_filter = 6
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_j11sy"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_3t1yk"]
 diffuse_texture = ExtResource("2_ttxrd")
 texture_filter = 6
 
@@ -38,9 +38,9 @@ layout_mode = 2
 theme_override_constants/separation = -2
 alignment = 1
 
-[node name="LeftArrow" type="TextureRect" parent="LeftArrowHBox"]
+[node name="LeftArrow3" type="TextureRect" parent="LeftArrowHBox"]
 layout_mode = 2
-texture = SubResource("CanvasTexture_3t1yk")
+texture = SubResource("CanvasTexture_j11sy")
 expand_mode = 3
 stretch_mode = 5
 
@@ -50,9 +50,9 @@ texture = SubResource("CanvasTexture_ca4k7")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="LeftArrow3" type="TextureRect" parent="LeftArrowHBox"]
+[node name="LeftArrow1" type="TextureRect" parent="LeftArrowHBox"]
 layout_mode = 2
-texture = SubResource("CanvasTexture_j11sy")
+texture = SubResource("CanvasTexture_3t1yk")
 expand_mode = 3
 stretch_mode = 5
 
@@ -62,6 +62,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
+step = 0.001
 value = 80.0
 show_percentage = false
 
@@ -70,7 +71,7 @@ layout_mode = 2
 theme_override_constants/separation = -2
 alignment = 1
 
-[node name="RightArrow" type="TextureRect" parent="RightArrowHBox"]
+[node name="RightArrow1" type="TextureRect" parent="RightArrowHBox"]
 layout_mode = 2
 texture = SubResource("CanvasTexture_x7wt8")
 expand_mode = 3
