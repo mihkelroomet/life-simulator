@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqyy0osa1f1j3"]
+
+[ext_resource type="Texture2D" uid="uid://dqhpkg5sdvexr" path="res://ui/little_arrows/right_arrow.svg" id="1_3x7pp"]
+[ext_resource type="Script" path="res://ui/little_arrow.gd" id="2_xehbp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_x7wt8"]
+diffuse_texture = ExtResource("1_3x7pp")
+texture_filter = 6
+
+[sub_resource type="Animation" id="Animation_sekd6"]
+resource_name = "fade_in"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7htf4"]
+_data = {
+"fade_in": SubResource("Animation_sekd6")
+}
+
+[node name="RightArrow" type="TextureRect"]
+self_modulate = Color(1, 1, 1, 0)
+texture = SubResource("CanvasTexture_x7wt8")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_xehbp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_7htf4")
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

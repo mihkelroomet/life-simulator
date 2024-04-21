@@ -1,31 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://qheem5a2k11u"]
+[gd_scene load_steps=5 format=3 uid="uid://qheem5a2k11u"]
 
 [ext_resource type="Script" path="res://ui/progress_bar.gd" id="1_5w45b"]
 [ext_resource type="Texture2D" uid="uid://c5m55wjllf1fc" path="res://ui/little_arrows/left_arrow.svg" id="2_ttxrd"]
-[ext_resource type="Texture2D" uid="uid://dqhpkg5sdvexr" path="res://ui/little_arrows/right_arrow.svg" id="3_l428i"]
+[ext_resource type="PackedScene" uid="uid://dqyy0osa1f1j3" path="res://ui/little_arrow.tscn" id="3_g8h6k"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_j11sy"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_bayiw"]
 diffuse_texture = ExtResource("2_ttxrd")
-texture_filter = 6
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_ca4k7"]
-diffuse_texture = ExtResource("2_ttxrd")
-texture_filter = 6
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_3t1yk"]
-diffuse_texture = ExtResource("2_ttxrd")
-texture_filter = 6
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_x7wt8"]
-diffuse_texture = ExtResource("3_l428i")
-texture_filter = 6
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_xqe6c"]
-diffuse_texture = ExtResource("3_l428i")
-texture_filter = 6
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_blbhc"]
-diffuse_texture = ExtResource("3_l428i")
 texture_filter = 6
 
 [node name="ProgressBarHBox" type="HBoxContainer"]
@@ -38,23 +18,17 @@ layout_mode = 2
 theme_override_constants/separation = -2
 alignment = 1
 
-[node name="LeftArrow3" type="TextureRect" parent="LeftArrowHBox"]
+[node name="LeftArrow3" parent="LeftArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_j11sy")
-expand_mode = 3
-stretch_mode = 5
+texture = SubResource("CanvasTexture_bayiw")
 
-[node name="LeftArrow2" type="TextureRect" parent="LeftArrowHBox"]
+[node name="LeftArrow2" parent="LeftArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_ca4k7")
-expand_mode = 3
-stretch_mode = 5
+texture = SubResource("CanvasTexture_bayiw")
 
-[node name="LeftArrow1" type="TextureRect" parent="LeftArrowHBox"]
+[node name="LeftArrow1" parent="LeftArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_3t1yk")
-expand_mode = 3
-stretch_mode = 5
+texture = SubResource("CanvasTexture_bayiw")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 self_modulate = Color(0.64, 0.8, 0.64, 1)
@@ -71,20 +45,11 @@ layout_mode = 2
 theme_override_constants/separation = -2
 alignment = 1
 
-[node name="RightArrow1" type="TextureRect" parent="RightArrowHBox"]
+[node name="RightArrow1" parent="RightArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_x7wt8")
-expand_mode = 3
-stretch_mode = 5
 
-[node name="RightArrow2" type="TextureRect" parent="RightArrowHBox"]
+[node name="RightArrow2" parent="RightArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_xqe6c")
-expand_mode = 3
-stretch_mode = 5
 
-[node name="RightArrow3" type="TextureRect" parent="RightArrowHBox"]
+[node name="RightArrow3" parent="RightArrowHBox" instance=ExtResource("3_g8h6k")]
 layout_mode = 2
-texture = SubResource("CanvasTexture_blbhc")
-expand_mode = 3
-stretch_mode = 5
