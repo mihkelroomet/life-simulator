@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="479" height="800" viewBox="0 0 479 800">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #7acc7a;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Right_Arrow_Shape" data-name="Right Arrow Shape" class="cls-1" d="M-0.8,755.517V44.8c0-33.043,23.319-57.629,46.362-38.3,18.47,15.477,387.565,327.922,419.066,354.644,20.689,17.556,20.341,59.414,0,76.988-22.676,19.6-393.18,333.637-420.011,355.453C24.975,809.593-.8,791.918-0.8,755.517Z"/>
+</svg>

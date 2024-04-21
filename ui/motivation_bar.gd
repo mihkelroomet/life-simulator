@@ -1,6 +1,6 @@
 extends Button
 
-@onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
+@onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBarHBox/ProgressBar
 
 var min_hue : float = 0
 var max_hue : float = 0.33

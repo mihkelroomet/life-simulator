@@ -1,6 +1,6 @@
 extends Button
 
-@onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBar
+@onready var progress_bar = $MarginContainer/VBoxContainer/ProgressBarHBox/ProgressBar
 @onready var label = $MarginContainer/VBoxContainer/Label
 
 @export var need : Globals.Need

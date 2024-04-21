@@ -120,3 +120,4 @@ open_motivation_bar={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.376471, 0.333333, 0.388235, 1)
+anti_aliasing/quality/msaa_2d=3
