@@ -11,7 +11,12 @@ signal set_ongoing_activity_panel_visible(if_visible : bool)
 
 var duration_percentage : float
 var present_participle : String
+## This variable keeps track of current activity to enable switching to idle for the duration
+## of attempting to start an activity.
 var activity : Globals.Activity
+## Controls how much faster time advances during an attemp to start an activity compared to
+## regular idling.
+var attempt_speed_multiplier : float = 5.0
 
 func _ready():
 	set_game_speed.connect(Events._on_set_game_speed)
@@ -49,7 +54,7 @@ func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 			# Temporarily change activity to idle for the duration of the attempt
 			activity = Globals.current_activity
 			Globals.current_activity = Globals.Activity.IDLE
-			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED * 5.0)
+			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED * attempt_speed_multiplier)
 			set_time_is_advancing.emit(true)
 			
 			animation_player.play("attempt_activity")
