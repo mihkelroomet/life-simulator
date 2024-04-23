@@ -7,9 +7,6 @@ enum Activity {
 	NAP, SLEEP
 	}
 
-enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
-const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
-
 const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 const ActivityData = preload("res://data/activity_data.gd")
@@ -23,18 +20,6 @@ var player_can_move : bool = true
 
 var game_time : float = Time.get_unix_time_from_datetime_string("2024-09-02T08:00:00")
 
-## Current satisfaction of needs
-var need_stats : Dictionary = {
-	Need.AUTONOMY : 0.8,
-	Need.COMPETENCE : 0.8,
-	Need.RELATEDNESS : 0.8,
-	Need.NUTRITION : 0.8,
-	Need.PA : 0.8,
-	Need.SLEEP : 0.8
-}
-
-var motivation : float
-
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
 
 var activity_data : Dictionary = {
@@ -43,13 +28,13 @@ var activity_data : Dictionary = {
 		"Meet a Friend",
 		"Meeting a Friend",
 		{
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.045),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1),
-			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.01)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.045),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.01)
 		},
 		0.5, 3.0, 6.0
 	),
@@ -57,15 +42,15 @@ var activity_data : Dictionary = {
 		"Party",
 		"Partying",
 		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)])
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01)
 		},
 		0.5, 5.0, 10.0
 	),
@@ -73,13 +58,13 @@ var activity_data : Dictionary = {
 		"Walk",
 		"Walking",
 		{
-			Need.PA : CurveData.new([Vector2(0.0, 0.25), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
+			NeedManager.Need.PA : CurveData.new([Vector2(0.0, 0.25), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.18),
-			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.05)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.18),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.05)
 		},
 		0.25, 0.75, 6.0
 	),
@@ -87,12 +72,12 @@ var activity_data : Dictionary = {
 		"Moderate Jog",
 		"Jogging at a Reasonable Pace",
 		{
-			Need.PA : CurveData.new([Vector2(0.0, -0.7), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.7)])
+			NeedManager.Need.PA : CurveData.new([Vector2(0.0, -0.7), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.7)])
 		},
 		{
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.02),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.21),
-			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.2)
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.02),
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.21),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.2)
 		},
 		0.25, 0.75, 5.0
 	),
@@ -100,13 +85,13 @@ var activity_data : Dictionary = {
 		"Intense Jog",
 		"Jogging at an Intense Pace",
 		{
-			Need.PA : CurveData.new([Vector2(0.0, -0.9), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.9)])
+			NeedManager.Need.PA : CurveData.new([Vector2(0.0, -0.9), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.9)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.08),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3),
-			Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.3)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.08),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.3)
 		},
 		0.25, 0.5, 4.0
 	),
@@ -114,17 +99,17 @@ var activity_data : Dictionary = {
 		"Eat Healthy",
 		"Eating Healthy Food",
 		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(0.8, -1.0)]),
-			Need.PA : CurveData.new([Vector2(0, 0.1), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.1), Vector2(0.5, 0.0)]),
+			NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(0.8, -1.0)]),
+			NeedManager.Need.PA : CurveData.new([Vector2(0, 0.1), Vector2(0.5, 0.0)]),
+			NeedManager.Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
 		},
 		0.25, 0.25, 0.25
 	),
@@ -132,19 +117,19 @@ var activity_data : Dictionary = {
 		"Eat Junk",
 		"Eating Junk Food",
 		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -0.6)]),
-			Need.PA : CurveData.new([Vector2(0, 0.2), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.5, 1.0), Vector2(0.6, 0.0), Vector2(1.0, -0.6)]),
+			NeedManager.Need.PA : CurveData.new([Vector2(0, 0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
 		},
 		{
-			Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 1.8),
-			Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1),
-			Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3)
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 1.8),
+			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1),
+			NeedManager.Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3)
 		},
 		0.25, 0.25, 0.25
 	),
@@ -152,16 +137,16 @@ var activity_data : Dictionary = {
 		"Nap",
 		"Napping",
 		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
-			Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
+			NeedManager.Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
 		},
 		{
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.09),
-			Need.SLEEP : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.06)
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.09),
+			NeedManager.Need.SLEEP : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.06)
 		},
 		0.5, 1.75, 6.25
 	),
@@ -169,16 +154,16 @@ var activity_data : Dictionary = {
 		"Sleep",
 		"Sleeping",
 		{
-			Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
-			Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
-			Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
-			Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, -0.1), Vector2(0.3, 0.0)]),
+			NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.4, 0.0)]),
+			NeedManager.Need.PA : CurveData.new([Vector2(0.0, -0.2), Vector2(0.5, 0.0)]),
+			NeedManager.Need.SLEEP : CurveData.new([Vector2(0.3, 1.0), Vector2(0.7, -1.0)])
 		},
 		{
-			Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.09),
-			Need.SLEEP : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1)
+			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.09),
+			NeedManager.Need.SLEEP : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1)
 		},
 		7.75, 9.25, 18.25
 	)
@@ -188,8 +173,6 @@ func _ready():
 	Events.set_game_speed.connect(_on_set_game_speed)
 	Events.set_time_is_advancing.connect(_on_set_time_is_advancing)
 	Events.set_player_can_move.connect(_on_set_player_can_move)
-	Events.motivation_changed.connect(_on_motivation_changed)
-	Events.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 	
 	game_speed = DEFAULT_GAME_SPEED
 
@@ -205,14 +188,14 @@ func get_current_activity_data() -> ActivityData:
 # Returns motivation in range [0.0, 1.0] for a given activity.
 func get_motivation_for_activity(activity : Activity) -> float:
 	var current_activity_modifiers = get_activity_data(activity).modifiers
-	var motivation_for_activity = motivation
+	var motivation_for_activity = MotivationManager.motivation
 	print("\n-----\nStarting activity: '", get_activity_data(activity).display_name, "'")
 	
 	for need in current_activity_modifiers:
 		var curve_data : CurveData = current_activity_modifiers[need]
-		var motivation_modifier = curve_data.sample(need_stats[need])
+		var motivation_modifier = curve_data.sample(NeedManager.need_stats[need])
 		motivation_for_activity += motivation_modifier
-		print("Contribution of need '", NEED_NAMES[need], "': ", motivation_modifier)
+		print("Contribution of need '", NeedManager.NEED_NAMES[need], "': ", motivation_modifier)
 	
 	print("Total motivation for activity '", get_activity_data(activity).display_name, "': ", motivation_for_activity, "\n")
 	
@@ -226,9 +209,3 @@ func _on_set_time_is_advancing(if_is_advancing : bool):
 
 func _on_set_player_can_move(if_can_move : bool):
 	player_can_move = if_can_move
-
-func _on_need_satisfaction_changed(need, new_value):
-	need_stats[need] = new_value
-
-func _on_motivation_changed(new_value):
-	motivation = new_value

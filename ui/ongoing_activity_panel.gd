@@ -22,6 +22,7 @@ var current_activity_actual_duration : float
 ## Percentage of actual duration from desired duration
 var duration_percentage : float
 var present_participle : String
+## How many times faster compared to idling time advances during activity start attempt
 var attempt_speed_multiplier : float = 5.0
 
 func _ready():

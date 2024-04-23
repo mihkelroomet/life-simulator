@@ -8,7 +8,7 @@ signal set_time_is_advancing(if_is_advancing : bool)
 signal set_game_speed(speed : float)
 signal set_player_can_move(if_can_move : bool)
 
-signal need_satisfaction_changed(need : Globals.Need, new_value : float)
+signal need_satisfaction_changed(need : NeedManager.Need, new_value : float)
 signal motivation_changed(new_value : float)
 
 signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
@@ -36,7 +36,7 @@ func _on_set_time_is_advancing(if_is_advancing : bool):
 func _on_set_player_can_move(if_can_move : bool):
 	set_player_can_move.emit(if_can_move)
 
-func _on_need_satisfaction_changed(need : Globals.Need, new_value : float):
+func _on_need_satisfaction_changed(need : NeedManager.Need, new_value : float):
 	need_satisfaction_changed.emit(need, new_value)
 
 func _on_motivation_changed(new_value : float):

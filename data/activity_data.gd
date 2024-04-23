@@ -21,22 +21,22 @@ const EffectData = preload("res://data/effect_data.gd")
 # Y values range from -1.0 to 1.0
 # When overriding points can be added as an array of Vector2-s
 var default_modifiers : Dictionary = {
-	Globals.Need.AUTONOMY : CurveData.new(),
-	Globals.Need.COMPETENCE : CurveData.new(),
-	Globals.Need.RELATEDNESS : CurveData.new(),
-	Globals.Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.2, 0.0)]),
-	Globals.Need.PA : CurveData.new(),
-	Globals.Need.SLEEP : CurveData.new([Vector2(0.0, -1.0), Vector2(0.1, 0.0)])
+	NeedManager.Need.AUTONOMY : CurveData.new(),
+	NeedManager.Need.COMPETENCE : CurveData.new(),
+	NeedManager.Need.RELATEDNESS : CurveData.new(),
+	NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.0, -2.0), Vector2(0.2, 0.0)]),
+	NeedManager.Need.PA : CurveData.new(),
+	NeedManager.Need.SLEEP : CurveData.new([Vector2(0.0, -1.0), Vector2(0.1, 0.0)])
 }
 
 # Defaults correspond to the effects of idling
 var default_effects : Dictionary = {
-	Globals.Need.AUTONOMY : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.015),
-	Globals.Need.COMPETENCE : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.015),
-	Globals.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.015),
-	Globals.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.15),
-	Globals.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.025),
-	Globals.Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1)
+	NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.015),
+	NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.CENTER_PERCENTAGE, 0.015),
+	NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.015),
+	NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.15),
+	NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.025),
+	NeedManager.Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1)
 }
 
 func _init(

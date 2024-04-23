@@ -21,6 +21,7 @@ BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 Globals="*res://autoload/globals.gd"
 Events="*res://autoload/events.gd"
 NeedManager="*res://autoload/need_manager.gd"
+MotivationManager="*res://autoload/motivation_manager.gd"
 
 [display]
 
