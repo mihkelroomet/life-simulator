@@ -11,6 +11,7 @@ signal set_ongoing_activity_panel_visible(if_visible : bool)
 
 var duration_percentage : float
 var present_participle : String
+var activity : Globals.Activity
 
 func _ready():
 	set_game_speed.connect(Events._on_set_game_speed)
@@ -37,12 +38,20 @@ func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 	visible = if_visible
 	
 	if visible:
+		set_time_is_advancing.emit(false)
 		duration_percentage = Globals.current_activity_actual_duration / Globals.current_activity_desired_duration
 		present_participle = Globals.get_current_activity_data().present_participle
 		
 		# Yellow level
 		if Globals.current_activity_is_yellow_level_attempt:
 			ongoing_activity_label.text = "Attempting to start " + present_participle + "..."
+			
+			# Temporarily change activity to idle for the duration of the attempt
+			activity = Globals.current_activity
+			Globals.current_activity = Globals.Activity.IDLE
+			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED * 5.0)
+			set_time_is_advancing.emit(true)
+			
 			animation_player.play("attempt_activity")
 		
 		# Green level
@@ -52,6 +61,11 @@ func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 func _on_animation_finished(anim_name):
 	match anim_name:
 		"attempt_activity":
+			# Change the activity back from idle
+			Globals.current_activity = activity
+			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED)
+			set_time_is_advancing.emit(false)
+			
 			if duration_percentage == 0.0:
 				activity_end_label.text = "Failed to start activity!"
 				animation_player.play("show_activity_end_label")

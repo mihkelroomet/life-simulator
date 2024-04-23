@@ -22,10 +22,14 @@ func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration
 func _on_fade_out_color_rect():
 	animation_player.play("fade_out")
 
+func _on_animation_started(anim_name):
+	set_time_is_advancing.emit(false)
+
 func _on_animation_finished(anim_name):
+	set_time_is_advancing.emit(true)
+	
 	if anim_name == "fade_in":
 		set_ongoing_activity_panel_visible.emit(true)
 	elif anim_name == "fade_out":
 		stop_activity.emit()
 		set_player_can_move.emit(true)
-		set_time_is_advancing.emit(true)
