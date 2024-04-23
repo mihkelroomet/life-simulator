@@ -72,9 +72,20 @@ func ping_arrows(delta):
 		for right_arrow in right_arrows:
 			right_arrow.hide_arrow()
 
+func hide_arrows():
+	for left_arrow in left_arrows:
+		left_arrow.hide_arrow()
+	for right_arrow in right_arrows:
+		right_arrow.hide_arrow()
+
+# Sets the value of the progress bar. The input value should be in range [0.0, 1.0].
 func set_value(new_value):
 	progress_bar.value = empty_value + new_value * (progress_bar.max_value - empty_value)
 	
 	var value_percent = (progress_bar.value - empty_value) / (progress_bar.max_value - empty_value)
 	var hue = min_hue + (max_hue - min_hue) * value_percent
 	progress_bar.self_modulate = Color.from_hsv(hue, saturation, lightness_value, alpha)
+
+func reset():
+	hide_arrows()
+	last_value = -1.0

@@ -222,6 +222,7 @@ func get_activity_data(activity : Activity) -> ActivityData:
 func get_current_activity_data() -> ActivityData:
 	return get_activity_data(current_activity)
 
+# Returns motivation in range [0.0, 1.0] for a given activity.
 func get_motivation_for_activity(activity : Activity) -> float:
 	var current_activity_modifiers = get_activity_data(activity).modifiers
 	var motivation_for_activity = motivation
@@ -235,7 +236,7 @@ func get_motivation_for_activity(activity : Activity) -> float:
 	
 	print("Total motivation for activity '", get_activity_data(activity).display_name, "': ", motivation_for_activity, "\n")
 	
-	return motivation_for_activity
+	return clamp(motivation_for_activity, 0.0, 1.0)
 
 func get_motivation_for_current_activity() -> float:
 	return get_motivation_for_activity(current_activity)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=11 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="1_45lpm"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_fmce5"]
@@ -6,14 +6,16 @@
 [ext_resource type="Script" path="res://ui/activity_start_button.gd" id="4_f3dch"]
 [ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="4_o2ndf"]
 [ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="6_hb8vn"]
+[ext_resource type="Script" path="res://ui/activity_details_panel.gd" id="6_hofe1"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_cxme0"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_dlubg"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_dln8b"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_x81v1"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_lbvff"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_v3qre"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -66,16 +68,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_cxme0")
+button_group = SubResource("ButtonGroup_dlubg")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_dln8b")
+button_group = SubResource("ButtonGroup_x81v1")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_lbvff")
+button_group = SubResource("ButtonGroup_v3qre")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -117,37 +119,14 @@ script = ExtResource("4_o2ndf")
 wait_time = 3.0
 one_shot = true
 
-[node name="RightSide" type="Control" parent="MarginContainer/HBoxContainer"]
+[node name="ActivityDetailsPanel" type="Control" parent="MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+script = ExtResource("6_hofe1")
 
-[node name="ActivityDetailsVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/RightSide"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 20
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightSide/ActivityDetailsVBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"LabelSmall"
-text = "Motivation for Activity"
-
-[node name="ProgressBarHBox" parent="MarginContainer/HBoxContainer/RightSide/ActivityDetailsVBox" instance=ExtResource("6_hb8vn")]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/RightSide/ActivityDetailsVBox"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_type_variation = &"LabelSmall"
-text = "Effeccts of Activity"
-
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/RightSide"]
+[node name="InstructionLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -163,6 +142,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"LabelSmall"
 text = "Select an activity to see details"
+
+[node name="ActivityDetailsVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="MotvationForActivityVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotvationForActivityVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LabelSmall"
+text = "Motivation for Activity"
+
+[node name="MotivationForActivityProgressBar" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotvationForActivityVBox" instance=ExtResource("6_hb8vn")]
+layout_mode = 2
+
+[node name="EffectsOfActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"LabelSmall"
+text = "Effects of Activity"
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" method="_on_button_pressed"]
