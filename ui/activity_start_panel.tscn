@@ -1,19 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=10 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_start_panel.gd" id="1_45lpm"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_fmce5"]
 [ext_resource type="Script" path="res://ui/activity_duration_vbox.gd" id="3_g6u53"]
 [ext_resource type="Script" path="res://ui/activity_start_button.gd" id="4_f3dch"]
 [ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="4_o2ndf"]
+[ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="6_hb8vn"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_4q117"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_cxme0"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_wqg62"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_dln8b"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_rt2oy"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_lbvff"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -66,16 +66,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_4q117")
+button_group = SubResource("ButtonGroup_cxme0")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_wqg62")
+button_group = SubResource("ButtonGroup_dln8b")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_rt2oy")
+button_group = SubResource("ButtonGroup_lbvff")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -137,6 +137,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"LabelSmall"
 text = "Motivation for Activity"
+
+[node name="ProgressBarHBox" parent="MarginContainer/HBoxContainer/RightSide/ActivityDetailsVBox" instance=ExtResource("6_hb8vn")]
+layout_mode = 2
 
 [node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/RightSide/ActivityDetailsVBox"]
 layout_mode = 2
