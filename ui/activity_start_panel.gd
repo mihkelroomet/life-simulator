@@ -7,7 +7,7 @@ signal fade_in_color_rect
 
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
 
-@onready var radio_button_vbox = $MarginContainer/VBoxContainer/RadioButtonVBox
+@onready var radio_button_vbox = $MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox
 
 static var selected_activity : Globals.Activity
 ## Duration of selected activity in hours.
