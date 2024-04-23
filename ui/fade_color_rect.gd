@@ -22,7 +22,7 @@ func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration
 func _on_fade_out_color_rect():
 	animation_player.play("fade_out")
 
-func _on_animation_started(anim_name):
+func _on_animation_started(_anim_name):
 	set_time_is_advancing.emit(false)
 
 func _on_animation_finished(anim_name):

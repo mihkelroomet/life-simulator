@@ -1,14 +1,8 @@
 extends CheckBox
 
-const ActivityStartPanel = preload("res://ui/activity_start_panel.gd")
-
-signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
+signal activity_select_button_pressed(activity : Globals.Activity)
 
 @export var activity : Globals.Activity
 
-func _ready():
-	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
-
 func _on_button_pressed():
-	if activity != ActivityStartPanel.selected_activity:
-		set_activity_start_panel_selected_activity.emit(activity)
+	activity_select_button_pressed.emit(activity)

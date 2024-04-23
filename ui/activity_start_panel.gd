@@ -2,6 +2,7 @@ extends PanelContainer
 
 signal set_time_is_advancing(if_is_advancing : bool)
 signal set_player_can_move(if_can_move : bool)
+signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
 
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
 const CustomProgressBar = preload("res://ui/progress_bar.gd")
@@ -16,6 +17,7 @@ static var selected_duration : float
 func _ready():
 	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
 	set_player_can_move.connect(Events._on_set_player_can_move)
+	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
 	Events.start_activity.connect(_on_start_activity)
 	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
 	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
@@ -40,6 +42,7 @@ func set_activities(activities : Array[Globals.Activity]):
 	clear_radio_buttons()
 	for activity in activities:
 		var activity_select_button = ActivitySelectButton.instantiate()
+		activity_select_button.activity_select_button_pressed.connect(_on_activity_select_button_pressed)
 		# The space at the end is to fix the alignment of the text, which gets offset by an
 		# invisible icon on the left. I couldn't find a better solution quickly enough.
 		activity_select_button.text = Globals.get_activity_data(activity).display_name + " "
@@ -56,6 +59,10 @@ func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration
 
 func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):
 	toggle_panel(if_visible, activities)
+
+func _on_activity_select_button_pressed(activity : Globals.Activity):
+	if activity != selected_activity:
+		set_activity_start_panel_selected_activity.emit(activity)
 
 func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
 	selected_activity = activity
