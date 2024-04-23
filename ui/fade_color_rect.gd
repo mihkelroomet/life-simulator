@@ -26,10 +26,9 @@ func _on_animation_started(_anim_name):
 	set_time_is_advancing.emit(false)
 
 func _on_animation_finished(anim_name):
-	set_time_is_advancing.emit(true)
-	
 	if anim_name == "fade_in":
 		set_ongoing_activity_panel_visible.emit(true)
 	elif anim_name == "fade_out":
-		stop_activity.emit()
+		set_time_is_advancing.emit(true)
 		set_player_can_move.emit(true)
+		stop_activity.emit()

@@ -36,12 +36,6 @@ var need_stats : Dictionary = {
 var motivation : float
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
-## Duration of current activity in hours.
-var current_activity_desired_duration : float
-## If the current activity is only being attempted and isn't neccessarily going to be
-## carried out fully.
-var current_activity_is_yellow_level_attempt : bool
-var current_activity_actual_duration : float
 
 var activity_data : Dictionary = {
 	Activity.IDLE : ActivityData.new(),
@@ -191,8 +185,6 @@ var activity_data : Dictionary = {
 }
 
 func _ready():
-	Events.start_activity.connect(_on_start_activity)
-	Events.stop_activity.connect(_on_stop_activity)
 	Events.set_game_speed.connect(_on_set_game_speed)
 	Events.set_time_is_advancing.connect(_on_set_time_is_advancing)
 	Events.set_player_can_move.connect(_on_set_player_can_move)
@@ -200,18 +192,6 @@ func _ready():
 	Events.need_satisfaction_changed.connect(_on_need_satisfaction_changed)
 	
 	game_speed = DEFAULT_GAME_SPEED
-
-func _on_start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float):
-	current_activity = activity
-	current_activity_desired_duration = activity_desired_duration
-	current_activity_is_yellow_level_attempt = is_yellow_level_attempt
-	current_activity_actual_duration = activity_actual_duration
-
-func _on_stop_activity():
-	current_activity = Activity.IDLE
-	current_activity_desired_duration = 0.0
-	current_activity_is_yellow_level_attempt = false
-	current_activity_actual_duration = 0.0
 
 func _on_set_game_speed(speed : float):
 	game_speed = speed

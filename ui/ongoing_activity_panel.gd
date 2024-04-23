@@ -9,13 +9,19 @@ signal set_ongoing_activity_panel_visible(if_visible : bool)
 @onready var activity_end_label = $PanelContainer/MarginContainer/VBoxContainer2/ActivityEndLabel
 @onready var animation_player = $AnimationPlayer
 
-var duration_percentage : float
-var present_participle : String
-## This variable keeps track of current activity to enable switching to idle for the duration
-## of attempting to start an activity.
-var activity : Globals.Activity
+var current_activity : Globals.Activity
+## Duration of current activity in hours.
+var current_activity_desired_duration : float
+## If the current activity is only being attempted and isn't neccessarily going to be
+## carried out fully.
+var current_activity_is_yellow_level_attempt : bool
+var current_activity_actual_duration : float
 ## Controls how much faster time advances during an attemp to start an activity compared to
 ## regular idling.
+
+## Percentage of actual duration from desired duration
+var duration_percentage : float
+var present_participle : String
 var attempt_speed_multiplier : float = 5.0
 
 func _ready():
@@ -23,6 +29,7 @@ func _ready():
 	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
 	fade_out_color_rect.connect(Events._on_fade_out_color_rect)
 	set_ongoing_activity_panel_visible.connect(Events._on_set_ongoing_activity_panel_visible)
+	Events.start_activity.connect(_on_start_activity)
 	Events.set_ongoing_activity_panel_visible.connect(_on_set_ongoing_activity_panel_visible)
 
 func play_do_activity_animation():
@@ -33,27 +40,31 @@ func play_do_activity_animation():
 	
 	ongoing_activity_label.text = present_participle + "..."
 	
+	Globals.current_activity = current_activity
+	
 	# This assumes the full "do_activity" animation takes 1 second
-	set_game_speed.emit(Globals.current_activity_desired_duration * 3600.0)
+	set_game_speed.emit(current_activity_desired_duration * 3600.0)
 	set_time_is_advancing.emit(true)
 	
 	animation_player.play("do_activity")
+
+func _on_start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float):
+	current_activity = activity
+	current_activity_desired_duration = activity_desired_duration
+	current_activity_is_yellow_level_attempt = is_yellow_level_attempt
+	current_activity_actual_duration = activity_actual_duration
 
 func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 	visible = if_visible
 	
 	if visible:
-		set_time_is_advancing.emit(false)
-		duration_percentage = Globals.current_activity_actual_duration / Globals.current_activity_desired_duration
-		present_participle = Globals.get_current_activity_data().present_participle
+		duration_percentage = current_activity_actual_duration / current_activity_desired_duration
+		present_participle = Globals.get_activity_data(current_activity).present_participle
 		
 		# Yellow level
-		if Globals.current_activity_is_yellow_level_attempt:
+		if current_activity_is_yellow_level_attempt:
 			ongoing_activity_label.text = "Attempting to start " + present_participle + "..."
 			
-			# Temporarily change activity to idle for the duration of the attempt
-			activity = Globals.current_activity
-			Globals.current_activity = Globals.Activity.IDLE
 			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED * attempt_speed_multiplier)
 			set_time_is_advancing.emit(true)
 			
@@ -66,24 +77,26 @@ func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 func _on_animation_finished(anim_name):
 	match anim_name:
 		"attempt_activity":
-			# Change the activity back from idle
-			Globals.current_activity = activity
-			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED)
-			set_time_is_advancing.emit(false)
-			
 			if duration_percentage == 0.0:
+				set_game_speed.emit(Globals.DEFAULT_GAME_SPEED)
+				set_time_is_advancing.emit(false)
 				activity_end_label.text = "Failed to start activity!"
 				animation_player.play("show_activity_end_label")
 			else:
 				play_do_activity_animation()
+		
 		"do_activity":
+			Globals.current_activity = Globals.Activity.IDLE
 			set_game_speed.emit(Globals.DEFAULT_GAME_SPEED)
 			set_time_is_advancing.emit(false)
+			
 			if duration_percentage > 0.98:
 				activity_end_label.text = "Done!"
 			else:
 				activity_end_label.text = "You have had enough of " + present_participle
+			
 			animation_player.play("show_activity_end_label")
+		
 		"show_activity_end_label":
 			set_ongoing_activity_panel_visible.emit(false)
 			fade_out_color_rect.emit()
