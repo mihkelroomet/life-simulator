@@ -1,7 +1,8 @@
-[gd_scene load_steps=81 format=3 uid="uid://c8ieuj63kkhvo"]
+[gd_scene load_steps=82 format=3 uid="uid://c8ieuj63kkhvo"]
 
 [ext_resource type="Texture2D" uid="uid://l6ogynub8g1b" path="res://player/Carmine_48.png" id="1_r0y5k"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_t4sbe"]
+[ext_resource type="PackedScene" uid="uid://clugahqoommet" path="res://ui/hotkey_popup_panel.tscn" id="3_v3uru"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdcq3"]
 atlas = ExtResource("1_r0y5k")
@@ -736,3 +737,50 @@ parameters/idle/TimeScale/scale = 1.0
 parameters/idle/idle_bs2d/blend_position = Vector2(0, 1)
 parameters/move/TimeScale/scale = 1.0
 parameters/move/move_bs2d/blend_position = Vector2(0, 0)
+
+[node name="WASDMarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -56.5
+offset_top = -76.0
+offset_right = 56.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 70
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WASDMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="HotkeyPopupPanel" parent="WASDMarginContainer/VBoxContainer" instance=ExtResource("3_v3uru")]
+visible = true
+layout_mode = 2
+label_text = "W"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WASDMarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 0
+
+[node name="HotkeyPopupPanel" parent="WASDMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_v3uru")]
+visible = true
+layout_mode = 2
+label_text = "A"
+
+[node name="HotkeyPopupPanel2" parent="WASDMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_v3uru")]
+visible = true
+layout_mode = 2
+label_text = "S"
+
+[node name="HotkeyPopupPanel3" parent="WASDMarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("3_v3uru")]
+visible = true
+layout_mode = 2
+label_text = "D"

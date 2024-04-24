@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="6_hb8vn"]
 [ext_resource type="Script" path="res://ui/activity_details_panel.gd" id="6_hofe1"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_uy58b"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_oy2tg"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_e1hgx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mp4fv"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_4rnnp"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_gosg7"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
 visible = false
@@ -69,16 +69,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_uy58b")
+button_group = SubResource("ButtonGroup_oy2tg")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_e1hgx")
+button_group = SubResource("ButtonGroup_mp4fv")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_4rnnp")
+button_group = SubResource("ButtonGroup_gosg7")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -174,6 +174,7 @@ text = "Motivation for Activity"
 layout_mode = 2
 
 [node name="EffectsOfActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"LabelSmall"

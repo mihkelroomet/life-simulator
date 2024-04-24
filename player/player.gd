@@ -18,6 +18,7 @@ var state : PlayerState = PlayerState.IDLE
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
+@onready var wasd_margin_container = $WASDMarginContainer
 
 var blend_position : Vector2 = Vector2(0, 1) # look down at start
 var blend_pos_paths = [
@@ -44,6 +45,7 @@ func move(delta):
 		state = PlayerState.IDLE
 		apply_friction(FRICTION * delta)
 	else:
+		wasd_margin_container.visible = false
 		state = PlayerState.MOVE
 		apply_movement(input_vector * adjust_for_motivation(ACCELERATION) * delta)
 		blend_position = input_vector
