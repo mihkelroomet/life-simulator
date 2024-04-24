@@ -2,12 +2,19 @@
 
 extends CharacterBody2D
 
+enum PlayerState {IDLE, MOVE}
+
+const CurveData = preload("res://data/curve_data.gd")
+
 const ACCELERATION = 2000
 const FRICTION = 2000
 const MAX_SPEED = 300
 
-enum {IDLE, MOVE}
-var state = IDLE
+## Controls how motivation affects movement. Acceleration and speed get
+## multiplied by this.
+var motivation_speed_modifier : CurveData = CurveData.new([Vector2(0.0, 0.5), Vector2(0.5, 1.0)])
+
+var state : PlayerState = PlayerState.IDLE
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree["parameters/playback"]
@@ -34,11 +41,11 @@ func move(delta):
 	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
 	if input_vector == Vector2.ZERO:
-		state = IDLE
+		state = PlayerState.IDLE
 		apply_friction(FRICTION * delta)
 	else:
-		state = MOVE
-		apply_movement(input_vector * ACCELERATION * delta)
+		state = PlayerState.MOVE
+		apply_movement(input_vector * adjust_for_motivation(ACCELERATION) * delta)
 		blend_position = input_vector
 	
 	move_and_slide()
@@ -51,7 +58,10 @@ func apply_friction(amount) -> void:
 
 func apply_movement(amount) -> void:
 	velocity += amount
-	velocity = velocity.limit_length(MAX_SPEED)
+	velocity = velocity.limit_length(adjust_for_motivation(MAX_SPEED))
+
+func adjust_for_motivation(amount : float):
+	return amount * motivation_speed_modifier.sample(MotivationManager.motivation)
 
 func animate() -> void:
 	state_machine.travel(animation_tree_state_keys[state])
@@ -59,5 +69,5 @@ func animate() -> void:
 
 func _on_set_player_can_move(can_move : bool):
 	if !can_move:
-		state = IDLE
+		state = PlayerState.IDLE
 		velocity = Vector2.ZERO
