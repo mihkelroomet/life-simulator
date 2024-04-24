@@ -2,6 +2,7 @@ extends Node
 
 ## How many times faster game time advances compared to real time.
 const DEFAULT_GAME_SPEED : float = 150.0
+
 var game_speed : float
 
 var time_is_advancing : bool = true

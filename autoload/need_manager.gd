@@ -1,10 +1,10 @@
 extends Node
 
-enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
-
 signal need_satisfaction_changed(need : Need, new_value : float)
 
 const EffectData = preload("res://data/effect_data.gd")
+
+enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 
 const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
 

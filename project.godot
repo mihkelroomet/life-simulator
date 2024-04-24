@@ -23,6 +23,7 @@ Events="*res://autoload/events.gd"
 NeedManager="*res://autoload/need_manager.gd"
 MotivationManager="*res://autoload/motivation_manager.gd"
 ActivityManager="*res://autoload/activitiy_manager.gd"
+TimeUtils="*res://autoload/time_utils.gd"
 
 [display]
 

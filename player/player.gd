@@ -2,9 +2,9 @@
 
 extends CharacterBody2D
 
-enum PlayerState {IDLE, MOVE}
-
 const CurveData = preload("res://data/curve_data.gd")
+
+enum PlayerState {IDLE, MOVE}
 
 const ACCELERATION = 2000
 const FRICTION = 2000

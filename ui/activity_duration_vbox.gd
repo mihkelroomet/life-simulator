@@ -2,8 +2,11 @@ extends VBoxContainer
 
 signal set_activity_start_panel_selected_duration(duration : int)
 
+const OngoingActivityPanel = preload("res://ui/ongoing_activity_panel.gd")
+
 @onready var activity_duration_label = $ActivityDurationLabel
 @onready var activity_duration_slider = $ActivityDurationSlider
+@onready var estimated_completion_time_label = $EstimatedCompletionTimeLabel
 
 func _ready():
 	set_activity_start_panel_selected_duration.connect(Events._on_set_activity_start_panel_selected_duration)
@@ -23,6 +26,17 @@ func set_duration(quarters_of_hour : int):
 	
 	set_activity_start_panel_selected_duration.emit(quarters_of_hour / 4.0)
 
+func update_estimated_completion_time(selected_activity : ActivityManager.Activity):
+	var completion_time = GameManager.game_time + activity_duration_slider.value * 15 * 60
+	
+	# Adjusting for yellow level if necessary. On yellow level it takes a little bit of
+	# time to start the activity.
+	var motivation_for_activity = ActivityManager.get_motivation_for_activity(selected_activity)
+	if motivation_for_activity > 0.0 and motivation_for_activity < 1.0:
+		completion_time += ActivityManager.activity_attempt_length * ActivityManager.activity_attempt_speed_multiplier * GameManager.DEFAULT_GAME_SPEED
+	
+	estimated_completion_time_label.text = "Estimated time of completion: " + TimeUtils.get_time_from_unix_time(completion_time)
+
 func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
 	if p_visible:
 		activity_duration_slider.min_value = 0
@@ -30,6 +44,8 @@ func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[
 		activity_duration_slider.value = 0
 		activity_duration_slider.editable = false
 		activity_duration_label.text = "?h ?min"
+		
+		estimated_completion_time_label.text = ""
 
 func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.Activity):
 	var activity_data = ActivityManager.get_activity_data(activity)

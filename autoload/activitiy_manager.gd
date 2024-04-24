@@ -12,6 +12,11 @@ enum Activity {
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
 
+## Controls duration of activity attempt at yellow level
+var activity_attempt_length : float = 1.0
+## Controls how much faster the game runs during a yellow level activity attempt compared to idling.
+var activity_attempt_speed_multiplier : float = 5.0
+
 func get_activity_data(activity : Activity) -> ActivityData:
 	return Activities.activities[activity]
 

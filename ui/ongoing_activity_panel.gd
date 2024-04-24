@@ -16,14 +16,12 @@ var current_activity_desired_duration : float
 ## carried out fully.
 var current_activity_is_yellow_level_attempt : bool
 var current_activity_actual_duration : float
-## Controls how much faster time advances during an attemp to start an activity compared to
+## Controls how much faster time advances during an attempt to start an activity compared to
 ## regular idling.
 
 ## Percentage of actual duration from desired duration
 var duration_percentage : float
 var present_participle : String
-## How many times faster compared to idling time advances during activity start attempt
-var attempt_speed_multiplier : float = 5.0
 
 func _ready():
 	set_game_speed.connect(Events._on_set_game_speed)
@@ -32,6 +30,8 @@ func _ready():
 	set_ongoing_activity_panel_visible.connect(Events._on_set_ongoing_activity_panel_visible)
 	Events.start_activity.connect(_on_start_activity)
 	Events.set_ongoing_activity_panel_visible.connect(_on_set_ongoing_activity_panel_visible)
+	
+	animation_player.get_animation("attempt_activity").length = ActivityManager.activity_attempt_length
 
 func play_do_activity_animation():
 	var do_activity_animation : Animation = animation_player.get_animation("do_activity")
@@ -66,7 +66,7 @@ func _on_set_ongoing_activity_panel_visible(p_visible : bool):
 		if current_activity_is_yellow_level_attempt:
 			ongoing_activity_label.text = "Attempting to start " + present_participle + "..."
 			
-			set_game_speed.emit(GameManager.DEFAULT_GAME_SPEED * attempt_speed_multiplier)
+			set_game_speed.emit(GameManager.DEFAULT_GAME_SPEED * ActivityManager.activity_attempt_speed_multiplier)
 			set_time_is_advancing.emit(true)
 			
 			animation_player.play("attempt_activity")
