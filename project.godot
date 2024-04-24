@@ -18,10 +18,11 @@ config/icon="res://icon.svg"
 [autoload]
 
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
-Globals="*res://autoload/globals.gd"
+GameManager="*res://autoload/game_manager.gd"
 Events="*res://autoload/events.gd"
 NeedManager="*res://autoload/need_manager.gd"
 MotivationManager="*res://autoload/motivation_manager.gd"
+ActivityManager="*res://autoload/activitiy_manager.gd"
 
 [display]
 

@@ -21,8 +21,8 @@ func _on_set_time_is_advancing(if_is_advancing : bool):
 	timer.paused = !if_is_advancing
 
 func _on_timer_timeout():
-	Globals.game_time += timer.wait_time * Globals.game_speed
-	set_time(Globals.game_time)
+	GameManager.game_time += timer.wait_time * GameManager.game_speed
+	set_time(GameManager.game_time)
 	
 func get_time_from_datetime_dict(datetime_dict):
 	var hour = datetime_dict["hour"]

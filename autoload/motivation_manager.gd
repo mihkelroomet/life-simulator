@@ -14,7 +14,7 @@ func _ready():
 	motivation_changed.connect(Events._on_motivation_changed)
 
 func _process(_delta):
-	if Globals.time_is_advancing:
+	if GameManager.time_is_advancing:
 		update_motivation()
 
 func update_motivation():

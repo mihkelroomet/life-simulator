@@ -16,7 +16,7 @@ func _on_motivation_changed(new_value):
 func _on_set_ongoing_activity_panel_visible(if_visible : bool):
 	toggled.emit(if_visible)
 
-func _on_start_activity(_activity : Globals.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
+func _on_start_activity(_activity : ActivityManager.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	disabled = true
 
 func _on_stop_activity():

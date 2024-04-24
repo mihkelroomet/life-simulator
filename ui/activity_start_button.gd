@@ -1,6 +1,6 @@
 extends Button
 
-signal start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float)
+signal start_activity(activity : ActivityManager.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float)
 signal fail_to_start_activity
 
 const CurveData = preload("res://data/curve_data.gd")
@@ -16,8 +16,8 @@ func _on_button_pressed():
 	var selected_activity = ActivityStartPanel.selected_activity
 	var selected_duration = ActivityStartPanel.selected_duration
 	
-	if selected_activity != Globals.Activity.IDLE and selected_duration > 0.0:
-		var motivation_for_selected_activity = Globals.get_motivation_for_activity(selected_activity)
+	if selected_activity != ActivityManager.Activity.IDLE and selected_duration > 0.0:
+		var motivation_for_selected_activity = ActivityManager.get_motivation_for_activity(selected_activity)
 		
 		# Green level: can always do activity
 		if motivation_for_selected_activity >= 1.0:
@@ -44,7 +44,7 @@ func _on_button_pressed():
 			var actual_duration = selected_duration * outcome
 			
 			# If the activity is performed, it will take at least its min duration.
-			var selected_activity_min_duration = Globals.get_activity_data(selected_activity).min_duration
+			var selected_activity_min_duration = ActivityManager.get_activity_data(selected_activity).min_duration
 			if actual_duration > 0.0 and actual_duration < selected_activity_min_duration:
 				actual_duration = selected_activity_min_duration
 			

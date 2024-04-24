@@ -23,7 +23,7 @@ func set_duration(quarters_of_hour : int):
 	
 	set_activity_start_panel_selected_duration.emit(quarters_of_hour / 4.0)
 
-func _on_set_activity_start_panel_visible(if_visible : bool, _activities : Array[Globals.Activity]):
+func _on_set_activity_start_panel_visible(if_visible : bool, _activities : Array[ActivityManager.Activity]):
 	if if_visible:
 		activity_duration_slider.min_value = 0
 		activity_duration_slider.max_value = 1
@@ -31,8 +31,8 @@ func _on_set_activity_start_panel_visible(if_visible : bool, _activities : Array
 		activity_duration_slider.editable = false
 		activity_duration_label.text = "?h ?min"
 
-func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
-	var activity_data = Globals.get_activity_data(activity)
+func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.Activity):
+	var activity_data = ActivityManager.get_activity_data(activity)
 	
 	var min_quarters_of_hour = round(activity_data.min_duration / 0.25)
 	var max_quarters_of_hour = round(activity_data.max_duration / 0.25)

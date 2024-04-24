@@ -1,6 +1,6 @@
 extends Node
 
-signal start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float)
+signal start_activity(activity : ActivityManager.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool, activity_actual_duration : float)
 signal fail_to_start_activity
 signal stop_activity
 
@@ -11,14 +11,14 @@ signal set_player_can_move(if_can_move : bool)
 signal need_satisfaction_changed(need : NeedManager.Need, new_value : float)
 signal motivation_changed(new_value : float)
 
-signal set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity])
-signal set_activity_start_panel_selected_activity(activity : Globals.Activity)
+signal set_activity_start_panel_visible(if_visible : bool, activities : Array[ActivityManager.Activity])
+signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 signal set_activity_start_panel_selected_duration(duration : float)
 signal set_ongoing_activity_panel_visible(if_visible : bool)
 
 signal fade_out_color_rect
 
-func _on_start_activity(activity : Globals.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool = false, activity_actual_duration : float = activity_desired_duration):
+func _on_start_activity(activity : ActivityManager.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool = false, activity_actual_duration : float = activity_desired_duration):
 	start_activity.emit(activity, activity_desired_duration, is_yellow_level_attempt, activity_actual_duration)
 
 func _on_fail_to_start_activity():
@@ -42,10 +42,10 @@ func _on_need_satisfaction_changed(need : NeedManager.Need, new_value : float):
 func _on_motivation_changed(new_value : float):
 	motivation_changed.emit(new_value)
 
-func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[Globals.Activity]):
+func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[ActivityManager.Activity]):
 	set_activity_start_panel_visible.emit(if_visible, activities)
 
-func _on_set_activity_start_panel_selected_activity(activity : Globals.Activity):
+func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.Activity):
 	set_activity_start_panel_selected_activity.emit(activity)
 
 func _on_set_activity_start_panel_selected_duration(duration : float):

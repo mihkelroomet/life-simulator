@@ -22,8 +22,8 @@ func _ready():
 	need_satisfaction_changed.connect(Events._on_need_satisfaction_changed)
 
 func _process(delta):
-	if Globals.time_is_advancing:
-		var game_hours_elapsed = delta * Globals.game_speed / 3600
+	if GameManager.time_is_advancing:
+		var game_hours_elapsed = delta * GameManager.game_speed / 3600
 		update_needs(game_hours_elapsed)
 
 func update_needs(game_hours_elapsed):
@@ -32,7 +32,7 @@ func update_needs(game_hours_elapsed):
 
 func update_need(need, game_hours_elapsed):
 	# The effect the current activity has on the need
-	var effect_data : EffectData = Globals.get_current_activity_data().effects[need]
+	var effect_data : EffectData = ActivityManager.get_current_activity_data().effects[need]
 	var current_need_satisfaction = need_stats[need]
 	
 	# The value the need change calculation is based on

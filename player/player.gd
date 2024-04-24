@@ -26,7 +26,7 @@ func _ready():
 	Events.set_player_can_move.connect(_on_set_player_can_move)
 
 func _physics_process(delta):
-	if Globals.player_can_move:
+	if GameManager.player_can_move:
 		move(delta)
 	animate()
 
