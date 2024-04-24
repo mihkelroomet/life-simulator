@@ -55,10 +55,10 @@ func _on_start_activity(activity : ActivityManager.Activity, activity_desired_du
 	current_activity_is_yellow_level_attempt = is_yellow_level_attempt
 	current_activity_actual_duration = activity_actual_duration
 
-func _on_set_ongoing_activity_panel_visible(if_visible : bool):
-	visible = if_visible
+func _on_set_ongoing_activity_panel_visible(p_visible : bool):
+	visible = p_visible
 	
-	if visible:
+	if p_visible:
 		duration_percentage = current_activity_actual_duration / current_activity_desired_duration
 		present_participle = ActivityManager.get_activity_data(current_activity).present_participle
 		

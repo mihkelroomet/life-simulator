@@ -23,8 +23,8 @@ func set_duration(quarters_of_hour : int):
 	
 	set_activity_start_panel_selected_duration.emit(quarters_of_hour / 4.0)
 
-func _on_set_activity_start_panel_visible(if_visible : bool, _activities : Array[ActivityManager.Activity]):
-	if if_visible:
+func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
+	if p_visible:
 		activity_duration_slider.min_value = 0
 		activity_duration_slider.max_value = 1
 		activity_duration_slider.value = 0

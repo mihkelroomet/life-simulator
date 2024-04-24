@@ -8,11 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="6_hb8vn"]
 [ext_resource type="Script" path="res://ui/activity_details_panel.gd" id="6_hofe1"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_dlubg"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_f6j40"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_x81v1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6al66"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_v3qre"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ksjv4"]
 
 [node name="ActivityStartPanel" type="PanelContainer"]
 visible = false
@@ -41,6 +41,7 @@ layout_mode = 2
 theme_override_constants/separation = 80
 
 [node name="ActivitySelectVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(470, 0)
 layout_mode = 2
 theme_override_constants/separation = 40
 
@@ -68,16 +69,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_dlubg")
+button_group = SubResource("ButtonGroup_f6j40")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_x81v1")
+button_group = SubResource("ButtonGroup_6al66")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_fmce5")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_v3qre")
+button_group = SubResource("ButtonGroup_ksjv4")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -95,6 +96,13 @@ vertical_alignment = 1
 layout_mode = 2
 mouse_default_cursor_shape = 2
 value = 20.0
+
+[node name="ActivityDurationLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "Estimated time of completion: 11:20 AM"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
 custom_minimum_size = Vector2(461, 92)

@@ -1,6 +1,6 @@
 extends Node
 
-signal set_activity_start_panel_visible(if_visible : bool, activities : Array[ActivityManager.Activity])
+signal set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity])
 
 @onready var hotkey_popup_panel = $HotkeyPopupPanel
 

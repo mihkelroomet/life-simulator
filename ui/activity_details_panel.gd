@@ -14,8 +14,8 @@ func toggle_panel(toggled_on : bool):
 	instruction_label.visible = !toggled_on
 	activity_details_vbox.visible = toggled_on
 
-func _on_set_activity_start_panel_visible(if_visible : bool, _activities : Array[ActivityManager.Activity]):
-	if if_visible:
+func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
+	if p_visible:
 		toggle_panel(false)
 
 func _on_set_activity_start_panel_selected_activity(_activity : ActivityManager.Activity):

@@ -1,9 +1,9 @@
 extends Control
 
 signal stop_activity
-signal set_player_can_move(if_can_move : bool)
-signal set_time_is_advancing(if_advancing : bool)
-signal set_ongoing_activity_panel_visible(if_visible : bool)
+signal set_player_can_move(can_move : bool)
+signal set_time_is_advancing(is_advancing : bool)
+signal set_ongoing_activity_panel_visible(is_visible : bool)
 
 @onready var color_rect = $ColorRect
 @onready var animation_player = $AnimationPlayer

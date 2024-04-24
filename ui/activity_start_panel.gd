@@ -1,7 +1,7 @@
 extends PanelContainer
 
-signal set_time_is_advancing(if_is_advancing : bool)
-signal set_player_can_move(if_can_move : bool)
+signal set_time_is_advancing(is_advancing : bool)
+signal set_player_can_move(can_move : bool)
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
@@ -30,11 +30,11 @@ func _process(_delta):
 	if visible and selected_activity != ActivityManager.Activity.IDLE:
 		motivation_for_activity_progress_bar.set_value(ActivityManager.get_motivation_for_activity(selected_activity))
 
-func toggle_panel(if_toggled_open : bool, activities : Array[ActivityManager.Activity]):
-	visible = if_toggled_open
+func toggle_panel(toggled_open : bool, activities : Array[ActivityManager.Activity]):
+	visible = toggled_open
 	#set_time_is_advancing.emit(!if_toggled_open)
-	set_player_can_move.emit(!if_toggled_open)
-	if if_toggled_open:
+	set_player_can_move.emit(!toggled_open)
+	if toggled_open:
 		selected_activity = ActivityManager.Activity.IDLE # Essentially a reset
 		set_activities(activities)
 
@@ -57,8 +57,8 @@ func clear_radio_buttons():
 func _on_start_activity(_activity : ActivityManager.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	visible = false
 
-func _on_set_activity_start_panel_visible(if_visible : bool, activities : Array[ActivityManager.Activity]):
-	toggle_panel(if_visible, activities)
+func _on_set_activity_start_panel_visible(p_visible : bool, activities : Array[ActivityManager.Activity]):
+	toggle_panel(p_visible, activities)
 
 func _on_activity_select_button_pressed(activity : ActivityManager.Activity):
 	if activity != selected_activity:

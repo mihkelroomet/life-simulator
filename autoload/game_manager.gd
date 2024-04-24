@@ -19,8 +19,8 @@ func _ready():
 func _on_set_game_speed(speed : float):
 	game_speed = speed
 
-func _on_set_time_is_advancing(if_is_advancing : bool):
-	time_is_advancing = if_is_advancing
+func _on_set_time_is_advancing(is_advancing : bool):
+	time_is_advancing = is_advancing
 
-func _on_set_player_can_move(if_can_move : bool):
-	player_can_move = if_can_move
+func _on_set_player_can_move(can_move : bool):
+	player_can_move = can_move

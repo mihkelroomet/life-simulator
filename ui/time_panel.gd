@@ -17,8 +17,8 @@ func set_time(unix_time):
 	day_of_week_label.text = WEEKDAYS[datetime_dict["weekday"]]
 	day_of_year_label.text = get_day_of_year_from_datetime_dict(datetime_dict)
 
-func _on_set_time_is_advancing(if_is_advancing : bool):
-	timer.paused = !if_is_advancing
+func _on_set_time_is_advancing(is_advancing : bool):
+	timer.paused = !is_advancing
 
 func _on_timer_timeout():
 	GameManager.game_time += timer.wait_time * GameManager.game_speed
