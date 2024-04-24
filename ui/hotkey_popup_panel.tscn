@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://clugahqoommet"]
+
+[ext_resource type="Script" path="res://ui/hotkey_popup_panel.gd" id="1_4hhln"]
+
+[node name="HotkeyPopupPanel" type="PanelContainer"]
+visible = false
+offset_right = 35.0
+offset_bottom = 36.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_4hhln")
+label_text = "E"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1

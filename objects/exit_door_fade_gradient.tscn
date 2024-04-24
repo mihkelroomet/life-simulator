@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcbh0msfwickm"]
+[gd_scene load_steps=6 format=3 uid="uid://dcbh0msfwickm"]
 
 [ext_resource type="Script" path="res://objects/activity_start_area.gd" id="1_jd2ht"]
+[ext_resource type="PackedScene" uid="uid://clugahqoommet" path="res://ui/hotkey_popup_panel.tscn" id="2_8navx"]
 
 [sub_resource type="Gradient" id="Gradient_pwdp8"]
 offsets = PackedFloat32Array(0, 0.214286, 1)
@@ -28,22 +29,11 @@ activities = Array[int]([1, 2, 3, 4, 5])
 position = Vector2(8.5, 0)
 shape = SubResource("RectangleShape2D_fqajw")
 
-[node name="HotkeyPopupPanel" type="PanelContainer" parent="Area2D"]
-visible = false
+[node name="HotkeyPopupPanel" parent="Area2D" instance=ExtResource("2_8navx")]
 offset_left = -34.0
 offset_top = -51.0
 offset_right = 3.0
 offset_bottom = -13.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Area2D/HotkeyPopupPanel"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_right = 10
-
-[node name="Label" type="Label" parent="Area2D/HotkeyPopupPanel/MarginContainer"]
-layout_mode = 2
-theme_type_variation = &"LabelSmall"
-text = "E"
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="Area2D" method="_on_body_exited"]

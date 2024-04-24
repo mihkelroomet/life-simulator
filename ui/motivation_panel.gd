@@ -1,5 +1,8 @@
 extends MarginContainer
 
+const HotkeyPopupPanel = preload("res://ui/hotkey_popup_panel.gd")
+
+@onready var hotkey_popup_panel : HotkeyPopupPanel = $VBoxContainer/HotkeyPopupPanel
 @onready var expanding_bars = $VBoxContainer/ExpandingBars
 
 ## Whether the user last decided to open or close the panel.
@@ -17,6 +20,8 @@ func _process(_delta):
 		toggle_motivation_bar(toggled_open)
 
 func toggle_motivation_bar(toggled_open):
+	hotkey_popup_panel.show_hotkey(false)
+	hotkey_popup_panel.can_become_visible = !toggled_open
 	# The second case is for keeping the panel open if the user had it open before activity start
 	expanding_bars.visible = toggled_open or !toggled_open and !user_can_toggle_panel and panel_opened_by_user
 	if user_can_toggle_panel:
@@ -30,3 +35,9 @@ func _on_start_activity(_activity : ActivityManager.Activity, _activity_desired_
 
 func _on_stop_activity():
 	user_can_toggle_panel = true
+
+func _on_motivation_bar_mouse_entered():
+	hotkey_popup_panel.show_hotkey(true)
+
+func _on_motivation_bar_mouse_exited():
+	hotkey_popup_panel.show_hotkey(false)
