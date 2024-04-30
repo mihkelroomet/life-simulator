@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cg06n8hdu53wk" path="res://ui/ongoing_activity_panel.tscn" id="2_ewsu2"]
 [ext_resource type="PackedScene" uid="uid://cm3vq4rvy1oq2" path="res://ui/motivation_panel.tscn" id="3_1nxh6"]
 [ext_resource type="PackedScene" uid="uid://camg68k1p4vfd" path="res://ui/time_panel.tscn" id="4_xbhfx"]
-[ext_resource type="PackedScene" uid="uid://fyt4htnh62uq" path="res://ui/activity_start_panel.tscn" id="5_83r1l"]
+[ext_resource type="PackedScene" uid="uid://fyt4htnh62uq" path="res://ui/activity_select_panel.tscn" id="5_83r1l"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -16,4 +16,4 @@
 
 [node name="TimePanel" parent="." instance=ExtResource("4_xbhfx")]
 
-[node name="ActivityStartPanel" parent="." instance=ExtResource("5_83r1l")]
+[node name="ActivitySelectPanel" parent="." instance=ExtResource("5_83r1l")]

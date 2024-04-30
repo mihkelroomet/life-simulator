@@ -4,7 +4,7 @@ signal start_activity(activity : ActivityManager.Activity, activity_desired_dura
 signal fail_to_start_activity
 
 const CurveData = preload("res://data/curve_data.gd")
-const ActivityStartPanel = preload("res://ui/activity_start_panel.gd")
+const ActivitySelectPanel = preload("res://ui/activity_select_panel.gd")
 
 var yellow_level_curve : CurveData = CurveData.new([Vector2(0.4, 0.0), Vector2(0.6, 1.0)])
 
@@ -13,8 +13,8 @@ func _ready():
 	fail_to_start_activity.connect(Events._on_fail_to_start_activity)
 
 func _on_button_pressed():
-	var selected_activity = ActivityStartPanel.selected_activity
-	var selected_duration = ActivityStartPanel.selected_duration
+	var selected_activity = ActivitySelectPanel.selected_activity
+	var selected_duration = ActivitySelectPanel.selected_duration
 	
 	if selected_activity != ActivityManager.Activity.IDLE and selected_duration > 0.0:
 		var motivation_for_selected_activity = ActivityManager.get_motivation_for_activity(selected_activity)
