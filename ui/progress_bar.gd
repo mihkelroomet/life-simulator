@@ -1,5 +1,6 @@
 extends HBoxContainer
 
+const CurveData = preload("res://data/curve_data.gd")
 const LittleArrow = preload("res://ui/little_arrow.gd")
 
 @onready var progress_bar = $ProgressBar

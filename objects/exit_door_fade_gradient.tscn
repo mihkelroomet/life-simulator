@@ -5,11 +5,12 @@
 
 [sub_resource type="Gradient" id="Gradient_pwdp8"]
 offsets = PackedFloat32Array(0, 0.214286, 1)
-colors = PackedColorArray(0.376471, 0.333333, 0.388235, 1, 0.376471, 0.333333, 0.388235, 1, 0, 0, 0, 0)
+colors = PackedColorArray(0.376471, 0.333333, 0.388235, 1, 0.376471, 0.333333, 0.388235, 1, 0.376471, 0.333333, 0.388235, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_4081q"]
 gradient = SubResource("Gradient_pwdp8")
 width = 110
+use_hdr = true
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fqajw"]
 size = Vector2(127, 162)
