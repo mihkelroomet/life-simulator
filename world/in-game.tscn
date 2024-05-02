@@ -40,7 +40,6 @@ position = Vector2(-240, 0)
 
 [node name="ExitDoorFadeGradient" parent="Objects" instance=ExtResource("8_3bkm0")]
 position = Vector2(-304, 33)
-scale = Vector2(1, 1)
 
 [node name="Player" parent="." instance=ExtResource("10_j7p4t")]
 position = Vector2(-24, -10)

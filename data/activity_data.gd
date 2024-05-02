@@ -4,7 +4,7 @@ const CurveData = preload("res://data/curve_data.gd")
 const EffectData = preload("res://data/effect_data.gd")
 
 @export var display_name : String
-## Used for displaying current action being undertaken, eg "Doing"
+## Used for displaying current action being undertaken, e.g "Doing".
 @export var present_participle : String
 ## Determines how current need satisfaction intervals influence being able to start the activity.
 @export var modifiers : Dictionary
