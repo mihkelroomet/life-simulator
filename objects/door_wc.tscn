@@ -1,10 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmkjmqwfjkcua"]
+[gd_scene load_steps=4 format=3 uid="uid://bmkjmqwfjkcua"]
 
 [ext_resource type="Texture2D" uid="uid://bgkoq7s1y6uag" path="res://world/tilesets/1_Generic_Black_Shadow_48x48.png" id="1_1y7ol"]
+[ext_resource type="Shader" path="res://player/smooth_pixel.gdshader" id="1_ku11t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_046w6"]
+shader = ExtResource("1_ku11t")
 
 [node name="DoorWC" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_046w6")
 position = Vector2(0, -15)
 texture = ExtResource("1_1y7ol")
 centered = false

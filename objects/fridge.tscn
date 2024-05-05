@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyq704h73vecn"]
+[gd_scene load_steps=5 format=3 uid="uid://cyq704h73vecn"]
 
 [ext_resource type="Texture2D" uid="uid://bei0n4pwfyl5p" path="res://world/tilesets/12_Kitchen_Black_Shadow_48x48.png" id="1_0w03t"]
+[ext_resource type="Shader" path="res://player/smooth_pixel.gdshader" id="1_2wfgb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c08yh"]
+shader = ExtResource("1_2wfgb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d3wae"]
 size = Vector2(48, 48)
@@ -9,6 +13,7 @@ size = Vector2(48, 48)
 collision_mask = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c08yh")
 position = Vector2(0, -57)
 texture = ExtResource("1_0w03t")
 centered = false

@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dup8h7y7svtya"]
+[gd_scene load_steps=5 format=3 uid="uid://dup8h7y7svtya"]
 
 [ext_resource type="Texture2D" uid="uid://dj8jagbi3kibh" path="res://world/tilesets/4_Bedroom_Black_Shadow_48x48.png" id="1_6i83o"]
+[ext_resource type="Shader" path="res://player/smooth_pixel.gdshader" id="1_f8c3r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agrlo"]
+shader = ExtResource("1_f8c3r")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8sym"]
 size = Vector2(135, 42)
@@ -9,6 +13,7 @@ size = Vector2(135, 42)
 collision_mask = 2
 
 [node name="ClosetBackside" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_agrlo")
 position = Vector2(-72, -69)
 texture = ExtResource("1_6i83o")
 centered = false

@@ -1,8 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://y2g0x0od8l8l"]
+[gd_scene load_steps=10 format=3 uid="uid://y2g0x0od8l8l"]
 
 [ext_resource type="Texture2D" uid="uid://bcwlp1veyvp6" path="res://world/tilesets/Room_Builder_Floors_48x48.png" id="1_o3eyn"]
+[ext_resource type="Shader" path="res://player/smooth_pixel.gdshader" id="1_ue2pv"]
 [ext_resource type="Texture2D" uid="uid://0bxqoueqcx37" path="res://world/tilesets/Room_Builder_Walls_48x48.png" id="2_esnxh"]
 [ext_resource type="Texture2D" uid="uid://bh1p8j4j7fduu" path="res://world/tilesets/Room_Builder_Borders_48x48.png" id="3_rfko4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qpme"]
+shader = ExtResource("1_ue2pv")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8d3ec"]
 texture = ExtResource("1_o3eyn")
@@ -1108,6 +1112,7 @@ collision_mask = 2
 polygon = PackedVector2Array(-357, -48, -165, -48, -165, -192, 213, -192, 213, 114, -357, 114)
 
 [node name="TileMap" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_6qpme")
 tile_set = SubResource("TileSet_m0hwx")
 format = 2
 layer_0/name = "Room"
