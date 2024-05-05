@@ -1,6 +1,9 @@
 shader_type canvas_item;
 render_mode unshaded;
 
+// Shader from here:
+// https://github.com/CptPotato/GodotThings/blob/master/SmoothPixelFiltering/SmoothPixel.shader
+
 // Texture must have 'Filter'-flag enabled!
 
 // Automatic smoothing

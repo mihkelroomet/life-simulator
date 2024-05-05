@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://caxkf73phrkix"]
+[gd_scene load_steps=12 format=3 uid="uid://caxkf73phrkix"]
 
 [ext_resource type="PackedScene" uid="uid://y2g0x0od8l8l" path="res://rooms/dorm_room.tscn" id="1_ucge4"]
+[ext_resource type="Script" path="res://world/in-game.gd" id="1_uff7h"]
 [ext_resource type="PackedScene" uid="uid://ck41u4gtemga2" path="res://objects/bed.tscn" id="4_fx6rf"]
 [ext_resource type="PackedScene" uid="uid://cyq704h73vecn" path="res://objects/fridge.tscn" id="5_l0y3p"]
 [ext_resource type="PackedScene" uid="uid://civ88shixv6nl" path="res://objects/home_desk.tscn" id="6_u5w43"]
@@ -13,6 +14,7 @@
 
 [node name="InGame" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_uff7h")
 
 [node name="DormRoom" parent="." instance=ExtResource("1_ucge4")]
 z_index = -10
