@@ -57,6 +57,8 @@ func _init(
 	effects = default_effects.duplicate()
 	effects.merge(p_effects, true)
 	
+	print(modifiers[NeedManager.Need.AUTONOMY])
+	
 	min_duration = p_min_duration
 	default_duration = p_default_duration
 	max_duration = p_max_duration
