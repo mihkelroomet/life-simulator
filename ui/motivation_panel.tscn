@@ -21,7 +21,6 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="HotkeyPopupPanel" parent="VBoxContainer" instance=ExtResource("2_u1gqn")]
-visible = true
 layout_mode = 2
 label_text = "R"
 is_ui_node = true
