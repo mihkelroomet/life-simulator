@@ -12,7 +12,8 @@ var user_can_toggle_panel : bool = true
 func _ready():
 	Events.start_activity.connect(_on_start_activity)
 	Events.stop_activity.connect(_on_stop_activity)
-	toggle_motivation_bar(panel_opened_by_user)
+	toggle_motivation_bar(false)
+	hotkey_popup_panel.show_hotkey(true)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("open_motivation_bar"):

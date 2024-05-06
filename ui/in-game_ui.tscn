@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmjsklsge0fg0"]
+[gd_scene load_steps=9 format=3 uid="uid://bmjsklsge0fg0"]
 
 [ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_n3w6b"]
 [ext_resource type="PackedScene" uid="uid://cg06n8hdu53wk" path="res://ui/ongoing_activity_panel.tscn" id="2_ewsu2"]
 [ext_resource type="PackedScene" uid="uid://cm3vq4rvy1oq2" path="res://ui/motivation_panel.tscn" id="3_1nxh6"]
 [ext_resource type="PackedScene" uid="uid://camg68k1p4vfd" path="res://ui/time_panel.tscn" id="4_xbhfx"]
+[ext_resource type="PackedScene" uid="uid://clugahqoommet" path="res://ui/hotkey_popup_panel.tscn" id="5_3idqq"]
 [ext_resource type="PackedScene" uid="uid://fyt4htnh62uq" path="res://ui/activity_select_panel.tscn" id="5_83r1l"]
+[ext_resource type="Script" path="res://ui/motivation_bar.gd" id="6_7bbgn"]
+[ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="7_c01x7"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -14,6 +17,69 @@
 
 [node name="MotivationPanel" parent="." instance=ExtResource("3_1nxh6")]
 
+[node name="MotivationPanel2" type="MarginContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -620.0
+offset_top = -170.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MotivationPanel2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HotkeyPopupPanel" parent="MotivationPanel2/VBoxContainer" instance=ExtResource("5_3idqq")]
+visible = true
+layout_mode = 2
+label_text = "T"
+is_ui_node = true
+
+[node name="MotivationBar" type="Button" parent="MotivationPanel2/VBoxContainer"]
+custom_minimum_size = Vector2(600, 150)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+mouse_default_cursor_shape = 2
+toggle_mode = true
+script = ExtResource("6_7bbgn")
+
+[node name="MarginContainer" type="MarginContainer" parent="MotivationPanel2/VBoxContainer/MotivationBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MotivationPanel2/VBoxContainer/MotivationBar/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MotivationPanel2/VBoxContainer/MotivationBar/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Thesis Writing"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBarHBox" parent="MotivationPanel2/VBoxContainer/MotivationBar/MarginContainer/VBoxContainer" instance=ExtResource("7_c01x7")]
+layout_mode = 2
+theme_override_constants/separation = 12
+
 [node name="TimePanel" parent="." instance=ExtResource("4_xbhfx")]
 
 [node name="ActivitySelectPanel" parent="." instance=ExtResource("5_83r1l")]
+
+[connection signal="mouse_entered" from="MotivationPanel2/VBoxContainer/MotivationBar" to="MotivationPanel2" method="_on_motivation_bar_mouse_entered"]
+[connection signal="mouse_entered" from="MotivationPanel2/VBoxContainer/MotivationBar" to="MotivationPanel2/VBoxContainer/MotivationBar" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MotivationPanel2/VBoxContainer/MotivationBar" to="MotivationPanel2" method="_on_motivation_bar_mouse_exited"]
+[connection signal="toggled" from="MotivationPanel2/VBoxContainer/MotivationBar" to="MotivationPanel2" method="_on_motivation_bar_toggled"]
