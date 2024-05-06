@@ -14,6 +14,10 @@ func toggle_panel(toggled_on : bool):
 	instruction_label.visible = !toggled_on
 	activity_details_vbox.visible = toggled_on
 
+func update_motivation_for_activity(activity : ActivityManager.Activity):
+	var motivation_for_activity = ActivityManager.get_motivation_for_activity(activity)
+	motivation_for_activity_progress_bar.set_value(motivation_for_activity)
+
 func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
 	if p_visible:
 		toggle_panel(false)

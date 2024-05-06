@@ -6,9 +6,9 @@ var motivation : float
 
 ## Represents min satisfaction needed in most neglected need for 100% motivation.
 ## Motivation is linearly mapped to satisfaction of most neglected need.
-var min_satisfaction_threshold_for_full_motivation : float = 0.75
+var min_satisfaction_threshold_for_full_motivation : float = 0.72
 ## Represents the highest min satisfaction in most neglected need that will convert to 0% motivation.
-var min_satisfaction_threshold_for_no_motivation : float = 0.15
+var min_satisfaction_threshold_for_no_motivation : float = 0.12
 
 func _ready():
 	motivation_changed.connect(Events._on_motivation_changed)

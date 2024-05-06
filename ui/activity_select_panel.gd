@@ -1,23 +1,21 @@
 extends PanelContainer
 
-signal set_time_is_advancing(is_advancing : bool)
 signal set_player_can_move(can_move : bool)
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
 const ActivityDurationVBox = preload("res://ui/activity_duration_vbox.gd")
-const CustomProgressBar = preload("res://ui/progress_bar.gd")
+const ActivityDetailsPanel = preload("res://ui/activity_details_panel.gd")
 
 @onready var radio_button_vbox = $MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox
 @onready var activity_duration_vbox : ActivityDurationVBox = $MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox
-@onready var motivation_for_activity_progress_bar : CustomProgressBar = $MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotvationForActivityVBox/MotivationForActivityProgressBar
+@onready var activity_details_panel : ActivityDetailsPanel = $MarginContainer/HBoxContainer/ActivityDetailsPanel
 
 static var selected_activity : ActivityManager.Activity
 ## Duration of selected activity in hours.
 static var selected_duration : float
 
 func _ready():
-	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
 	set_player_can_move.connect(Events._on_set_player_can_move)
 	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
 	Events.start_activity.connect(_on_start_activity)
@@ -31,11 +29,10 @@ func _process(_delta):
 	
 	if visible and selected_activity != ActivityManager.Activity.IDLE:
 		activity_duration_vbox.update_estimated_completion_time(selected_activity)
-		motivation_for_activity_progress_bar.set_value(ActivityManager.get_motivation_for_activity(selected_activity))
+		activity_details_panel.update_motivation_for_activity(selected_activity)
 
 func toggle_panel(toggled_open : bool, activities : Array[ActivityManager.Activity]):
 	visible = toggled_open
-	#set_time_is_advancing.emit(!if_toggled_open)
 	set_player_can_move.emit(!toggled_open)
 	if toggled_open:
 		selected_activity = ActivityManager.Activity.IDLE # Essentially a reset
