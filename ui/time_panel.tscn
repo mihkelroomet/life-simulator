@@ -14,7 +14,7 @@ theme_override_constants/margin_right = 20
 script = ExtResource("1_hm7i2")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(262, 221)
+custom_minimum_size = Vector2(266, 221)
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
@@ -32,17 +32,17 @@ alignment = 1
 [node name="Time" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderMedium"
-text = "8:00 AM"
+text = "10:00 AM"
 horizontal_alignment = 1
 
 [node name="DayOfWeek" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Monday"
+text = "Thursday"
 horizontal_alignment = 1
 
 [node name="DayOfYear" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Sep 2 2024"
+text = "May 2 2024"
 horizontal_alignment = 1
 
 [node name="TimeChangeTimer" type="Timer" parent="."]
