@@ -48,6 +48,7 @@ polygon = PackedVector2Array(-39, 0, -33, -15, -24, -15, -15, -30, 15, -30, 23, 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 script = ExtResource("3_g6p6u")
+activities = Array[int]([10, 11, 12, 13])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -38.5)
