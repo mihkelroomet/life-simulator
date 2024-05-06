@@ -13,8 +13,8 @@ static var activities : Dictionary = {
 			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.5), Vector2(1.0, -0.2)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.045),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.05),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
 			NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.1),
 			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.01)
 		},
@@ -29,8 +29,7 @@ static var activities : Dictionary = {
 			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.0, 0.3), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.1)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.08),
 			NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
 			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01)
 		},
@@ -43,8 +42,7 @@ static var activities : Dictionary = {
 			NeedManager.Need.PA : CurveData.new([Vector2(0.0, 0.25), Vector2(0.5, 0.0), Vector2(0.8, 0.0), Vector2(1.0, -0.5)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.01),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.02),
 			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.18),
 			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.05)
 		},
@@ -89,8 +87,7 @@ static var activities : Dictionary = {
 			NeedManager.Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.5),
 			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
 		},
 		0.25, 0.25, 0.25
@@ -107,8 +104,7 @@ static var activities : Dictionary = {
 			NeedManager.Need.SLEEP : CurveData.new([Vector2(0, 0.4), Vector2(0.3, 0.0)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.03),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 0.3),
 			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 1.8),
 			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.1),
 			NeedManager.Need.SLEEP : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.3)
@@ -203,11 +199,11 @@ static var activities : Dictionary = {
 		"Write Thesis",
 		"Writing the Thesis",
 		{
-			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.3, -1.0), Vector2(0.8, 0.0)]),
-			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.3, -1.0), Vector2(0.8, 0.0)]),
-			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.3, -1.0), Vector2(0.8, 0.0)]),
+			NeedManager.Need.AUTONOMY : CurveData.new([Vector2(0.3, -0.5), Vector2(0.8, 0.0)]),
+			NeedManager.Need.COMPETENCE : CurveData.new([Vector2(0.3, -0.5), Vector2(0.8, 0.0)]),
+			NeedManager.Need.RELATEDNESS : CurveData.new([Vector2(0.3, -0.5), Vector2(0.8, 0.0)]),
 			NeedManager.Need.NUTRITION : CurveData.new([Vector2(0.3, -2.0), Vector2(0.6, 0.0)]),
-			NeedManager.Need.PA : CurveData.new([Vector2(0.3, -1.0), Vector2(0.7, 0.0)]),
+			NeedManager.Need.PA : CurveData.new([Vector2(0.3, -0.5), Vector2(0.7, 0.0)]),
 			NeedManager.Need.SLEEP : CurveData.new([Vector2(0.3, -1.0), Vector2(0.6, 0.0)])
 		},
 		{

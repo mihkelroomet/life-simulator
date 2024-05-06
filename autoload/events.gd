@@ -10,6 +10,7 @@ signal set_player_can_move(can_move : bool)
 
 signal need_satisfaction_changed(need : NeedManager.Need, new_value : float)
 signal motivation_changed(new_value : float)
+signal thesis_written_amount_changed(new_value : float)
 
 signal set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity])
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
@@ -41,6 +42,9 @@ func _on_need_satisfaction_changed(need : NeedManager.Need, new_value : float):
 
 func _on_motivation_changed(new_value : float):
 	motivation_changed.emit(new_value)
+
+func _on_thesis_written_amount_changed(new_value : float):
+	thesis_written_amount_changed.emit(new_value)
 
 func _on_set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity]):
 	set_activity_start_panel_visible.emit(is_visible, activities)

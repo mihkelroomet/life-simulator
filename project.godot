@@ -25,6 +25,7 @@ ActivityManager="*res://autoload/activitiy_manager.gd"
 TimeUtils="*res://autoload/time_utils.gd"
 BetterTerrain="*res://addons/better-terrain/BetterTerrain.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+ThesisWritingManager="*res://autoload/thesis_writing_manager.gd"
 
 [dialogic]
 

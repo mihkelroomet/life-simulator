@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpu6x137xliu5"]
+[gd_scene load_steps=3 format=3 uid="uid://cpu6x137xliu5"]
 
 [ext_resource type="PackedScene" uid="uid://clugahqoommet" path="res://ui/hotkey_popup_panel.tscn" id="1_258lb"]
+[ext_resource type="Script" path="res://ui/thesis_writing_panel.gd" id="1_carpm"]
 
 [node name="ThesisWritingPanel" type="MarginContainer"]
 anchors_preset = 3
@@ -14,6 +15,7 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
+script = ExtResource("1_carpm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -59,9 +61,23 @@ size_flags_vertical = 3
 theme_override_constants/margin_left = 59
 theme_override_constants/margin_right = 59
 
-[node name="ThesisWritingProgressBar" type="ProgressBar" parent="VBoxContainer/ThesisWritingBar/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/ThesisWritingBar/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"ProgressBarBlue"
 value = 20.0
 show_percentage = false
+
+[node name="ProgressPercentageLabel" type="Label" parent="VBoxContainer/ThesisWritingBar/MarginContainer/VBoxContainer/MarginContainer/ProgressBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"LabelSmall"
+text = "20.0%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="VBoxContainer/ThesisWritingBar/MarginContainer/VBoxContainer/MarginContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]
