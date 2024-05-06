@@ -1,0 +1,7 @@
+[gd_resource type="CanvasTexture" load_steps=2 format=3 uid="uid://cppiey883bjg2"]
+
+[ext_resource type="Texture2D" uid="uid://53w75mx18gnv" path="res://dialogue/next_indicator.svg" id="1_gexmp"]
+
+[resource]
+diffuse_texture = ExtResource("1_gexmp")
+texture_filter = 6

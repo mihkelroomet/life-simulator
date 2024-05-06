@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="703" height="800" viewBox="0 0 703 800">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #202020;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Left_Arrow_Shape" data-name="Left Arrow Shape" class="cls-1" d="M38.25-.022h624.6c29.04,0,50.646,38.807,33.657,77.155-13.6,30.738-288.188,644.977-311.672,697.4-15.429,34.43-52.215,33.85-67.66,0C299.947,736.8,23.961,120.213,4.788,75.561-9.274,42.865,6.26-.022,38.25-0.022Z"/>
+</svg>

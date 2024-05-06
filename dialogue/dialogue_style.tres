@@ -32,7 +32,7 @@ scene = ExtResource("5_bg04g")
 overrides = {
 "box_panel": "\"res://dialogue/panel.tres\"",
 "box_size": "Vector2(800, 250)",
-"next_indicator_texture": "\"res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/next.svg\""
+"next_indicator_texture": "\"res://dialogue/next_indicator.tres\""
 }
 
 [sub_resource type="Resource" id="Resource_7krt2"]
