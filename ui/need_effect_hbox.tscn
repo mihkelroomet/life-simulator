@@ -17,9 +17,9 @@ vertical_alignment = 1
 
 [node name="EffectLabel" type="Label" parent="."]
 self_modulate = Color(0.48, 0.8, 0.48, 1)
-custom_minimum_size = Vector2(31, 0)
+custom_minimum_size = Vector2(52, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmallWhite"
-text = "+++"
+text = "+++++"
 vertical_alignment = 1

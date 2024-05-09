@@ -87,7 +87,7 @@ static var activities : Dictionary = {
 			NeedManager.Need.SLEEP : CurveData.new([Vector2(0, 0.2), Vector2(0.3, 0.0)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.5),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.4),
 			NeedManager.Need.NUTRITION : EffectData.new(EffectData.EffectType.INCREASE_LINEAR, 2.4)
 		},
 		0.25, 0.25, 0.25
@@ -207,8 +207,8 @@ static var activities : Dictionary = {
 			NeedManager.Need.SLEEP : CurveData.new([Vector2(0.3, -1.0), Vector2(0.6, 0.0)])
 		},
 		{
-			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.15),
-			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.15),
+			NeedManager.Need.AUTONOMY : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.12),
+			NeedManager.Need.COMPETENCE : EffectData.new(EffectData.EffectType.DECREASE_LINEAR, 0.12),
 			NeedManager.Need.RELATEDNESS : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.03),
 			NeedManager.Need.PA : EffectData.new(EffectData.EffectType.DECREASE_PERCENTAGE, 0.06)
 		},
