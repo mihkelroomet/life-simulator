@@ -17,7 +17,7 @@ func _on_button_pressed():
 	var selected_duration = ActivitySelectPanel.selected_duration
 	
 	if selected_activity != ActivityManager.Activity.IDLE and selected_duration > 0.0:
-		var motivation_for_selected_activity = ActivityManager.get_motivation_for_activity(selected_activity)
+		var motivation_for_selected_activity = ActivityManager.get_and_print_motivation_for_activity(selected_activity)
 		
 		# Green level: can always do activity
 		if motivation_for_selected_activity >= 1.0:

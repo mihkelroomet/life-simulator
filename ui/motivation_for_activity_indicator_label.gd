@@ -9,12 +9,6 @@ const DUMMY_MAX_THRESHOLD : float = 10000.0
 var thresholds : Array[float]
 var labels : Array[String] = ["VERY LOW", "LOW", "MEDIUM", "HIGH", "VERY HIGH"]
 
-var min_hue : float = 0
-var max_hue : float = 0.33
-var saturation : float = 0.4
-var lightness_value : float = 0.8
-var alpha: float = 1
-
 func _ready():
 	Events.motivation_changed.connect(_on_motivation_changed)
 	
@@ -26,5 +20,4 @@ func _on_motivation_changed(new_value : float):
 			text = labels[i]
 			break
 	
-	var hue = min_hue + (max_hue - min_hue) * new_value
-	self_modulate = Color.from_hsv(hue, saturation, lightness_value, alpha)
+	ColorManager.self_modulate_red_green_gradient(self, new_value)

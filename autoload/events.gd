@@ -15,6 +15,9 @@ signal thesis_written_amount_changed(new_value : float)
 signal set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity])
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 signal set_activity_start_panel_selected_duration(duration : float)
+
+signal update_need_effects(motivation_for_activity_dict : Dictionary)
+
 signal set_ongoing_activity_panel_visible(is_visible : bool)
 
 signal fade_out_color_rect
@@ -54,6 +57,9 @@ func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.A
 
 func _on_set_activity_start_panel_selected_duration(duration : float):
 	set_activity_start_panel_selected_duration.emit(duration)
+
+func _on_update_need_effects(motivation_for_activity_dict : Dictionary):
+	update_need_effects.emit(motivation_for_activity_dict)
 
 func _on_set_ongoing_activity_panel_visible(is_visible : bool):
 	set_ongoing_activity_panel_visible.emit(is_visible)

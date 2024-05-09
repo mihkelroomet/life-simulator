@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=13 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_select_panel.gd" id="1_ecmi0"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_gofsv"]
@@ -8,12 +8,13 @@
 [ext_resource type="Script" path="res://ui/activity_details_panel.gd" id="6_3hbcr"]
 [ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="7_fyaf3"]
 [ext_resource type="Script" path="res://ui/motivation_for_activity_indicator_label.gd" id="8_6owbh"]
+[ext_resource type="PackedScene" uid="uid://cde3wjgvhjl0p" path="res://ui/need_effect_hbox.tscn" id="9_vq364"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_u7jxy"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_e1cyt"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_si8u1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_e7ig5"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_bhfq1"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_laivw"]
 
 [node name="ActivitySelectPanel" type="PanelContainer"]
 anchors_preset = 8
@@ -69,16 +70,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_u7jxy")
+button_group = SubResource("ButtonGroup_e1cyt")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_si8u1")
+button_group = SubResource("ButtonGroup_e7ig5")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_bhfq1")
+button_group = SubResource("ButtonGroup_laivw")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -189,10 +190,11 @@ theme_override_constants/separation = 15
 
 [node name="BaseMotivationHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/BaseMotivationHBox"]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmall"
 text = "Base motivation: "
 vertical_alignment = 1
@@ -200,7 +202,6 @@ vertical_alignment = 1
 [node name="MotivationForActivityIndicatorLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/BaseMotivationHBox"]
 self_modulate = Color(0.48, 0.8, 0.48, 1)
 layout_mode = 2
-size_flags_horizontal = 0
 theme_type_variation = &"LabelVerySmallWhite"
 text = "VERY HIGH"
 vertical_alignment = 1
@@ -218,113 +219,28 @@ text = "Effects from satisfaction of needs"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AutonomyHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
+[node name="NeedEffectHBox" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
 
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/AutonomyHBox"]
+[node name="NeedEffectHBox2" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From autonomy: "
-vertical_alignment = 1
+need = 1
 
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/AutonomyHBox"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
+[node name="NeedEffectHBox3" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
+need = 2
 
-[node name="CompetenceHBox" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
+[node name="NeedEffectHBox4" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
+need = 3
 
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/CompetenceHBox"]
+[node name="NeedEffectHBox5" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From competence:"
-vertical_alignment = 1
+need = 4
 
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/CompetenceHBox"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
+[node name="NeedEffectHBox6" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
 layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
-layout_mode = 2
-
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer4"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From relatedness:"
-vertical_alignment = 1
-
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer4"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
-
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
-layout_mode = 2
-
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer5"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From nutrition:"
-vertical_alignment = 1
-
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer5"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
-
-[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
-layout_mode = 2
-
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer6"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From physical activity:"
-vertical_alignment = 1
-
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer6"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
-
-[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox"]
-layout_mode = 2
-
-[node name="MotivationForActivityLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer7"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmall"
-text = "From sleep:"
-vertical_alignment = 1
-
-[node name="MotivationForActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox/HBoxContainer7"]
-self_modulate = Color(0.48, 0.8, 0.48, 1)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_type_variation = &"LabelVerySmallWhite"
-text = "VERY POSITIVE"
-vertical_alignment = 1
+need = 5
 
 [node name="EffectsOfActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
 visible = false

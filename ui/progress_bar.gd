@@ -26,12 +26,6 @@ var right_arrows : Array[LittleArrow]
 var neg_thresholds : Array[float]
 var pos_thresholds : Array[float]
 
-var min_hue : float = 0
-var max_hue : float = 0.33
-var saturation : float = 0.4
-var lightness_value : float = 0.8
-var alpha: float = 1
-
 var last_value : float = -1.0 # -1 represents uninitialized value
 
 ## Percentage of bar that is filled at 0% motivation. This is because for the player to
@@ -84,8 +78,7 @@ func set_value(new_value):
 	progress_bar.value = empty_value + new_value * (progress_bar.max_value - empty_value)
 	
 	var value_percent = (progress_bar.value - empty_value) / (progress_bar.max_value - empty_value)
-	var hue = min_hue + (max_hue - min_hue) * value_percent
-	progress_bar.self_modulate = Color.from_hsv(hue, saturation, lightness_value, alpha)
+	ColorManager.self_modulate_red_green_gradient(progress_bar, value_percent)
 
 func reset():
 	hide_arrows()
