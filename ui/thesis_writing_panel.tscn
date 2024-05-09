@@ -65,7 +65,7 @@ theme_override_constants/margin_right = 59
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"ProgressBarBlue"
-value = 20.0
+value = 40.0
 show_percentage = false
 
 [node name="ProgressPercentageLabel" type="Label" parent="VBoxContainer/ThesisWritingBar/MarginContainer/VBoxContainer/MarginContainer/ProgressBar"]
@@ -76,7 +76,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"LabelSmall"
-text = "20.0%"
+text = "40.0% (F)"
 horizontal_alignment = 1
 vertical_alignment = 1
 

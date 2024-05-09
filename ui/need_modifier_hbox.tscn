@@ -8,19 +8,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 14
 script = ExtResource("1_11jjc")
 
 [node name="FromNeedLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmall"
-text = "From [need name]"
+text = "From Physical Activity"
 vertical_alignment = 1
 
 [node name="NeedEffectLabel" type="Label" parent="."]
 self_modulate = Color(0.48, 0.8, 0.48, 1)
 layout_mode = 2
 theme_type_variation = &"LabelVerySmallWhite"
-text = "EFFECT DESC"
+text = "SLIGHTLY NEGATIVE"
 horizontal_alignment = 2
 vertical_alignment = 1

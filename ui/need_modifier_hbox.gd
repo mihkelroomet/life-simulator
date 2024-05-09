@@ -21,7 +21,7 @@ func _ready():
 	
 	thresholds = [VERY_NEG_NEG_THRESHOLD, NEG_SLI_NEG_THRESHOLD, SLI_NEG_NEU_THRESHOLD, NEU_SLI_POS_THRESHOLD, SLI_POS_POS_THRESHOL, POS_VERY_POS_THRESHOLD, DUMMY_MAX_THRESHOLD]
 	
-	from_need_label.text = "From " + NeedManager.NEED_NAMES[need] + ": "
+	from_need_label.text = "From " + NeedManager.NEED_NAMES[need]
 
 func _on_update_need_effects(motivation_for_activity_dict : Dictionary):
 	var need_effect_amount = motivation_for_activity_dict[need]

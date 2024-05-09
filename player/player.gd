@@ -12,7 +12,7 @@ const MAX_SPEED = 300
 
 ## Controls how motivation affects movement. Acceleration and speed get
 ## multiplied by this.
-var motivation_speed_modifier : CurveData = CurveData.new([Vector2(0.0, 0.5), Vector2(0.5, 1.0)])
+var motivation_speed_modifier : CurveData = CurveData.new([Vector2(0.0, 0.7), Vector2(0.5, 1.0)])
 
 var state : PlayerState = PlayerState.IDLE
 

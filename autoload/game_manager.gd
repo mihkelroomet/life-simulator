@@ -8,7 +8,7 @@ var game_speed : float
 var time_is_advancing : bool = true
 var player_can_move : bool = true
 
-var game_time : float = Time.get_unix_time_from_datetime_string("2024-05-02T10:00:00")
+var game_time : float = Time.get_unix_time_from_datetime_string("2024-05-06T10:00:00")
 
 func _ready():
 	Events.set_game_speed.connect(_on_set_game_speed)
