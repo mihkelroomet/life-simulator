@@ -1,26 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://cde3wjgvhjl0p"]
+[gd_scene load_steps=2 format=3 uid="uid://dwkg0r0dey5o0"]
 
 [ext_resource type="Script" path="res://ui/need_effect_hbox.gd" id="1_73ocq"]
 
 [node name="NeedEffectHBox" type="HBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+custom_minimum_size = Vector2(73, 0)
+size_flags_horizontal = 2
+theme_override_constants/separation = 8
 script = ExtResource("1_73ocq")
 
-[node name="FromNeedLabel" type="Label" parent="."]
+[node name="NeedAbbrLabel" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmall"
-text = "From [need name]: "
+text = "ABB"
 vertical_alignment = 1
 
-[node name="NeedEffectLabel" type="Label" parent="."]
+[node name="EffectLabel" type="Label" parent="."]
 self_modulate = Color(0.48, 0.8, 0.48, 1)
+custom_minimum_size = Vector2(31, 0)
 layout_mode = 2
+size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmallWhite"
-text = "EFFECT DESC"
-horizontal_alignment = 2
+text = "+++"
 vertical_alignment = 1

@@ -7,6 +7,7 @@ const EffectData = preload("res://data/effect_data.gd")
 enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 
 const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
+const NEED_NAMES_ABBR : Array = ["AUT", "COM", "REL", "NUT", "PHY", "SLE"]
 
 ## Current satisfaction of needs
 var need_stats : Dictionary = {

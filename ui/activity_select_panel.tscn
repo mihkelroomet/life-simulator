@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=14 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_select_panel.gd" id="1_ecmi0"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_gofsv"]
@@ -8,16 +8,16 @@
 [ext_resource type="Script" path="res://ui/activity_details_panel.gd" id="6_3hbcr"]
 [ext_resource type="PackedScene" uid="uid://qheem5a2k11u" path="res://ui/progress_bar.tscn" id="7_fyaf3"]
 [ext_resource type="Script" path="res://ui/motivation_for_activity_indicator_label.gd" id="8_6owbh"]
-[ext_resource type="PackedScene" uid="uid://cde3wjgvhjl0p" path="res://ui/need_effect_hbox.tscn" id="9_vq364"]
+[ext_resource type="PackedScene" uid="uid://cde3wjgvhjl0p" path="res://ui/need_modifier_hbox.tscn" id="9_tgnrq"]
+[ext_resource type="PackedScene" uid="uid://dwkg0r0dey5o0" path="res://ui/need_effect_hbox.tscn" id="9_vq364"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_p6cgh"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_32oyt"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_h8t6j"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_aa7t7"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_lfj7a"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ndqmx"]
 
 [node name="ActivitySelectPanel" type="PanelContainer"]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -71,16 +71,16 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_p6cgh")
+button_group = SubResource("ButtonGroup_32oyt")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_h8t6j")
+button_group = SubResource("ButtonGroup_aa7t7")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_lfj7a")
+button_group = SubResource("ButtonGroup_ndqmx")
 text = "Activity 3 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
@@ -197,7 +197,7 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 2
 theme_type_variation = &"LabelVerySmall"
-text = "Base motivation: "
+text = "Base motivation"
 vertical_alignment = 1
 
 [node name="MotivationForActivityIndicatorLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/BaseMotivationHBox"]
@@ -220,35 +220,73 @@ text = "Effects from satisfaction of needs"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NeedEffectHBox" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 
-[node name="NeedEffectHBox2" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox2" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 need = 1
 
-[node name="NeedEffectHBox3" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox3" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 need = 2
 
-[node name="NeedEffectHBox4" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox4" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 need = 3
 
-[node name="NeedEffectHBox5" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox5" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 need = 4
 
-[node name="NeedEffectHBox6" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_vq364")]
+[node name="NeedModifierHBox6" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/MotivationBreakdownVBox/VBoxContainer/EffectsFromNeedsVBox" instance=ExtResource("9_tgnrq")]
 layout_mode = 2
 need = 5
 
-[node name="EffectsOfActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
-visible = false
+[node name="EffectsOfActivityVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="EffectsOfActivityLabel2" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_type_variation = &"LabelSmall"
 text = "Effects of Activity"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="NeedEffectHBox" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer" instance=ExtResource("9_vq364")]
+layout_mode = 2
+
+[node name="NeedEffectHBox2" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer" instance=ExtResource("9_vq364")]
+layout_mode = 2
+need = 1
+
+[node name="NeedEffectHBox3" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer" instance=ExtResource("9_vq364")]
+layout_mode = 2
+size_flags_horizontal = 0
+need = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="NeedEffectHBox" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer2" instance=ExtResource("9_vq364")]
+layout_mode = 2
+need = 3
+
+[node name="NeedEffectHBox2" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer2" instance=ExtResource("9_vq364")]
+layout_mode = 2
+need = 4
+
+[node name="NeedEffectHBox3" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox/EffectsOfActivityVBox/VBoxContainer/HBoxContainer2" instance=ExtResource("9_vq364")]
+layout_mode = 2
+size_flags_horizontal = 0
+need = 5
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" method="_on_button_pressed"]
