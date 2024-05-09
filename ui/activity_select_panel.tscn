@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fyt4htnh62uq"]
+[gd_scene load_steps=16 format=3 uid="uid://fyt4htnh62uq"]
 
 [ext_resource type="Script" path="res://ui/activity_select_panel.gd" id="1_ecmi0"]
 [ext_resource type="PackedScene" uid="uid://cxndtgcsjuwxh" path="res://ui/activity_select_button.tscn" id="2_gofsv"]
@@ -11,13 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://cde3wjgvhjl0p" path="res://ui/need_modifier_hbox.tscn" id="9_tgnrq"]
 [ext_resource type="PackedScene" uid="uid://dwkg0r0dey5o0" path="res://ui/need_effect_hbox.tscn" id="9_vq364"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_32oyt"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_j672p"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_aa7t7"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_6o08h"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ndqmx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_01rpv"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_j4ijy"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_5nv1j"]
 
 [node name="ActivitySelectPanel" type="PanelContainer"]
+visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -39,6 +44,7 @@ theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 30
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
 theme_override_constants/separation = 80
 
@@ -67,21 +73,32 @@ vertical_alignment = 1
 
 [node name="RadioButtonVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
 layout_mode = 2
+size_flags_vertical = 6
 theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_32oyt")
+button_group = SubResource("ButtonGroup_j672p")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_aa7t7")
+button_group = SubResource("ButtonGroup_6o08h")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_ndqmx")
+button_group = SubResource("ButtonGroup_01rpv")
 text = "Activity 3 "
+
+[node name="ActivitySelectButton4" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_j4ijy")
+text = "Activity 4 "
+
+[node name="ActivitySelectButton5" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_5nv1j")
+text = "Activity 5 "
 
 [node name="ActivityDurationVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
 layout_mode = 2
@@ -100,66 +117,53 @@ mouse_default_cursor_shape = 2
 value = 20.0
 
 [node name="EstimatedCompletionTimeLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox"]
+custom_minimum_size = Vector2(0, 33)
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
 text = "Estimated time of completion: 11:20 AM"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
+[node name="StartButtonVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox"]
 custom_minimum_size = Vector2(461, 92)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer"]
+[node name="StartButton" type="Button" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox"]
 layout_mode = 2
 focus_mode = 0
 mouse_default_cursor_shape = 2
 text = "Start"
 script = ExtResource("4_xhsmu")
 
-[node name="FailedToStartLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer"]
+[node name="FailedToStartLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox"]
 visible = false
 layout_mode = 2
 theme_type_variation = &"LabelSmallRed"
 text = "You do not feel like doing this right now"
 script = ExtResource("5_rbo4o")
 
-[node name="FailedToStartLabelTimer" type="Timer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/FailedToStartLabel"]
+[node name="FailedToStartLabelTimer" type="Timer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/FailedToStartLabel"]
 wait_time = 3.0
 one_shot = true
 
-[node name="ActivityDetailsPanel" type="Control" parent="MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(400, 0)
+[node name="ActivityDetailsPanel" type="BoxContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("6_3hbcr")
 
 [node name="InstructionLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel"]
 visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = -17.0
-offset_right = 177.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 6
 theme_type_variation = &"LabelSmall"
 text = "Select an activity to see details"
 
 [node name="ActivityDetailsVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 40
 
 [node name="MotvationForActivityVBox" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ActivityDetailsPanel/ActivityDetailsVBox"]
@@ -289,5 +293,5 @@ size_flags_horizontal = 0
 need = 5
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox/ActivityDurationSlider" to="MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox" method="_on_activity_duration_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/StartButton" method="_on_button_pressed"]
-[connection signal="timeout" from="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/HBoxContainer/ActivitySelectVBox/VBoxContainer/FailedToStartLabel" method="_on_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" method="_on_button_pressed"]
+[connection signal="timeout" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/FailedToStartLabel" method="_on_timer_timeout"]
