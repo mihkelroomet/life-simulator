@@ -12,6 +12,10 @@ func _ready():
 	start_activity.connect(Events._on_start_activity)
 	fail_to_start_activity.connect(Events._on_fail_to_start_activity)
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		pressed.emit()
+
 func _on_button_pressed():
 	var selected_activity = ActivitySelectPanel.selected_activity
 	var selected_duration = ActivitySelectPanel.selected_duration
