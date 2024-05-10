@@ -39,7 +39,7 @@ func _physics_process(delta):
 	animate()
 
 func move(delta):
-	var input_vector = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	var input_vector = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if input_vector == Vector2.ZERO:
 		state = PlayerState.IDLE
