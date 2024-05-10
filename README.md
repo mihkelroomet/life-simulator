@@ -3,7 +3,7 @@ A choice-driven life simulation game that offers an immersive experience of a yo
 
 Currently in development, will be completed by 2023-05-15.
 
-For testers/reviewers: the latest working build can be played [here](https://mihkelroomet.itch.io/life-simulator) (last updated: 2024-05-03).
+For testers/reviewers: the latest working build can be played [here](https://mihkelroomet.itch.io/thesis-writing-simulator) (last updated: 2024-05-03).
 
 Made as Graduation Thesis (LTAT.00.001) for University of Tartu's Computer Science (BSc) programme.
 
