@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GT_ThesisWritingSimulator"
-run/main_scene="res://dialogue/pre-game.tscn"
+run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
@@ -72,7 +72,7 @@ enabled=PackedStringArray("res://addons/better-terrain/plugin.cfg", "res://addon
 
 [gui]
 
-theme/custom="res://ui/custom_theme.tres"
+theme/custom="res://ui/custom_theme/custom_theme.tres"
 
 [input]
 

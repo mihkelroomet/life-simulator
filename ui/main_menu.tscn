@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvfmcgm8ae4wl"]
+
+[ext_resource type="Script" path="res://ui/main_menu_panel.gd" id="1_klptl"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenuPanel" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_klptl")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenuPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderLarge"
+text = "Thesis Writing
+Simulator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="CanvasLayer/MainMenuPanel" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="CanvasLayer/MainMenuPanel" method="_on_quit_button_pressed"]
