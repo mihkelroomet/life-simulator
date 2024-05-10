@@ -21,12 +21,12 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_left"):
-		activity_duration_slider.value -= 1
+		activity_duration_slider.value -= activity_duration_slider.step
 		last_pressed_key = PressedKey.LEFT
 		repeat_key_timer.stop()
 		hold_key_delay_timer.start()
 	if Input.is_action_just_pressed("ui_right"):
-		activity_duration_slider.value += 1
+		activity_duration_slider.value += activity_duration_slider.step
 		last_pressed_key = PressedKey.RIGHT
 		repeat_key_timer.stop()
 		hold_key_delay_timer.start()
@@ -58,7 +58,7 @@ func update_estimated_completion_time(selected_activity : ActivityManager.Activi
 	# time to start the activity.
 	var motivation_for_activity = ActivityManager.get_motivation_for_activity(selected_activity)
 	if motivation_for_activity > 0.0 and motivation_for_activity < 1.0:
-		completion_time += ActivityManager.activity_attempt_length * ActivityManager.activity_attempt_speed_multiplier * GameManager.DEFAULT_GAME_SPEED
+		completion_time += ActivityManager.activity_attempt_length * ActivityManager.activity_attempt_speed_multiplier * GameManager.default_game_speed
 	
 	estimated_completion_time_label.text = "Estimated time of completion: " + TimeUtils.get_time_from_unix_time(completion_time)
 
@@ -99,6 +99,6 @@ func _on_hold_key_delay_timer_timeout():
 
 func _on_repeat_key_timer_timeout():
 	if last_pressed_key == PressedKey.LEFT:
-		activity_duration_slider.value -= 1
+		activity_duration_slider.value -= activity_duration_slider.step
 	elif last_pressed_key == PressedKey.RIGHT:
-		activity_duration_slider.value += 1
+		activity_duration_slider.value += activity_duration_slider.step

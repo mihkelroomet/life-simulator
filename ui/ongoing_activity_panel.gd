@@ -68,7 +68,7 @@ func _on_set_ongoing_activity_panel_visible(p_visible : bool):
 		if current_activity_is_yellow_level_attempt:
 			ongoing_activity_label.text = "Attempting to start " + present_participle + "..."
 			
-			set_game_speed.emit(GameManager.DEFAULT_GAME_SPEED * ActivityManager.activity_attempt_speed_multiplier)
+			set_game_speed.emit(GameManager.default_game_speed * ActivityManager.activity_attempt_speed_multiplier)
 			set_time_is_advancing.emit(true)
 			
 			animation_player.play("attempt_activity")
@@ -81,7 +81,7 @@ func _on_animation_finished(anim_name):
 	match anim_name:
 		"attempt_activity":
 			if duration_percentage == 0.0:
-				set_game_speed.emit(GameManager.DEFAULT_GAME_SPEED)
+				set_game_speed.emit(GameManager.default_game_speed)
 				set_time_is_advancing.emit(false)
 				activity_end_label.text = "Failed to start activity!"
 				animation_player.play("show_activity_end_label")
@@ -90,7 +90,7 @@ func _on_animation_finished(anim_name):
 		
 		"do_activity":
 			ActivityManager.current_activity = ActivityManager.Activity.IDLE
-			set_game_speed.emit(GameManager.DEFAULT_GAME_SPEED)
+			set_game_speed.emit(GameManager.default_game_speed)
 			set_time_is_advancing.emit(false)
 			
 			if duration_percentage > 0.98:

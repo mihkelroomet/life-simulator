@@ -1,6 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvfmcgm8ae4wl"]
+[gd_scene load_steps=4 format=3 uid="uid://bvfmcgm8ae4wl"]
 
 [ext_resource type="Script" path="res://ui/main_menu_panel.gd" id="1_klptl"]
+[ext_resource type="Script" path="res://ui/game_speed_vbox.gd" id="2_us8tm"]
+
+[sub_resource type="GDScript" id="GDScript_cxv1y"]
+script/source = "extends PanelContainer
+
+
+
+func _on_back_button_pressed():
+	visible = false
+"
 
 [node name="MainMenu" type="Node2D"]
 
@@ -31,7 +41,7 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer"]
+[node name="TitleLabel" type="Label" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Thesis Writing
@@ -47,9 +57,81 @@ theme_override_constants/separation = 10
 layout_mode = 2
 text = "Start"
 
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
 [node name="QuitButton" type="Button" parent="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Quit"
 
+[node name="SettingsPanel" type="PanelContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_cxv1y")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/SettingsPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"HeaderMedium"
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameSpeedVBox" type="VBoxContainer" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+script = ExtResource("2_us8tm")
+
+[node name="Label" type="Label" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox"]
+layout_mode = 2
+theme_type_variation = &"LabelSmall"
+text = "Default Game Speed"
+horizontal_alignment = 1
+
+[node name="GameSpeedSlider" type="HSlider" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+min_value = 150.0
+max_value = 1200.0
+step = 150.0
+value = 150.0
+
+[node name="HoldKeyDelayTimer" type="Timer" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox"]
+wait_time = 0.35
+one_shot = true
+
+[node name="RepeatKeyTimer" type="Timer" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox"]
+wait_time = 0.035
+
+[node name="SettingsPanelBackButton" type="Button" parent="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+
 [connection signal="pressed" from="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer/StartButton" to="CanvasLayer/MainMenuPanel" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer/SettingsButton" to="CanvasLayer/MainMenuPanel" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenuPanel/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" to="CanvasLayer/MainMenuPanel" method="_on_quit_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox/GameSpeedSlider" to="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox" method="_on_slider_value_changed"]
+[connection signal="timeout" from="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox/HoldKeyDelayTimer" to="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox" method="_on_hold_key_delay_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox/RepeatKeyTimer" to="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/GameSpeedVBox" method="_on_repeat_key_timer_timeout"]
+[connection signal="pressed" from="CanvasLayer/SettingsPanel/MarginContainer/VBoxContainer/SettingsPanelBackButton" to="CanvasLayer/MainMenuPanel" method="_on_settings_panel_back_button_pressed"]

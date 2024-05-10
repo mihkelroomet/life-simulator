@@ -4,6 +4,7 @@ signal start_activity(activity : ActivityManager.Activity, activity_desired_dura
 signal fail_to_start_activity
 signal stop_activity
 
+signal set_default_game_speed(speed : float)
 signal set_game_speed(speed : float)
 signal set_game_time(time : float)
 signal set_time_is_advancing(is_advancing : bool)
@@ -34,6 +35,9 @@ func _on_fail_to_start_activity():
 
 func _on_stop_activity():
 	stop_activity.emit()
+
+func _on_set_default_game_speed(speed : float):
+	set_default_game_speed.emit(speed)
 
 func _on_set_game_speed(speed : float):
 	set_game_speed.emit(speed)
