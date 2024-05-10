@@ -4,9 +4,15 @@ signal set_activity_start_panel_selected_duration(duration : int)
 
 const OngoingActivityPanel = preload("res://ui/ongoing_activity_panel.gd")
 
+enum PressedKey {NONE, LEFT, RIGHT}
+
 @onready var activity_duration_label = $ActivityDurationLabel
 @onready var activity_duration_slider = $ActivityDurationSlider
 @onready var estimated_completion_time_label = $EstimatedCompletionTimeLabel
+@onready var hold_key_delay_timer = $HoldKeyDelayTimer
+@onready var repeat_key_timer = $RepeatKeyTimer
+
+var last_pressed_key : PressedKey = PressedKey.NONE
 
 func _ready():
 	set_activity_start_panel_selected_duration.connect(Events._on_set_activity_start_panel_selected_duration)
@@ -16,8 +22,21 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_left"):
 		activity_duration_slider.value -= 1
+		last_pressed_key = PressedKey.LEFT
+		repeat_key_timer.stop()
+		hold_key_delay_timer.start()
 	if Input.is_action_just_pressed("ui_right"):
 		activity_duration_slider.value += 1
+		last_pressed_key = PressedKey.RIGHT
+		repeat_key_timer.stop()
+		hold_key_delay_timer.start()
+	
+	if (
+		last_pressed_key == PressedKey.LEFT and Input.is_action_just_released("ui_left") or
+		last_pressed_key == PressedKey.RIGHT and Input.is_action_just_released("ui_right")
+	):
+		hold_key_delay_timer.stop()
+		repeat_key_timer.stop()
 
 func set_duration(quarters_of_hour : int):
 	var full_hours : int = floor(quarters_of_hour / 4.0)
@@ -74,3 +93,12 @@ func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.A
 
 func _on_activity_duration_slider_value_changed(value):
 	set_duration(value)
+
+func _on_hold_key_delay_timer_timeout():
+	repeat_key_timer.start()
+
+func _on_repeat_key_timer_timeout():
+	if last_pressed_key == PressedKey.LEFT:
+		activity_duration_slider.value -= 1
+	elif last_pressed_key == PressedKey.RIGHT:
+		activity_duration_slider.value += 1
