@@ -6,8 +6,31 @@ const EffectData = preload("res://data/effect_data.gd")
 
 enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 
-const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
-const NEED_NAMES_ABBR : Array = ["AUT", "COM", "REL", "NUT", "PHY", "SLE"]
+const NEED_NAMES : Array[String] = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
+const NEED_NAMES_ABBR : Array[String] = ["AUT", "COM", "REL", "NUT", "PHY", "SLE"]
+const NEED_DESCRIPTIONS : Array[String] = [
+	"Autonomy is feeling like you are\n" +
+	"in control of what you do. Boost\n" +
+	"this with activities that don't\n" +
+	"feel forced.",
+	
+	"Competence is feeling competent.\n" +
+	"Boost this with activities that\n" +
+	"are not too easy, nor too hard.",
+	
+	"Relatedness is feeling connected\n" +
+	"to others. Boost this with social\n" +
+	"activities.",
+	
+	"Eat to boost your nutrition.",
+	
+	"Do physically active stuff to boost\n" +
+	"physical activity. As you could have\n" +
+	"guessed.",
+	
+	"Shut your eyes and leave your brain\n" +
+	"alone to work its magic to boost sleep."
+]
 
 ## Initial satisfaction of needs
 var need_stats_initial_values : Dictionary = {

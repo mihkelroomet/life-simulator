@@ -26,7 +26,6 @@ label_text = "R"
 is_ui_node = true
 
 [node name="ExpandingBars" type="GridContainer" parent="VBoxContainer"]
-visible = false
 layout_mode = 2
 theme_override_constants/h_separation = 2
 theme_override_constants/v_separation = 2
