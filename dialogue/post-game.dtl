@@ -1,0 +1,4 @@
+if {ThesisWritingManager.thesis_written} >= 1:
+	You submit your thesis
+else:
+	You rush to submit your thesis

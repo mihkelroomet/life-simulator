@@ -4,8 +4,9 @@ signal start_activity(activity : ActivityManager.Activity, activity_desired_dura
 signal fail_to_start_activity
 signal stop_activity
 
-signal set_time_is_advancing(is_advancing : bool)
 signal set_game_speed(speed : float)
+signal set_game_time(time : float)
+signal set_time_is_advancing(is_advancing : bool)
 signal set_player_can_move(can_move : bool)
 
 signal need_satisfaction_changed(need : NeedManager.Need, new_value : float)
@@ -22,6 +23,9 @@ signal set_ongoing_activity_panel_visible(is_visible : bool)
 
 signal fade_out_color_rect
 
+signal start_game
+signal end_game
+
 func _on_start_activity(activity : ActivityManager.Activity, activity_desired_duration : float, is_yellow_level_attempt : bool = false, activity_actual_duration : float = activity_desired_duration):
 	start_activity.emit(activity, activity_desired_duration, is_yellow_level_attempt, activity_actual_duration)
 
@@ -33,6 +37,9 @@ func _on_stop_activity():
 
 func _on_set_game_speed(speed : float):
 	set_game_speed.emit(speed)
+
+func _on_set_game_time(time : float):
+	set_game_time.emit(time)
 
 func _on_set_time_is_advancing(is_advancing : bool):
 	set_time_is_advancing.emit(is_advancing)
@@ -66,3 +73,9 @@ func _on_set_ongoing_activity_panel_visible(is_visible : bool):
 	
 func _on_fade_out_color_rect():
 	fade_out_color_rect.emit()
+
+func _on_start_game():
+	start_game.emit()
+
+func _on_end_game():
+	end_game.emit()

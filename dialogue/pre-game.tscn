@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2uq3hs52vifa"]
+[gd_scene load_steps=3 format=3 uid="uid://b2uq3hs52vifa"]
 
-[ext_resource type="Script" path="res://dialogue/pre-game.gd" id="1_pkhuh"]
+[ext_resource type="Script" path="res://dialogue/dialogue_scene.gd" id="1_pkhuh"]
+[ext_resource type="PackedScene" uid="uid://caxkf73phrkix" path="res://world/in-game.tscn" id="2_jilp5"]
 
 [node name="PreGame" type="Node2D"]
 script = ExtResource("1_pkhuh")
+dialogic_timeline = "pre-game"
+next_scene = ExtResource("2_jilp5")

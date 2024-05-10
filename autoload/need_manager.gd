@@ -9,8 +9,8 @@ enum Need {AUTONOMY, COMPETENCE, RELATEDNESS, NUTRITION, PA, SLEEP}
 const NEED_NAMES : Array = ["Autonomy", "Competence", "Relatedness", "Nutrition", "Physical Activity", "Sleep"]
 const NEED_NAMES_ABBR : Array = ["AUT", "COM", "REL", "NUT", "PHY", "SLE"]
 
-## Current satisfaction of needs
-var need_stats : Dictionary = {
+## Initial satisfaction of needs
+var need_stats_initial_values : Dictionary = {
 	Need.AUTONOMY : 0.8,
 	Need.COMPETENCE : 0.8,
 	Need.RELATEDNESS : 0.8,
@@ -19,8 +19,12 @@ var need_stats : Dictionary = {
 	Need.SLEEP : 0.8
 }
 
+## Current satisfaction of needs
+var need_stats : Dictionary
+
 func _ready():
 	need_satisfaction_changed.connect(Events._on_need_satisfaction_changed)
+	Events.start_game.connect(_on_start_game)
 
 func _process(delta):
 	if GameManager.time_is_advancing:
@@ -53,3 +57,6 @@ func update_need(need, game_hours_elapsed):
 	new_need_satisfaction = clamp(new_need_satisfaction, 0.0, 1.0)
 	need_stats[need] = new_need_satisfaction
 	need_satisfaction_changed.emit(need, new_need_satisfaction)
+
+func _on_start_game():
+	need_stats = need_stats_initial_values.duplicate()

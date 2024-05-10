@@ -4,6 +4,7 @@ signal set_game_speed(speed : float)
 signal set_time_is_advancing(if_advancing : bool)
 signal fade_out_color_rect
 signal set_ongoing_activity_panel_visible(if_visible : bool)
+signal end_game
 
 @onready var ongoing_activity_label = $PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/OngoingActivityLabel
 @onready var activity_end_label = $PanelContainer/MarginContainer/VBoxContainer2/ActivityEndLabel
@@ -28,6 +29,7 @@ func _ready():
 	set_time_is_advancing.connect(Events._on_set_time_is_advancing)
 	fade_out_color_rect.connect(Events._on_fade_out_color_rect)
 	set_ongoing_activity_panel_visible.connect(Events._on_set_ongoing_activity_panel_visible)
+	end_game.connect(Events._on_end_game)
 	Events.start_activity.connect(_on_start_activity)
 	Events.set_ongoing_activity_panel_visible.connect(_on_set_ongoing_activity_panel_visible)
 	
@@ -99,5 +101,8 @@ func _on_animation_finished(anim_name):
 			animation_player.play("show_activity_end_label")
 		
 		"show_activity_end_label":
-			set_ongoing_activity_panel_visible.emit(false)
-			fade_out_color_rect.emit()
+			if ThesisWritingManager.thesis_written >= 1.0:
+				end_game.emit()
+			else:
+				set_ongoing_activity_panel_visible.emit(false)
+				fade_out_color_rect.emit()

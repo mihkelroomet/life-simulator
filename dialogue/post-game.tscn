@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt28k5dj3und6"]
+
+[ext_resource type="Script" path="res://dialogue/dialogue_scene.gd" id="1_myq5u"]
+[ext_resource type="PackedScene" uid="uid://caxkf73phrkix" path="res://world/in-game.tscn" id="2_a53xu"]
+
+[node name="PostGame" type="Node2D"]
+script = ExtResource("1_myq5u")
+dialogic_timeline = "post-game"
+next_scene = ExtResource("2_a53xu")

@@ -32,10 +32,12 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 directories/dch_directory={}
 directories/dtl_directory={
+"post-game": "res://dialogue/post-game.dtl",
 "pre-game": "res://dialogue/pre-game.dtl"
 }
 layout/style_list=["res://dialogue/dialogue_style.tres"]
 layout/default_style="res://dialogue/dialogue_style.tres"
+variables={}
 
 [display]
 

@@ -8,7 +8,7 @@ enum Activity {
 	MEET_FRIEND, PARTY, WALK, MODERATE_JOG, INTENSE_JOG,
 	EAT_HEALTHY, EAT_JUNK,
 	NAP, SLEEP,
-	PROCRASTINATE, CHAT, PLAY_GAMES, WRITE_THESIS
+	PROCRASTINATE, CHAT_ONLINE, PLAY_GAMES, WRITE_THESIS
 	}
 
 var current_activity : Activity # This gets assigned the default value 0 aka IDLE at start
@@ -17,6 +17,9 @@ var current_activity : Activity # This gets assigned the default value 0 aka IDL
 var activity_attempt_length : float = 1.0
 ## Controls how much faster the game runs during a yellow level activity attempt compared to idling.
 var activity_attempt_speed_multiplier : float = 5.0
+
+func _ready():
+	Events.start_game.connect(_on_start_game)
 
 func get_activity_data(activity : Activity) -> ActivityData:
 	return Activities.activities[activity]
@@ -82,3 +85,6 @@ func _get_need_effect_dict(activity : Activity, debug : bool):
 	need_effect_dict["Total"] = total
 	
 	return need_effect_dict
+
+func _on_start_game():
+	current_activity = Activity.IDLE

@@ -45,7 +45,8 @@ func _ready():
 func _process(delta):
 	if last_value != -1.0:
 		ping_arrows(delta)
-	last_value = progress_bar.value
+	if GameManager.time_is_advancing:
+		last_value = progress_bar.value
 
 func ping_arrows(delta):
 	var change = progress_bar.value - last_value
