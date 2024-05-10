@@ -2,3 +2,44 @@ if {ThesisWritingManager.thesis_written} >= 1:
 	You submit your thesis
 else:
 	You rush to submit your thesis
+if {ThesisWritingManager.get_grade()} == "A" or {ThesisWritingManager.get_grade()} == "B":
+	You feel pretty good about your work
+elif {ThesisWritingManager.get_grade()} == "C" or {ThesisWritingManager.get_grade()} == "D":
+	You're not too sure how it's going to go
+else:
+	You feel pretty terrible about it
+You prepare yourself for the defense and then wait
+The day comes
+You defend your thesis the best you can
+if {ThesisWritingManager.get_grade()} == "A":
+	The committee really seems to like it
+	You are lauded for your hard work
+	You get an A
+	Congratulations!
+elif {ThesisWritingManager.get_grade()} == "F":
+	The committee is not able to take you seriously, though
+	Some of them can not stop themselves from laughing
+	You get an F and fail to graduate
+else:
+	if {ThesisWritingManager.get_grade()} == "B":
+		The committee seems to quite like it
+		They do find some faults, though
+		You get a B
+	elif {ThesisWritingManager.get_grade()} == "C":
+		The committee is rather indifferent about it
+		At least they don't hate it
+		You get a C
+	elif {ThesisWritingManager.get_grade()} == "D":
+		The committee does not feel your hype, though
+		They think you could have done better
+		You get a D
+	else:
+		The committee is all frowns, though
+		They are obviously disappointed
+		Still, you have met the absolute minimum requirements
+		You get an E
+if {ThesisWritingManager.get_grade()} != "A":
+	Perhaps if you had been able to spend some more time writing the thesis...
+	It might have gone better
+	But hey, it's a game, so you can try again
+[Click to restart the game]
