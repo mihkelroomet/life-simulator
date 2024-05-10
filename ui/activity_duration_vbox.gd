@@ -13,6 +13,12 @@ func _ready():
 	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
 	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_left"):
+		activity_duration_slider.value -= 1
+	if Input.is_action_just_pressed("ui_right"):
+		activity_duration_slider.value += 1
+
 func set_duration(quarters_of_hour : int):
 	var full_hours : int = floor(quarters_of_hour / 4.0)
 	var minutes : int = quarters_of_hour % 4 * 15
