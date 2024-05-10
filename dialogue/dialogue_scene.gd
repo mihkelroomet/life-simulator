@@ -16,6 +16,10 @@ func _ready():
 	set_player_can_move.emit(false)
 	start_dialogue()
 
+func _process(_delta):
+	if Input.is_action_just_pressed("ui_cancel"):
+		Dialogic.end_timeline()
+
 func start_dialogue():
 	Dialogic.start(dialogic_timeline)
 
