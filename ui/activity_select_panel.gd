@@ -11,6 +11,7 @@ const ActivityDetailsPanel = preload("res://ui/activity_details_panel.gd")
 @onready var activity_duration_vbox : ActivityDurationVBox = $MarginContainer/HBoxContainer/ActivitySelectVBox/ActivityDurationVBox
 @onready var activity_details_panel : ActivityDetailsPanel = $MarginContainer/HBoxContainer/ActivityDetailsPanel
 
+static var selected_activity_select_button : CheckBox
 static var selected_activity : ActivityManager.Activity
 ## Duration of selected activity in hours.
 static var selected_duration : float
@@ -24,12 +25,19 @@ func _ready():
 	Events.set_activity_start_panel_selected_duration.connect(_on_set_activity_start_panel_selected_duration)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_cancel") and visible:
-		toggle_panel(false, [])
-	
-	if visible and selected_activity != ActivityManager.Activity.IDLE:
-		activity_duration_vbox.update_estimated_completion_time(selected_activity)
-		activity_details_panel.update_motivation_for_activity(selected_activity)
+	if visible:
+		if Input.is_action_just_pressed("ui_cancel"):
+			toggle_panel(false, [])
+		else:
+			if Input.is_action_just_pressed("ui_down"):
+				select_next_activity()
+			
+			if Input.is_action_just_pressed("ui_up"):
+				select_previous_activity()
+			
+			if selected_activity != ActivityManager.Activity.IDLE:
+				activity_duration_vbox.update_estimated_completion_time(selected_activity)
+				activity_details_panel.update_motivation_for_activity(selected_activity)
 
 func toggle_panel(toggled_open : bool, activities : Array[ActivityManager.Activity]):
 	visible = toggled_open
@@ -37,6 +45,8 @@ func toggle_panel(toggled_open : bool, activities : Array[ActivityManager.Activi
 	if toggled_open:
 		selected_activity = ActivityManager.Activity.IDLE # Essentially a reset
 		set_activities(activities)
+		var first_activity_select_button = radio_button_vbox.get_child(0)
+		select_activity(first_activity_select_button)
 
 func set_activities(activities : Array[ActivityManager.Activity]):
 	clear_radio_buttons()
@@ -49,6 +59,24 @@ func set_activities(activities : Array[ActivityManager.Activity]):
 		activity_select_button.activity = activity
 		radio_button_vbox.add_child(activity_select_button)
 
+func select_activity(activity_select_button : CheckBox):
+	activity_select_button.button_pressed = true
+	activity_select_button.pressed.emit()
+
+func select_next_activity():
+	var next_activity_index = selected_activity_select_button.get_index() + 1
+	if next_activity_index >= radio_button_vbox.get_child_count():
+		next_activity_index = 0
+	var next_activity = radio_button_vbox.get_child(next_activity_index)
+	select_activity(next_activity)
+
+func select_previous_activity():
+	var prev_activity_index = selected_activity_select_button.get_index() - 1
+	if prev_activity_index <= -1:
+		prev_activity_index = radio_button_vbox.get_child_count() - 1
+	var prev_activity = radio_button_vbox.get_child(prev_activity_index)
+	select_activity(prev_activity)
+
 func clear_radio_buttons():
 	for button in radio_button_vbox.get_children():
 		radio_button_vbox.remove_child(button)
@@ -60,8 +88,9 @@ func _on_start_activity(_activity : ActivityManager.Activity, _activity_desired_
 func _on_set_activity_start_panel_visible(p_visible : bool, activities : Array[ActivityManager.Activity]):
 	toggle_panel(p_visible, activities)
 
-func _on_activity_select_button_pressed(activity : ActivityManager.Activity):
+func _on_activity_select_button_pressed(activity_select_button : CheckBox, activity : ActivityManager.Activity):
 	if activity != selected_activity:
+		selected_activity_select_button = activity_select_button
 		set_activity_start_panel_selected_activity.emit(activity)
 
 func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.Activity):
