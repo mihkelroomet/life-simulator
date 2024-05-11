@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="GT_ThesisWritingSimulator"
+config/name="Thesis Writing Simulator"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+config/windows_native_icon="res://icon/icon.ico"
 
 [autoload]
 

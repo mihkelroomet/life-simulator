@@ -7,15 +7,15 @@
 [ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="5_rbo4o"]
 [ext_resource type="PackedScene" uid="uid://bujh4r7bl4qwa" path="res://ui/activity_details_panel.tscn" id="6_o2lgw"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ujg8v"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_fb1t2"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_jt1ps"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_84y8h"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_yl36e"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_mg26t"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kcmbo"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_fdpt4"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_bwxkj"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_43dmi"]
 
 [node name="ActivitySelectPanel" type="PanelContainer"]
 visible = false
@@ -74,26 +74,26 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_ujg8v")
+button_group = SubResource("ButtonGroup_fb1t2")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_jt1ps")
+button_group = SubResource("ButtonGroup_84y8h")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_yl36e")
+button_group = SubResource("ButtonGroup_mg26t")
 text = "Activity 3 "
 
 [node name="ActivitySelectButton4" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_kcmbo")
+button_group = SubResource("ButtonGroup_fdpt4")
 text = "Activity 4 "
 
 [node name="ActivitySelectButton5" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_bwxkj")
+button_group = SubResource("ButtonGroup_43dmi")
 text = "Activity 5 "
 
 [node name="ActivityDurationVBox" parent="MarginContainer/HBoxContainer/ActivitySelectVBox" instance=ExtResource("3_rjxyg")]

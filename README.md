@@ -1,16 +1,16 @@
 # Thesis Writing Simulator
 A choice-driven life simulation game that offers an immersive experience of a young adult's typical struggles, emphasizing emotional and physical well-being.
 
-Currently in development, will be completed by 2023-05-15.
-
-For testers/reviewers: the latest working build can be played [here](https://mihkelroomet.itch.io/thesis-writing-simulator) (last updated: 2024-05-03).
+The game can be played [here](https://mihkelroomet.itch.io/thesis-writing-simulator).
 
 Made as Graduation Thesis (LTAT.00.001) for University of Tartu's Computer Science (BSc) programme.
 
-Screenshots from 2024-04-07:
+![game start](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-05-11%20Final/game_start.png)
 
-![in-game](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-04-07%20Basic%20Activities/in-game.png)
+![choosing activity](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-05-11%20Final/choosing_activity.png)
 
-![activity start panel](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-04-07%20Basic%20Activities/activity_start_panel.png)
+![intro](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-05-11%20Final/intro.png)
 
-![ongoing activity panel](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-04-07%20Basic%20Activities/ongoing_activity_panel.png)
+![activity attempt](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-05-11%20Final/activity_attempt.png)
+
+![doing activity](https://github.com/mihkelroomet/life-simulator/blob/main/showcase/2024-05-11%20Final/doing_activity.png)
