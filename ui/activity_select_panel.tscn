@@ -7,15 +7,15 @@
 [ext_resource type="Script" path="res://ui/failed_to_start_label.gd" id="5_rbo4o"]
 [ext_resource type="PackedScene" uid="uid://bujh4r7bl4qwa" path="res://ui/activity_details_panel.tscn" id="6_o2lgw"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_kg2ja"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_ujg8v"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_tvm8l"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_jt1ps"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_njcat"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_yl36e"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_i5dfk"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_kcmbo"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_8jbfl"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_bwxkj"]
 
 [node name="ActivitySelectPanel" type="PanelContainer"]
 visible = false
@@ -53,17 +53,17 @@ theme_override_constants/separation = 40
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/HeaderVBox"]
+[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/HeaderVBox"]
 layout_mode = 2
 theme_type_variation = &"HeaderLarge"
 text = "Choose Activity"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/HeaderVBox"]
+[node name="InstructionLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/HeaderVBox"]
 layout_mode = 2
 theme_type_variation = &"LabelSmall"
-text = "Press Q / Esc to Cancel"
+text = "Press Q / Esc to Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -74,26 +74,26 @@ theme_override_constants/separation = 10
 
 [node name="ActivitySelectButton" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_kg2ja")
+button_group = SubResource("ButtonGroup_ujg8v")
 
 [node name="ActivitySelectButton2" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_tvm8l")
+button_group = SubResource("ButtonGroup_jt1ps")
 text = "Activity 2 "
 
 [node name="ActivitySelectButton3" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_njcat")
+button_group = SubResource("ButtonGroup_yl36e")
 text = "Activity 3 "
 
 [node name="ActivitySelectButton4" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_i5dfk")
+button_group = SubResource("ButtonGroup_kcmbo")
 text = "Activity 4 "
 
 [node name="ActivitySelectButton5" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/RadioButtonVBox" instance=ExtResource("2_gofsv")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_8jbfl")
+button_group = SubResource("ButtonGroup_bwxkj")
 text = "Activity 5 "
 
 [node name="ActivityDurationVBox" parent="MarginContainer/HBoxContainer/ActivitySelectVBox" instance=ExtResource("3_rjxyg")]
@@ -111,6 +111,10 @@ mouse_default_cursor_shape = 2
 text = "Start"
 script = ExtResource("4_xhsmu")
 
+[node name="PreventStartButtonTimer" type="Timer" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton"]
+wait_time = 0.1
+one_shot = true
+
 [node name="FailedToStartLabel" type="Label" parent="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox"]
 visible = false
 layout_mode = 2
@@ -126,4 +130,6 @@ one_shot = true
 layout_mode = 2
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" method="_on_button_pressed"]
+[connection signal="visibility_changed" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" method="_on_visibility_changed"]
+[connection signal="timeout" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton/PreventStartButtonTimer" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/StartButton" method="_on_timer_timeout"]
 [connection signal="timeout" from="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/FailedToStartLabel/FailedToStartLabelTimer" to="MarginContainer/HBoxContainer/ActivitySelectVBox/StartButtonVBox/FailedToStartLabel" method="_on_timer_timeout"]

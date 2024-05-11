@@ -14,7 +14,7 @@ signal need_satisfaction_changed(need : NeedManager.Need, new_value : float)
 signal motivation_changed(new_value : float)
 signal thesis_written_amount_changed(new_value : float)
 
-signal set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity])
+signal set_activity_select_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity])
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 signal set_activity_start_panel_selected_duration(duration : float)
 
@@ -23,6 +23,9 @@ signal update_need_effects(motivation_for_activity_dict : Dictionary)
 signal set_ongoing_activity_panel_visible(is_visible : bool)
 
 signal fade_out_color_rect
+
+signal set_pause_menu_active(active : bool)
+signal start_prevent_pause_menu_timer
 
 signal start_game
 signal end_game
@@ -60,8 +63,8 @@ func _on_motivation_changed(new_value : float):
 func _on_thesis_written_amount_changed(new_value : float):
 	thesis_written_amount_changed.emit(new_value)
 
-func _on_set_activity_start_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity]):
-	set_activity_start_panel_visible.emit(is_visible, activities)
+func _on_set_activity_select_panel_visible(is_visible : bool, activities : Array[ActivityManager.Activity]):
+	set_activity_select_panel_visible.emit(is_visible, activities)
 
 func _on_set_activity_start_panel_selected_activity(activity : ActivityManager.Activity):
 	set_activity_start_panel_selected_activity.emit(activity)
@@ -77,6 +80,12 @@ func _on_set_ongoing_activity_panel_visible(is_visible : bool):
 	
 func _on_fade_out_color_rect():
 	fade_out_color_rect.emit()
+
+func _on_set_pause_menu_active(active : bool):
+	set_pause_menu_active.emit(active)
+
+func _on_start_prevent_pause_menu_timer():
+	start_prevent_pause_menu_timer.emit()
 
 func _on_start_game():
 	start_game.emit()

@@ -16,7 +16,7 @@ var current_activity : Activity # This gets assigned the default value 0 aka IDL
 ## Controls duration of activity attempt at yellow level
 var activity_attempt_length : float = 1.0
 ## Controls how much faster the game runs during a yellow level activity attempt compared to idling.
-var activity_attempt_speed_multiplier : float = 5.0
+var activity_attempt_speed_multiplier : float = 3.0
 
 func _ready():
 	Events.start_game.connect(_on_start_game)

@@ -6,15 +6,20 @@ signal fail_to_start_activity
 const CurveData = preload("res://data/curve_data.gd")
 const ActivitySelectPanel = preload("res://ui/activity_select_panel.gd")
 
+@onready var prevent_start_button_timer = $PreventStartButtonTimer
+
 var yellow_level_curve : CurveData = CurveData.new([Vector2(0.4, 0.0), Vector2(0.6, 1.0)])
+
+var can_be_triggered_by_key_press : bool = false
 
 func _ready():
 	start_activity.connect(Events._on_start_activity)
 	fail_to_start_activity.connect(Events._on_fail_to_start_activity)
 
 func _process(_delta):
-	if Input.is_action_just_pressed("ui_accept"):
-		pressed.emit()
+	if can_be_triggered_by_key_press:
+		if Input.is_action_just_pressed("ui_accept"):
+			pressed.emit()
 
 func _on_button_pressed():
 	var selected_activity = ActivitySelectPanel.selected_activity
@@ -56,3 +61,12 @@ func _on_button_pressed():
 			print("Desired duration: ", selected_duration)
 			print("Actual duration: ", actual_duration)
 			start_activity.emit(selected_activity, selected_duration, true, actual_duration)
+
+func _on_visibility_changed():
+	if is_visible_in_tree():
+		prevent_start_button_timer.start()
+	else:
+		can_be_triggered_by_key_press = false
+
+func _on_timer_timeout():
+	can_be_triggered_by_key_press = true

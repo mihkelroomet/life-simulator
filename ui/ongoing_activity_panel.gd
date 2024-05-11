@@ -93,7 +93,7 @@ func _on_animation_finished(anim_name):
 			set_game_speed.emit(GameManager.default_game_speed)
 			set_time_is_advancing.emit(false)
 			
-			if duration_percentage > 0.98:
+			if duration_percentage > 0.95:
 				activity_end_label.text = "Done!"
 			else:
 				activity_end_label.text = "You have had enough of " + present_participle

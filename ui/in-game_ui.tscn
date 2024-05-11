@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bmjsklsge0fg0"]
+[gd_scene load_steps=9 format=3 uid="uid://bmjsklsge0fg0"]
 
 [ext_resource type="PackedScene" uid="uid://k7obsnqqk42a" path="res://ui/fade_color_rect.tscn" id="1_n3w6b"]
 [ext_resource type="PackedScene" uid="uid://cg06n8hdu53wk" path="res://ui/ongoing_activity_panel.tscn" id="2_ewsu2"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://camg68k1p4vfd" path="res://ui/time_panel.tscn" id="4_xbhfx"]
 [ext_resource type="PackedScene" uid="uid://fyt4htnh62uq" path="res://ui/activity_select_panel.tscn" id="5_83r1l"]
 [ext_resource type="PackedScene" uid="uid://e65xetkyc6nj" path="res://ui/scene_transition_color_rect.tscn" id="7_lg06i"]
+[ext_resource type="PackedScene" uid="uid://dy68yi7pj71m3" path="res://ui/pause_menu.tscn" id="8_mfmc8"]
 
 [node name="UI" type="CanvasLayer"]
 
@@ -29,3 +30,5 @@ offset_right = 500.0
 offset_bottom = 345.0
 
 [node name="SceneTransitionColorRect" parent="." instance=ExtResource("7_lg06i")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("8_mfmc8")]

@@ -3,6 +3,8 @@ extends PanelContainer
 signal set_player_can_move(can_move : bool)
 signal set_activity_start_panel_selected_activity(activity : ActivityManager.Activity)
 
+signal start_prevent_pause_menu_timer
+
 const ActivitySelectButton = preload("res://ui/activity_select_button.tscn")
 const ActivityDurationVBox = preload("res://ui/activity_duration_vbox.gd")
 const ActivityDetailsPanel = preload("res://ui/activity_details_panel.gd")
@@ -19,14 +21,16 @@ static var selected_duration : float
 func _ready():
 	set_player_can_move.connect(Events._on_set_player_can_move)
 	set_activity_start_panel_selected_activity.connect(Events._on_set_activity_start_panel_selected_activity)
+	start_prevent_pause_menu_timer.connect(Events._on_start_prevent_pause_menu_timer)
 	Events.start_activity.connect(_on_start_activity)
-	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
+	Events.set_activity_select_panel_visible.connect(_on_set_activity_select_panel_visible)
 	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
 	Events.set_activity_start_panel_selected_duration.connect(_on_set_activity_start_panel_selected_duration)
 
 func _process(_delta):
 	if visible:
 		if Input.is_action_just_pressed("ui_cancel"):
+			start_prevent_pause_menu_timer.emit()
 			toggle_panel(false, [])
 		else:
 			if Input.is_action_just_pressed("ui_down"):
@@ -85,7 +89,7 @@ func clear_radio_buttons():
 func _on_start_activity(_activity : ActivityManager.Activity, _activity_desired_duration : float, _is_yellow_level_attempt : bool, _activity_actual_duration : float):
 	visible = false
 
-func _on_set_activity_start_panel_visible(p_visible : bool, activities : Array[ActivityManager.Activity]):
+func _on_set_activity_select_panel_visible(p_visible : bool, activities : Array[ActivityManager.Activity]):
 	toggle_panel(p_visible, activities)
 
 func _on_activity_select_button_pressed(activity_select_button : CheckBox, activity : ActivityManager.Activity):

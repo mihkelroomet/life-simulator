@@ -16,7 +16,7 @@ var last_pressed_key : PressedKey = PressedKey.NONE
 
 func _ready():
 	set_activity_start_panel_selected_duration.connect(Events._on_set_activity_start_panel_selected_duration)
-	Events.set_activity_start_panel_visible.connect(_on_set_activity_start_panel_visible)
+	Events.set_activity_select_panel_visible.connect(_on_set_activity_select_panel_visible)
 	Events.set_activity_start_panel_selected_activity.connect(_on_set_activity_start_panel_selected_activity)
 
 func _process(_delta):
@@ -62,7 +62,7 @@ func update_estimated_completion_time(selected_activity : ActivityManager.Activi
 	
 	estimated_completion_time_label.text = "Estimated time of completion: " + TimeUtils.get_time_from_unix_time(completion_time)
 
-func _on_set_activity_start_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
+func _on_set_activity_select_panel_visible(p_visible : bool, _activities : Array[ActivityManager.Activity]):
 	if p_visible:
 		activity_duration_slider.min_value = 0
 		activity_duration_slider.max_value = 1
